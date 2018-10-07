@@ -6,7 +6,7 @@
 //Our clockrate/
 //TODO: Add in a checksum  
 module receiver
-	#(parameter CLKS_PER_BIT = 1736) 
+	#(parameter CLKS_PER_BIT = 13'd1736) 
 	(input logic clk, rst_n, 
 	input logic bit_in,  
 	output logic rdy,	
@@ -109,7 +109,7 @@ module receiver
                    clk_counter = clk_counter + 1; 
                 else 
                 begin
-                   clk_counter = 0; 
+                   clk_counter = 0; clock
 		   data_out_buf[bit_counter] <= bit_in;  
                    if (bit_counter < 7) 
                         bit_counter = bit_counter + 1; 
