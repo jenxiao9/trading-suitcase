@@ -39,45 +39,45 @@ module receiver
 	    begin
 	 	if (bit_in) //Start bit detected 
 		    nextState = START_B;
-                else 
-                    nextState = IDLE;  
+        else 
+            nextState = IDLE;  
 	    end  
 	    START_B:  //Sample the startbit
 	    begin
-		if (clk_counter == ((CLKS_PER_BIT-1) >> 1))
-                begin 
-		     if (bit_in == 1'b0) 
-			nextState = DATA;  
-                     else 
-                        nextState = IDLE; 
-		end 
-                else 
-                    nextState = START_B;  
-                                      
+			if (clk_counter == ((CLKS_PER_BIT-1) >> 1))
+	        begin 
+			     if (bit_in == 1'b0) 
+					nextState = DATA;  
+	             else 
+	                nextState = IDLE; 
+			end 
+	        else 
+	            nextState = START_B;                                        
 	    end 
  	    DATA: 
+        begin
+        	if (clk_counter < CLKS_PER_BIT - 1)
+               nextState = DATA;  
+            else 
             begin
-            	if (clk_counter < CLKS_PER_BIT - 1)
-                   nextState = DATA;  
-                else 
-                begin
-                   if (bit_counter < 7) 
-                        nextState = DATA;  
-                   else 
-                        nextState = END_B;  
-                end 
-            end 
-            END_B: 
-            begin
-               if (clk_counter <= CLKS_PER_BIT - 1) 
-                   nextState = END_B;  
+               if (bit_counter < 7) 
+                    nextState = DATA;  
                else 
-                   nextState = CLEANUP;  
+                    nextState = END_B;  
             end 
-            CLEANUP: 
-            begin
-            	nextState <= IDLE; 
-            end  
+    	end 
+        END_B: 
+        begin
+           if (clk_counter <= CLKS_PER_BIT - 1) 
+               nextState = END_B;  
+           else 
+               nextState = CLEANUP;  
+        end 
+        CLEANUP: 
+        begin
+        	nextState <= IDLE; 
+        end  
+        
        endcase 
     end
 

@@ -2,11 +2,11 @@
 
 module transmiter 
 	#(parameter CLKS_PER_BIT = 13'd1736) 
-	(input clk, rst_n, rdy_in, 
-		input [7:0] data_in,
-		output active_o, 
-		output bit_o,
-		output done_o); 
+	(input logic clk, rst_n, rdy_in, 
+		input logic [7:0] data_in,
+		output logic active_o, 
+		output logic bit_o,
+		output logic done_o); 
 
     logic [12:0] clk_counter; 
     logic counter_en, counter_clear; 
