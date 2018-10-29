@@ -394,7 +394,7 @@ int main (int argc, char **argv)
                             
                               
     fptype price1 = BlkSchlsEqEuroNoDiv(1, 1.1,
-                                   2, 0.02, 2, 
+                                   2, 3, 2, 
                                    1, 0.2);
                                    
                                    

@@ -131,25 +131,6 @@ int nThreads;
 
 
 
-fptype fast_exp (fptype x)
- {
-   volatile union {
-     float f;
-     unsigned int i;
-   } cvt;
-
-   /* exp(x) = 2^i * 2^f; i = floor (log2(e) * x), 0 <= f <= 1 */
-   float t = x * 1.44269504089f;
-   float fi = floorf (t);
-   float f = t - fi;
-   printf("float is = %f \n", f);
-   int i = (int)fi;
-   cvt.f = (0.3371894346f * f + 0.657636276f) * f + 1.00172476f; /* compute 2^f */
-   cvt.i += (i << 23);                                          /* scale by 2^i */
-   printf("result cvt is = %f \n", cvt.f);
-   return cvt.f;
- }
-
 fptype CNDF ( fptype InputX ) 
 {
     int sign;
@@ -174,7 +155,7 @@ fptype CNDF ( fptype InputX )
     xInput = InputX;
  
     // Compute NPrimeX term common to both four & six decimal accuracy calcs
-    expValues = fast_exp(-0.5f * InputX * InputX);
+    expValues = exp(-0.5f * InputX * InputX);
     xNPrimeofX = expValues;
     xNPrimeofX = xNPrimeofX * inv_sqrt_2xPI;
 
@@ -274,7 +255,7 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
     NofXd1 = CNDF( d1 );
     NofXd2 = CNDF( d2 );
 
-    FutureValueX = strike * ( fast_exp( -(rate)*(time) ) );        
+    FutureValueX = strike * ( exp( -(rate)*(time) ) );        
     if (otype == 0) {            
         OptionPrice = (sptprice * NofXd1) - (FutureValueX * NofXd2);
     } else { 
@@ -394,26 +375,7 @@ int bs_thread(void *tid_ptr) {
 }
 #endif //ENABLE_TBB
 
-/*
- float fast_exp (float x)
- {
-   volatile union {
-     float f;
-     unsigned int i;
-   } cvt;
 
-  // exp(x) = 2^i * 2^f; i = floor (log2(e) * x), 0 <= f <= 1 
-   float t = x * 1.44269504089f;
-   float fi = floorf (t);
-   float f = t - fi;
-   printf("float is = %f \n", f); 
-   int i = (int)fi;
-   cvt.f = (0.3371894346f * f + 0.657636276f) * f + 1.00172476f; //compute 2^f 
-   cvt.i += (i << 23);                                          // scale by 2^i
-   printf("result cvt is = %f \n", cvt.f);
-   return cvt.f;
- } 
-*/ 
 
 int main (int argc, char **argv)
 {
@@ -496,13 +458,13 @@ int main (int argc, char **argv)
                             fptype time, int otype, float timet )*/ 
 
              
-    /*makeCache();
-    for (int i = 0; i < 10; i++)
-        printf("cache = %d" ,fact_cache[i]); 
-*/ 
-//    fptype superfast = fast_exp(15.6);
-//    printf("superfast = %f \n", superfast); 
-//    printf("fastexp of 2 = %d: \n",fastExp(2)); 
+    makeCache();
+    //for (int i = 0; i < 10; i++)
+    //    printf("cache = %d" ,fact_cache[i]); 
+
+    int superfast = fxexp(3);
+    printf("superfast = %d \n", superfast); 
+    printf("fastexp of 2 = %d \n",fastExp(2.3)); 
    // printf("%d",EXP_TABLE_2D[0][0]); 
 /*
     for (int i = 0 ; i < 128; i ++) {
