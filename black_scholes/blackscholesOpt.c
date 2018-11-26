@@ -45,11 +45,63 @@ using namespace tbb;
 #pragma warning(disable : 4244)
 #include <windows.h>
 #endif
+#define FAST_EXP_MAX_TAYLOR 9 
+double EXP_TABLE_2D[128][10];
+double EXP_TABLE_3D[256][2][10];
+double oneOver_i[FAST_EXP_MAX_TAYLOR+1];
 
 //Precision to use for calculations
 #define fptype float
 
 #define NUM_RUNS 100
+
+int factorial(const int n){
+  int i, result;
+
+  result = 1.0;
+  for(i=1;i<n+1;i++){
+    result *= i;
+  }
+  return result;
+}
+
+int fact_cache[11]; 
+
+void makeCache(){ 
+    for (int i = 0; i < 10; i ++) {
+        fact_cache[i] =  factorial(i);
+    }
+} 
+
+
+#define inv_sqrt_2xPI 0.39894228040143270286
+
+int fxexp(int x) {
+  int t,y;
+
+  y=0x00010000;
+  t=x-0x58b91; if(t>=0) x=t,y<<=8;
+  t=x-0x2c5c8; if(t>=0) x=t,y<<=4;
+  t=x-0x162e4; if(t>=0) x=t,y<<=2;
+  t=x-0x0b172; if(t>=0) x=t,y<<=1;
+  t=x-0x067cd; if(t>=0) x=t,y+=y>>1;
+  t=x-0x03920; if(t>=0) x=t,y+=y>>2;
+  t=x-0x01e27; if(t>=0) x=t,y+=y>>3;
+  t=x-0x00f85; if(t>=0) x=t,y+=y>>4;
+  t=x-0x007e1; if(t>=0) x=t,y+=y>>5;
+  t=x-0x003f8; if(t>=0) x=t,y+=y>>6;
+  t=x-0x001fe; if(t>=0) x=t,y+=y>>7;
+  if(x&0x100)               y+=y>>8;
+  if(x&0x080)               y+=y>>9;
+  if(x&0x040)               y+=y>>10;
+  if(x&0x020)               y+=y>>11;
+  if(x&0x010)               y+=y>>12;
+  if(x&0x008)               y+=y>>13;
+  if(x&0x004)               y+=y>>14;
+  if(x&0x002)               y+=y>>15;
+  if(x&0x001)               y+=y>>16;
+  return y;
+  }
 
 typedef struct OptionData_ {
         fptype s;          // spot price
@@ -77,13 +129,26 @@ fptype * otime;
 int numError = 0;
 int nThreads;
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// Cumulative Normal Distribution Function
-// See Hull, Section 11.8, P.243-244
-#define inv_sqrt_2xPI 0.39894228040143270286
+
+
+fptype fast_exp (fptype x)
+ {
+   volatile union {
+     float f;
+     unsigned int i;
+   } cvt;
+
+   /* exp(x) = 2^i * 2^f; i = floor (log2(e) * x), 0 <= f <= 1 */
+   float t = x * 1.44269504089f;
+   float fi = floorf (t);
+   float f = t - fi;
+   printf("float is = %f \n", f);
+   int i = (int)fi;
+   cvt.f = (0.3371894346f * f + 0.657636276f) * f + 1.00172476f; /* compute 2^f */
+   cvt.i += (i << 23);                                          /* scale by 2^i */
+   printf("result cvt is = %f \n", cvt.f);
+   return cvt.f;
+ }
 
 fptype CNDF ( fptype InputX ) 
 {
@@ -109,7 +174,7 @@ fptype CNDF ( fptype InputX )
     xInput = InputX;
  
     // Compute NPrimeX term common to both four & six decimal accuracy calcs
-    expValues = exp(-0.5f * InputX * InputX);
+    expValues = fast_exp(-0.5f * InputX * InputX);
     xNPrimeofX = expValues;
     xNPrimeofX = xNPrimeofX * inv_sqrt_2xPI;
 
@@ -152,7 +217,7 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
                             fptype time, int otype, float timet )
 {
     fptype OptionPrice;
-    T* const cache = new T[12]  
+    int* const cache = new int[12];  
 
     cache[0] = 2; 
     printf("the CACHE AT 0 Is %d", cache[0]); 
@@ -209,7 +274,7 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
     NofXd1 = CNDF( d1 );
     NofXd2 = CNDF( d2 );
 
-    FutureValueX = strike * ( exp( -(rate)*(time) ) );        
+    FutureValueX = strike * ( fast_exp( -(rate)*(time) ) );        
     if (otype == 0) {            
         OptionPrice = (sptprice * NofXd1) - (FutureValueX * NofXd2);
     } else { 
@@ -221,9 +286,17 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
     return OptionPrice;
 }
 
-fptype fastExp () 
+fptype fastExp(fptype input) 
 {
-  
+ fptype result = 0; 
+  for (int i=0 ; i < 11; i ++) { 
+      //printf("factcache in fastexp = %d", fact_cache[i]);  
+      printf("result = %f \n", result);
+      printf("powf = %f \n", powf(input,i));
+ 
+      result += powf(input,i) / fact_cache[i];  
+  }
+  return result; 
 }
 
 #ifdef ENABLE_TBB
@@ -321,6 +394,27 @@ int bs_thread(void *tid_ptr) {
 }
 #endif //ENABLE_TBB
 
+/*
+ float fast_exp (float x)
+ {
+   volatile union {
+     float f;
+     unsigned int i;
+   } cvt;
+
+  // exp(x) = 2^i * 2^f; i = floor (log2(e) * x), 0 <= f <= 1 
+   float t = x * 1.44269504089f;
+   float fi = floorf (t);
+   float f = t - fi;
+   printf("float is = %f \n", f); 
+   int i = (int)fi;
+   cvt.f = (0.3371894346f * f + 0.657636276f) * f + 1.00172476f; //compute 2^f 
+   cvt.i += (i << 23);                                          // scale by 2^i
+   printf("result cvt is = %f \n", cvt.f);
+   return cvt.f;
+ } 
+*/ 
+
 int main (int argc, char **argv)
 {
     FILE *file;
@@ -400,15 +494,33 @@ int main (int argc, char **argv)
     fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
                             fptype strike, fptype rate, fptype volatility,
                             fptype time, int otype, float timet )*/ 
-                            
-                              
+
+             
+    /*makeCache();
+    for (int i = 0; i < 10; i++)
+        printf("cache = %d" ,fact_cache[i]); 
+*/ 
+//    fptype superfast = fast_exp(15.6);
+//    printf("superfast = %f \n", superfast); 
+//    printf("fastexp of 2 = %d: \n",fastExp(2)); 
+   // printf("%d",EXP_TABLE_2D[0][0]); 
+/*
+    for (int i = 0 ; i < 128; i ++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d\n", EXP_TABLE_2D[i][j]);
+        }
+    }
+  
+  */                     
+
     fptype price1 = BlkSchlsEqEuroNoDiv(1, 1.1,
-                                   2, 0.02, 2, 
+                                   2, 3, 2, 
                                    1, 0.2);
                                    
                                    
     printf ("Price is  = %f", price1);                                 
     
+
     /*
     rv = fclose(file);
     if(rv != 0) {
