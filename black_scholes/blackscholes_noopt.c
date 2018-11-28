@@ -393,12 +393,22 @@ int main (int argc, char **argv)
                             fptype time, int otype, float timet )*/ 
                             
                               
-    fptype price1 = BlkSchlsEqEuroNoDiv(1, 1.1,
-                                   2, 3, 2, 
+   fptype price2 = BlkSchlsEqEuroNoDiv(1, 1.1,
+                                    2, 3, 2, 
                                    1, 0.2);
+   
+   fptype price1 = BlkSchlsEqEuroNoDiv(2, 3,
+                                      1, 2, 3,
+                                      5, 2);
+ 
+    fptype price3 = BlkSchlsEqEuroNoDiv(278.7, 2275,
+                                    2, 0.2085, 0.56, 
+                                   1, 2);
+
+    printf ("Price1 is  = %f \n", price1);                                 
                                    
-                                   
-    printf ("Price is  = %f", price1);                                 
+    printf ("Price2 is  = %f \n", price2);                
+    printf ("Price3 is  = %f \n", price3);                       
     
     /*
     rv = fclose(file);

@@ -9,8 +9,8 @@ ifdef source
 		CXXFLAGS += -msse3
 	endif
 else
-	SRC	= blackscholesOpt.c 
-
+	#SRC	= blackscholes_noopt.c 
+        SRC    = blackscholesOpt_2.c 
 endif
 
 ifdef version
