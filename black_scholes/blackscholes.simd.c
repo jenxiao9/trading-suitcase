@@ -73,7 +73,8 @@
 #define NUM_RUNS 100
 
 typedef struct OptionData_ {
-        fptype s;          // spot price
+        long option_id;  // identifier for option
+	fptype s;          // spot price
         fptype strike;     // strike price
         fptype r;          // risk-free interest rate
 //        fptype divq;       // dividend rate
@@ -83,6 +84,7 @@ typedef struct OptionData_ {
         char OptionType;   // Option type.  "P"=PUT, "C"=CALL
 //        fptype divs;       // dividend vals (not used in this test)
 //        fptype DGrefval;   // DerivaGem Reference Value
+        
 } OptionData;
 
 _MM_ALIGN16 OptionData* data;
@@ -90,11 +92,14 @@ _MM_ALIGN16 fptype* prices;
 int numOptions;
 
 int    * otype;
+long   * option_id;
 fptype * sptprice;
 fptype * strike;
 fptype * rate;
 fptype * volatility;
+fptype * finish_time;
 fptype * otime;
+clock_t start_time;
 int numError = 0;
 int nThreads;
 
@@ -274,19 +279,25 @@ int bs_thread(int id)
 {
     int start = id * (numOptions / nThreads);
     int end = (id + 1) * (numOptions / nThreads);
+    clock_t finished;
     for (int j=0; j<NUM_RUNS; j++) {
         for (int i=start; i<end; i += NCO) {
             fptype price[NCO];
+            clock_t i_finish_time[NCO];
             fptype priceDelta;
             // Calling main function to calculate option value based on Black & Scholes's
             // equation.
             BlkSchlsEqEuroNoDiv(price, NCO, &(sptprice[i]), &(strike[i]),
 			  &(rate[i]), &(volatility[i]), &(otime[i]), &(otype[i]));
-
+            finished = clock();
+	    i_finish_time[i] = finished - start_time;
+	    printf("hello1\n");
             for (int k=0; k<NCO; k++) {
-
+		printf("hello2\n");
 	        prices[i+k] = price[k];
-                
+		printf("hello3\n");
+		finish_time[i+k] = i_finish_time[k];
+		printf("hello4\n");
             }
         }
     }
@@ -353,11 +364,10 @@ int main (int argc, char **argv)
 
 	if ((read = getline(&line, &len, file)) != -1) {
             if (line != NULL) {
-                rv = sscanf(line, "{%f,%f,%f,%f,%f,\"%c\"},\n", &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType);
-                 
-                printf("line: %s", line);
-		printf("%f, %f, %f, %f, %f, %c\n",  data[loopnum].s, data[loopnum].strike, data[loopnum].r, data[loopnum].v, data[loopnum].t, data[loopnum].OptionType);
-                 
+                rv = sscanf(line, "{%ld,%f,%f,%f,%f,%f,%c},\n", &data[loopnum].option_id, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType);
+                printf("%s", line);
+                printf("%d\n", rv);	
+	        printf("%ld, %f, %f, %f, %f, %f, %c\n\n" , data[loopnum].option_id, data[loopnum].s, data[loopnum].strike, data[loopnum].r, data[loopnum].v, data[loopnum].t, data[loopnum].OptionType);	
 		int ll=0;
             }	       
             if (line == NULL){
@@ -377,33 +387,37 @@ int main (int argc, char **argv)
 #define PAD 256
 #define LINESIZE 64
 
-    buffer = (fptype *) malloc(5 * numOptions * sizeof(fptype) + PAD);
-    sptprice = (fptype *) (((unsigned long)buffer + PAD) & ~(LINESIZE - 1));
+    buffer = (fptype *) malloc(7 * numOptions * sizeof(fptype) + PAD);
+    option_id = (long *) (((unsigned long)buffer + PAD) & ~(LINESIZE - 1));
+    sptprice = option_id + numOptions;
     strike = sptprice + numOptions;
     rate = strike + numOptions;
     volatility = rate + numOptions;
+    finish_time = volatility + numOptions;
     otime = volatility + numOptions;
 
     buffer2 = (int *) malloc(numOptions * sizeof(fptype) + PAD);
     otype = (int *) (((unsigned long)buffer2 + PAD) & ~(LINESIZE - 1));
 
     for (i=0; i<numOptions; i++) {
+	option_id[i]     = data[i].option_id;
         otype[i]      = (data[i].OptionType == 'P') ? 1 : 0;
         sptprice[i]   = data[i].s;
         strike[i]     = data[i].strike;
         rate[i]       = data[i].r;
         volatility[i] = data[i].v;
+	finish_time[i] = 0;
         otime[i]      = data[i].t;
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
 
-    clock_t start, end;
+    clock_t end;
     double time_used;
     double time_per_bs;
 
     printf("nThreads = %d\n", nThreads);
-    start = clock();
+    start_time = clock();
 
 #pragma omp parallel num_threads(nThreads)
     {
@@ -413,7 +427,7 @@ int main (int argc, char **argv)
 
     end = clock();
 
-    time_used = (double)(end - start);
+    time_used = (double)(end - start_time);
 
     int trials = NUM_RUNS * numOptions;
     time_per_bs = time_used / (trials);                               
@@ -434,7 +448,7 @@ int main (int argc, char **argv)
       exit(1);
     }
     for(i=0; i<numOptions; i++) {
-      rv = fprintf(file, "%.18f\n", prices[i]);
+      rv = fprintf(file, "%d: %.18f %.18f\n", option_id[i], prices[i], finish_time[i]);
     //  printf("THIS IS WHAT SHOULD GET PRINTED: %f and this is i = %d \n", prices[i], i);
       if(rv < 0) {
         printf("ERROR: Unable to write to file `%s'.\n", outputFile);
