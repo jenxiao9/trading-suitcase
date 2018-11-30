@@ -9,7 +9,7 @@ ifdef source
 		CXXFLAGS += -msse3
 	endif
 else
-	SRC	= blackscholesOpt.c 
+	SRC	= blackscholes_noopt.c 
 
 endif
 
@@ -53,7 +53,7 @@ ifdef double
 NCO = -DNCO=2
 endif
 
-CXXFLAGS += -m32 $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC) -lpthread
+CXXFLAGS += -m32 $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC) -fopenmp -lm
 LDFLAGS = -static 
 
 all: $(TARGET)

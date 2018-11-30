@@ -3,4 +3,7 @@
 #include <math.h>
 #include <string.h>
 
-fptype fast_exp (fptype x); 
+
+#define fptype float
+
+fptype fast_exp(fptype x); 

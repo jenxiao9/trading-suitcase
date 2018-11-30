@@ -4,7 +4,9 @@
 #include <string.h>
 
 
-fptype fast_exp (fptype x) 
+#define fptype float
+
+fptype fast_exp(fptype x) 
  {
 
     union { 

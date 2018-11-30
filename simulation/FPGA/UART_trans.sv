@@ -30,8 +30,6 @@ module transmiter
 		 end 
 
 		 always_comb begin
-		    bit_out = 1; 
-		    done = 0;
  			counter_clear = 1; 
  			counter_en = 0; 	
  			bit_en = 0; 
@@ -149,3 +147,41 @@ module counter(
    end
 
 endmodule: counter
+
+/*
+module testTrx(); 
+	logic clk, rst_n; 
+    logic bit_in, rdy_in; 
+    logic [7:0] data_in;
+
+    logic bit_o; 
+    logic done_o; 
+
+
+        @(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+    	#(8600) bit_in <= 1;
+		@(posedge clk)
+        #(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+   		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600); 	
+
+
+    transmiter a1(clk, rst_n, rdy_in, data_in, active_o, bit_o, done_o); 
+
+*/ 
+
+
+
+
