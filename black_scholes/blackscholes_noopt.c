@@ -252,22 +252,22 @@ int main (int argc, char **argv)
         size_t len = 0;
         ssize_t read;
 
-	while ((read = getline(&line, &len, file)) != -1) {
+    while ((read = getline(&line, &len, file)) != -1) {
             if (line != NULL){
                 rv = sscanf(line, STRFORMAT, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].divq, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType, &data[loopnum].divs, &data[loopnum].DGrefval);
                 
-		/*
-		else{
+        /*
+        else{
                     printf("s = %f\n", data[loopnum].s);
                     printf("strike = %f\n", data[loopnum].strike);
                     printf("divq = %f\n", data[loopnum].divq);
                     printf("r = %f\n", data[loopnum].r);
-		}
-		*/
-            }	       
+        }
+        */
+            }          
             if (line == NULL){
-	        printf("NULL");
-            }	       
+            printf("NULL");
+            }          
         }
 
     }
@@ -319,7 +319,7 @@ int main (int argc, char **argv)
     for (int mult = 1; mult < 2; mult++){
         trials = NUM_RUNS*numOptions;
 
-    	start = clock();
+        start = clock();
 
         for (int j=0; j<NUM_RUNS; j++) {
             for (i = 0; i <numOptions; i++){
@@ -328,13 +328,13 @@ int main (int argc, char **argv)
             }
         }
 
-    	end = clock();
+        end = clock();
 
-	time_used = (end - start);
-    	time_per_bs = time_used / trials;                               
-    	printf ("Trials: %d\n", trials);                                 
-    	printf ("Time used: %f\n", time_used);                                 
-    	printf ("Time per BS: %f\n", time_per_bs);                                 
+    time_used = (end - start);
+        time_per_bs = time_used / trials;                               
+        printf ("Trials: %d\n", trials);                                 
+        printf ("Time used: %f\n", time_used);                                 
+        printf ("Time per BS: %f\n", time_per_bs);                                 
     }
                             
     //Write prices to output file

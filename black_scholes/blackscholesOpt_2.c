@@ -91,16 +91,16 @@ fptype fast_exp_initial(fptype x)
 
    /* exp(x) = 2^i * 2^f; i = floor (log2(e) * x), 0 <= f <= 1 */
    float t = x * 1.44269504089f;
-   printf("result t is = %f \n", t);   
+   //printf("result t is = %f \n", t);   
    float fi = floorf (t);
-   printf("result fi is = %d \n", fi);
+   //printf("result fi is = %d \n", fi);
    float f = t - fi;
-   printf("float f is = %d \n", f);
+   //printf("float f is = %d \n", f);
    int i = (int)fi;
    cvt.cf = (0.3371894346f * f + 0.657636276f) * f + 1.00172476f; /* compute 2^f */
-  printf("result cvt1 is = %f \n", cvt.cf);
+   //printf("result cvt1 is = %f \n", cvt.cf);
    cvt.ci += (i << 23);                                          /* scale by 2^i */
-   printf("result cvt is = %f \n", cvt.cf);
+   //printf("result cvt is = %f \n", cvt.cf);
    return cvt.cf;
  }
 
@@ -145,6 +145,65 @@ fptype fast_exp_initial(fptype x)
     return cvt.f; 
  }
 
+//logValues = log( sptprice / strike );
+/*
+0.666666666667
+0.399999999994
+0.285714287437
+0.222221984321
+0.181835721616
+0.153138376992
+0.147981986051
+
+sqrt2half = 0.707106781187
+
+log2hi = 0.693147180369
+log2low = 1.90821492927e-10
+
+https://gist.github.com/dhermes/105da2a3c9861c90ea39
+*/
+fptype fast_log (fptype x) 
+{
+    fptype sqrt2half = 0.707106781187; 
+    fptype upperB = 0.693147180369; 
+    fptype lowerB = 1.90821492927e-10; 
+    float c1 = 0.666666666667f;
+    float c2 = 0.399999999994f; 
+    float c3 = 0.285714287437f; 
+    float c4 = 0.222221984321f;
+    float c5 = 0.181835721616f; 
+    float c6 = 0.153138376992f; 
+    float c7 = 0.147981986051f;
+
+
+    unsigned int* ptr = (unsigned int*)&x; 
+    //int si = *ptr >> 31; //signed
+    int e = *ptr & 0x7f800000;
+    e >>= 23; 
+    int m = *ptr & 0x007fffff; 
+
+    if (m < sqrt2half) { 
+    	m *= 2; 
+    	e -=1 ; 
+    }
+
+
+    float f = m - 1; 
+    float k = float(e);  
+
+    //TODO: find f 
+    float s = f / (2 + f);
+    float s2 = s * s; 
+    float s4 = s2 * s2; 
+
+    float t1 = s2 * (c1 + s4 * (c3 + s4 * (c5 + s4 * c7))); 
+    float t2 = s4 * (c2 + s4 * (c4 + s4 * c6)); 
+    float R = t1 + t2; 
+
+    float hfsq = 0.5 * f * f; 
+    return k * upperB - ((hfsq - (s * (hfsq + R) + k * lowerB)) - f); 
+}
+
 fptype fast_exp (fptype x) 
  {
 
@@ -176,7 +235,7 @@ fptype fast_exp (fptype x)
     cvt.f = ((((c0 * f + c1) * f  + c2) * f + c3) * f + c4) * f + c5; 
     cvt.i += i << 23; 
 
-    printf("result cvt5 is = %f \n", cvt.f);
+    //printf("result cvt5 is = %f \n", cvt.f);
     //r = cvt.f; 
 
     return cvt.f; 
@@ -247,14 +306,14 @@ fptype CNDF ( fptype InputX )
 //////////////////////////////////////////////////////////////////////////////////////
 fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
                             fptype strike, fptype rate, fptype volatility,
-                            fptype time, int otype, float timet )
+                            fptype time, int otype)
 {
 
     fptype OptionPrice;
-    int* const cache = new int[12];  
+    //int* const cache = new int[12];  
 
-    cache[0] = 2; 
-    printf("the CACHE AT 0 Is %d", cache[0]); 
+    // cache[0] = 2; 
+    //printf("the CACHE AT 0 Is %d", cache[0]); 
     
     // local private working variables for the calculation
     fptype xStockPrice;
@@ -339,7 +398,7 @@ struct mainWork {
 
       price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
                                    rate[i], volatility[i], otime[i], 
-                                   otype[i], 0);
+                                   otype[i]);
       prices[i] = price;
 
 #ifdef ERR_CHK 
@@ -399,7 +458,7 @@ int bs_thread(void *tid_ptr) {
              */
             price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
                                          rate[i], volatility[i], otime[i], 
-                                         otype[i], 0);
+                                         otype[i]);
             prices[i] = price;
 
 #ifdef ERR_CHK
@@ -420,13 +479,36 @@ int bs_thread(void *tid_ptr) {
 
 int main (int argc, char **argv)
 {
-                    
-    fptype price1 = BlkSchlsEqEuroNoDiv(1, 1.1,
-                                   2, 3, 2, 
-                                  1, 0.2);         
+
+	/*fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
+                            fptype strike, fptype rate, fptype volatility,
+                            fptype time, int otype, float timet ) */ 
     
+
+
+	//printf("x, fast, normal\n"); 
+
+
+    fptype price2 = BlkSchlsEqEuroNoDiv(1, 1.1,
+                                    2, 3, 2, 
+                                   1);
+
+    fptype log1 = fast_log(1.2); 
+    printf("log = %f", log1);
+    /*
+    for (float i = -15 ;i < 15; i = i + 0.5)
+    {          
+    	//blackScholes      
+    	printf("%f, %f, %f\n",i, fast_exp(i), exp(i));   
+    } */  
+
+    /*fptype price2 = BlkSchlsEqEuroNoDiv(278.7, 2275,
+                                    2, 0.2085, 0.56, 
+                                   1);
+    */ 
+
     //printf("this process took %f", cpu_time_used);                                
-    printf ("Price is  = %f \n", price1);                                 
+    //printf ("Price is  = %f \n", price2);                                 
     
     //fptype newstuff = fast_exp_new(2.3); 
     //printf ("Price is 2 = %f \n", newstuff);                                 

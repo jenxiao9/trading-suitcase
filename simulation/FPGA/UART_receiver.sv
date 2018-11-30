@@ -1,183 +1,261 @@
 `default_nettype none
 
-//Clks_per_bit = Frequency of i_Clock/ frequency of uart 
-// 200MHZ / 115200  
-//Baudrate of 115200,
-//Our clockrate/
-//TODO: Add in a checksum  
-module receiver
-	#(parameter CLKS_PER_BIT = 13'd1736) 
+//baudrate 9600 
+//CLK_SPEED / BAUDRATE
+//100MHZ / 9600 
+
+module receiver 
+	#(parameter CLKS_PER_BIT = 14'd10416) 
 	(input logic clk, rst_n, 
-	input logic bit_in,  
-	output logic rdy,	
-	output logic [7:0] data_out);
+		input logic bit_in,
+		output logic rdy, 
+		output logic [7:0] data_o); 
 
+    logic [13:0] clk_counter; 
+    logic counter_en, counter_clear; 
+    counter SAMPLE_CLK_COUNTER(clk, rst_n, counter_en, counter_clear, clk_counter);  
 
+    logic [13:0] bit_counter; 
+    logic bit_en, bit_clear; 
+    counter BIT_COUNTER(clk, rst_n, bit_en, bit_clear, bit_counter);  
+
+    logic [7:0] data_buf; 
+    logic done; 
+
+    //start bit is 0, look for drop from 1 to 0 
     enum logic [2:0] {IDLE, START_B, DATA, END_B, CLEANUP} state, nextState;
 
-    //parameter START_BIT = 3'b1; 
-    //parameter END_BIT = 3'b11; 
+		always_ff @(posedge clk or negedge rst_n) begin 
+		 	if(~rst_n) begin
+		 		state <= IDLE;
+		 	end else begin
+		 		state <= nextState;
+		 	end
+		 end 
 
-    logic [12:0] clk_counter; 
-    logic [7:0] bit_counter;  
-    logic [7:0] data_out_buf; 
-    
-    logic [3:0] rdy_buf; 
-  
-    always_ff@(posedge clk, negedge rst_n) begin 
-	if (~rst_n) 
-	     state <= IDLE; 
-        else 
-	     state <= nextState;   
-    end 
- 
-		 
-    always_comb begin
- 
-        case(state) 
-            IDLE:
-	    begin
-	 	if (bit_in) //Start bit detected 
-		    nextState = START_B;
-        else 
-            nextState = IDLE;  
-	    end  
-	    START_B:  //Sample the startbit
-	    begin
-			if (clk_counter == ((CLKS_PER_BIT-1) >> 1))
-	        begin 
-			     if (bit_in == 1'b0) 
-					nextState = DATA;  
-	             else 
-	                nextState = IDLE; 
-			end 
-	        else 
-	            nextState = START_B;                                        
-	    end 
- 	    DATA: 
-        begin
-        	if (clk_counter < CLKS_PER_BIT - 1)
-               nextState = DATA;  
-            else 
-            begin
-               if (bit_counter < 7) 
-                    nextState = DATA;  
-               else 
-                    nextState = END_B;  
-            end 
-    	end 
-        END_B: 
-        begin
-           if (clk_counter <= CLKS_PER_BIT - 1) 
-               nextState = END_B;  
-           else 
-               nextState = CLEANUP;  
-        end 
-        CLEANUP: 
-        begin
-        	nextState <= IDLE; 
-        end  
-        
-       endcase 
-    end
+		 always_comb begin
+ 			counter_clear = 1; //clock sampler counter 
+ 			counter_en = 0; 	
+ 			bit_en = 0;  //index counter 
+ 			bit_clear = 1; 
+		 	case (state)
+		 		IDLE: begin
+		 			done = 0;
+		 			counter_clear = 0; 
+		 			counter_en = 0; 	
+		 			bit_en = 0; 
+		 			bit_clear = 1; 
 
-    always_comb begin
-        rdy_buf = 0; 
-        clk_counter = 0; 
-        bit_counter = 0;
-        case(state) 
-            IDLE:
-	    begin
- 		clk_counter = 0; 
-	        bit_counter = 0;             
-                rdy_buf = 0;         
-	    end  
-	    START_B:  
-	    begin
-		if (clk_counter == ((CLKS_PER_BIT-1) >> 1))
-                    begin 
-                    //Reset the sampling counter 
-	            if (bit_in == 1'b0)  
-			clk_counter = 0;
-                    end                    
-                else 
-		     clk_counter = clk_counter + 1;                       
-	    end 
- 	    DATA: 
-            begin
-            	if (clk_counter <= CLKS_PER_BIT - 1)
-                   clk_counter = clk_counter + 1; 
-                else 
-                begin
-                   clk_counter = 0; clock
-		   data_out_buf[bit_counter] <= bit_in;  
-                   if (bit_counter < 7) 
-                        bit_counter = bit_counter + 1; 
-                   else 
-                        bit_counter = 0; 
-                end 
-            end 
-            END_B: 
-            begin
-               if (clk_counter <= CLKS_PER_BIT - 1) 
-                   clk_counter <= clk_counter + 1;                    
-               else 
-	       begin 
-                   clk_counter = 0;
-                   rdy_buf = 1; 
-	       end          
-            end 
-            CLEANUP: rdy_buf = 0; 
-        endcase          
-    end
+		 			if (bit_in == 0) begin
+		 				nextState = START_B;
+		 				counter_clear=1;
+		 			end 
+		 	        else begin 
+		 	        	nextState = IDLE; 
+		 	        	counter_en = 1; 
+		 	        end 
+		 		end 
+		 		START_B: begin 
+		 			counter_en = 1; //begin sampling
+		 			counter_clear = 0; 
+		 			//past half  
+		 			if (clk_counter == 14'd5208)
+		 			begin
+		 				//encounters start bit
+		 				if (bit_in == 0) begin  
+		 					//counter_clear = 1; 
+		 				 	nextState = DATA; 
+		 				end 
+		 				else     
+		 					nextState = START_B;  
+		 			end 
+		 			else 
+		 			begin
+		 			//Clear the clk 
+		 				counter_en = 1; 
+		 				counter_clear = 0;
 
-    assign data_out = data_out_buf; 
-    assign rdy = rdy_buf; 
+		 				nextState = START_B;  
+		 			end 
+		 		end 
+		 		DATA: begin 
+		 			counter_en = 1; 
+		 			counter_clear = 0; 
+		 			bit_clear = 0; 
+		 			bit_en = 0;
+		 			//nextState=DATA;
+					if (clk_counter == 14'd5208) begin
+		 				bit_en=1;
+		 				data_buf[bit_counter] = bit_in;
+		 			end
+		 			else if (bit_counter > 7) 
+		 				nextState = END_B; 
+		 			else if (clk_counter == 14'd5208) 
+		 			begin
+		 				//counter_en = 0;
+		 				counter_clear = 1;
+		 			    //data_buf[bit_counter] = bit_in;  
+						if (bit_counter <= 7) 
+							nextState = DATA;  		 
+		 			end 
+		 			else 
+		 				nextState = DATA; 
+		 		end 
+		 		END_B: begin
+		 			counter_en = 1; 
+		 			counter_clear = 0; 
 
+		 			if (clk_counter < 14'd10416)
+		 			begin
+		 				counter_en = 1;
+
+		 				nextState = END_B;   
+		 			end  
+		 			else 
+		 			begin
+		 				counter_en = 0; 
+		 				counter_clear = 1;  
+		 				done = 1; 
+		 				nextState = CLEANUP; 
+		 			end 
+		 		end 
+		 		CLEANUP: begin 
+		 			done = 0; 
+		 			nextState = IDLE; 
+		 		end 
+		 	endcase
+		 end 
+
+		 assign data_o = data_buf; 
+		 assign rdy = done;  
 
 endmodule: receiver
 
+module counter(
+   input  logic clock,
+   input  logic reset_n,
+   input  logic clock_en, clear,
+   output logic[13:0] count);
 
-module testbench(); 
-   logic [7:0] data_out;
-   logic clock; 
-   logic bit_in; 
-   logic rst_n; 
-   logic rdy; 
+   always_ff @(posedge clock or negedge reset_n) begin : proc_count
+      if(~reset_n) begin
+         count <= 0;
+      end 
+      else begin
+         if(clear) begin
+            count <= 0;
+         end
+         else if(clock_en) begin
+            count <= count + 1;
+         end
+      end
+   end
 
-     initial begin 
-	clock = 1'b1; 
-	forever #5 
-	  clock = ~clock; 
-     end  
-
-	task UART_WRITE_BYTE;
-	    input [7:0] data;
-	    logic[3:0]     ii;
-	    begin   
-	      // Send Start Bit
-	      bit_in <= 1'b0;
-	      #(clock);
-	      #1000;
-	      
-	      // Send Data Byte
-	      for (ii=0; ii<10'd8; ii=ii+1)
-		begin
-		  bit_in <= data[ii];
-		  #(clock);
-		end
-	      
-	      // Send Stop Bit
-	      bit_in <= 1'b1;
-	      #(clock);
-	     end
-	  endtask // UART_WRITE_BYTE
-
-   receiver R(clock, rst_n, bit_in, rdy, data_out);
-  
+endmodule: counter
 
 
-endmodule: testbench
-     
+module testrReceiver(); 
 
-  
+
+	/*
+	#(parameter CLKS_PER_BIT = 13'd1736) 
+	(input logic clk, rst_n, 
+		input logic bit_in,
+		output logic rdy, 
+		output logic [7:0] data_o); 
+
+	*/ 
+
+  logic clk, rst_n; 
+  logic bit_in, rdy; 
+  logic [7:0] data_o;
+  logic slow_clk; 
+
+  logic data; 
+
+  receiver a1(.*); 
+
+  task sendIt(); 
+
+    repeat(10) begin 
+    	bit_in = 0; 
+    	@(posedge clk); 
+    	//bit_in <= 1; 
+    	#(8600); 
+   	end 
+
+   	//begin 
+    @(posedge clk)
+   	bit_in <= 1; 
+ 	//#(8600); 
+ 	
+
+
+   	//payload 
+   	/*
+    data = 0; 
+    #8600 bit_in<=data; 
+    data = 1; 
+    #8600 bit_in<=data; 
+    data = 0; 
+    #8600 bit_in<=data; 
+    data = 1; 
+    #8600 bit_in<=data; 
+    data = 0; 
+    #8600 bit_in<=data; 
+    data = 1; 
+    #8600 bit_in<=data; 
+    data = 1; 
+    #8600 bit_in<=data; 
+    data = 1; 
+    #8600 bit_in<=data; 
+    */ 
+
+		@(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+    	#(8600) bit_in <= 1;
+		@(posedge clk)
+        #(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+   		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600); 
+
+
+    //end 
+
+    @(posedge clk)
+    bit_in <= 0; 
+    @(posedge  clk)
+    bit_in <= 1; 	
+
+  endtask: sendIt 
+
+  	
+
+
+  initial begin 
+    clk = 0; 
+    rst_n = 0;
+    rst_n <= #1 1;     
+    #4 forever #1 clk = ~clk; 
+  end 
+
+  initial begin
+    sendIt();  
+    #4 $finish; 
+  end 
+
+endmodule // testrReceiver
+
+
+//SAMPLE UNTIL YOU SEE A NEGATIVE CLOCK EDGE AND THEN RESYNCHRONIZE THE COUNTER. 
