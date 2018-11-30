@@ -36,7 +36,7 @@ module parseUart(
                 end
             end // IDLE:
             RECEIVING: begin
-                if (data_rdy && received == 5'd20) begin
+                if (data_rdy && received == 5'd24) begin
                     ns = DONE;
                 end
             end // RECEIVING:
