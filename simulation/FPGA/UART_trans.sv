@@ -30,8 +30,6 @@ module transmiter
 		 end 
 
 		 always_comb begin
-		    bit_out = 1; 
-		    done = 0;
  			counter_clear = 1; 
  			counter_en = 0; 	
  			bit_en = 0; 
@@ -149,3 +147,22 @@ module counter(
    end
 
 endmodule: counter
+
+
+module testTrx(); 
+	logic clk, rst_n; 
+    logic bit_in, rdy_in; 
+    logic [7:0] data_in;
+    
+    logic bit_o; 
+    logic done_o; 
+
+
+    module transmiter 
+	#(parameter CLKS_PER_BIT = 13'd1736) 
+	(input logic clk, rst_n, rdy_in, 
+		input logic [7:0] data_in,
+		output logic active_o, 
+		output logic bit_o,
+		output logic done_o); 
+

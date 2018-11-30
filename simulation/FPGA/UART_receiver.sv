@@ -1,9 +1,11 @@
 `default_nettype none
 
 //baudrate 9600 
-//
+//CLK_SPEED / BAUDRATE
+//100MHZ / 9600 
+
 module receiver 
-	#(parameter CLKS_PER_BIT = 14'd8600) 
+	#(parameter CLKS_PER_BIT = 14'd10416) 
 	(input logic clk, rst_n, 
 		input logic bit_in,
 		output logic rdy, 
@@ -32,12 +34,10 @@ module receiver
 		 end 
 
 		 always_comb begin
-		    done = 0;
  			counter_clear = 1; //clock sampler counter 
  			counter_en = 0; 	
  			bit_en = 0;  //index counter 
  			bit_clear = 1; 
- 			data_buf= 8'd0; //data_o
 		 	case (state)
 		 		IDLE: begin
 		 			done = 0;
@@ -46,7 +46,7 @@ module receiver
 		 			bit_en = 0; 
 		 			bit_clear = 1; 
 
-		 			if (bit_in == 1) begin
+		 			if (bit_in == 0) begin
 		 				nextState = START_B;
 		 				counter_clear=1;
 		 			end 
@@ -59,10 +59,10 @@ module receiver
 		 			counter_en = 1; //begin sampling
 		 			counter_clear = 0; 
 		 			//past half  
-		 			if (clk_counter == 14'd2150)
+		 			if (clk_counter == 14'd5208)
 		 			begin
 		 				//encounters start bit
-		 				if (bit_in == 1) begin  
+		 				if (bit_in == 0) begin  
 		 					//counter_clear = 1; 
 		 				 	nextState = DATA; 
 		 				end 
@@ -83,42 +83,29 @@ module receiver
 		 			counter_clear = 0; 
 		 			bit_clear = 0; 
 		 			bit_en = 0;
-		 			nextState=DATA;
-		 			/*if (clk_counter < 14'd2150 ) 
-		 			begin
-		 				//counter_en = 1; //counter begins counting up.  
-		 				bit_en = 0; 
-		 				counter_en = 1; 
-		 				nextState = DATA; 
+		 			//nextState=DATA;
+					if (clk_counter == 14'd5208) begin
+		 				bit_en=1;
+		 				data_buf[bit_counter] = bit_in;
 		 			end
-		 			else */if (clk_counter == 14'd2150) begin
-		 					bit_en=1;
-		 					data_buf[bit_counter] = bit_in;
-		 			end
-		 			else if (clk_counter == 14'd4300) 
+		 			else if (bit_counter > 7) 
+		 				nextState = END_B; 
+		 			else if (clk_counter == 14'd5208) 
 		 			begin
 		 				//counter_en = 0;
 		 				counter_clear = 1;
 		 			    //data_buf[bit_counter] = bit_in;  
 						if (bit_counter <= 7) 
-						begin
-							//bit_clear = 0;
-							//bit_en = 1; //enable counting
-
-							nextState = DATA;  
-						end
-						else 
-						begin
-							bit_clear = 1;
-							nextState = END_B;   
-						end  		 			 
+							nextState = DATA;  		 
 		 			end 
+		 			else 
+		 				nextState = DATA; 
 		 		end 
 		 		END_B: begin
 		 			counter_en = 1; 
 		 			counter_clear = 0; 
 
-		 			if (clk_counter < CLKS_PER_BIT - 1)
+		 			if (clk_counter < 14'd10416)
 		 			begin
 		 				counter_en = 1;
 
@@ -224,24 +211,24 @@ module testrReceiver();
     #8600 bit_in<=data; 
     */ 
 
-    		@(posedge clk)
-    		#(8600) bit_in <= 1;
-    		@(posedge clk)
-    		#(8600) bit_in <= 1;
-    		@(posedge clk)
-    		#(8600) bit_in <= 0;
-    		@(posedge clk)
-    		#(8600) bit_in <= 0;
-    		@(posedge clk)
-        	#(8600) bit_in <= 1;
-    		@(posedge clk)
-            #(8600) bit_in <= 1;
-    		@(posedge clk)
-    		#(8600) bit_in <= 0;
-    		@(posedge clk)
-       		#(8600) bit_in <= 0;
-    		@(posedge clk)
-    		#(8600); 
+		@(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+    	#(8600) bit_in <= 1;
+		@(posedge clk)
+        #(8600) bit_in <= 1;
+		@(posedge clk)
+		#(8600) bit_in <= 0;
+		@(posedge clk)
+   		#(8600) bit_in <= 0;
+		@(posedge clk)
+		#(8600); 
 
 
     //end 
