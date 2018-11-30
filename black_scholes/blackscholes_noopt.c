@@ -1,4 +1,4 @@
-// Copyright (c) 2007 Intel Corp.
+// Copyriight (c) 2007 Intel Corp.
 
 // Black-Scholes
 // Analytical method for calculating European Options
@@ -11,45 +11,20 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
-#ifdef ENABLE_PARSEC_HOOKS
-#include <hooks.h>
+#include <time.h>
+#ifdef OPT
+#include "optimizations.h"
 #endif
-
-// Multi-threaded pthreads header
-#ifdef ENABLE_THREADS
-// Add the following line so that icc 9.0 is compatible with pthread lib.
-#define __thread __threadp
-MAIN_ENV
-#undef __thread
-#endif
-
 // Multi-threaded OpenMP header
 #ifdef ENABLE_OPENMP
 #include <omp.h>
 #endif
 
-#ifdef ENABLE_TBB
-#include "tbb/blocked_range.h"
-#include "tbb/parallel_for.h"
-#include "tbb/task_scheduler_init.h"
-#include "tbb/tick_count.h"
-
-using namespace std;
-using namespace tbb;
-#endif //ENABLE_TBB
-
-// Multi-threaded header for Windows
-#ifdef WIN32
-#pragma warning(disable : 4305)
-#pragma warning(disable : 4244)
-#include <windows.h>
-#endif
-
 //Precision to use for calculations
 #define fptype float
 
-#define NUM_RUNS 100
+#define NUM_RUNS 10000
+#define STRFORMAT "{%f,   %f,  %f,   %f,   %f,   %f,   \"%c\",   %f,   %f},"
 
 typedef struct OptionData_ {
         fptype s;          // spot price
@@ -109,7 +84,11 @@ fptype CNDF ( fptype InputX )
     xInput = InputX;
  
     // Compute NPrimeX term common to both four & six decimal accuracy calcs
+#ifdef OPT
+    expValues = fast_exp(-0.5f * InputX * InputX);
+#else
     expValues = exp(-0.5f * InputX * InputX);
+#endif
     xNPrimeofX = expValues;
     xNPrimeofX = xNPrimeofX * inv_sqrt_2xPI;
 
@@ -149,8 +128,11 @@ fptype CNDF ( fptype InputX )
 //////////////////////////////////////////////////////////////////////////////////////
 fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
                             fptype strike, fptype rate, fptype volatility,
-                            fptype time, int otype, float timet )
+                            fptype time, int otype)
 {
+
+//    printf("sptprice: %f, strike: %f, rate: %f, vol: %f, time: %f, optype: %d\n", sptprice, strike, rate, volatility, time, otype);
+
     fptype OptionPrice;
 
     // local private working variables for the calculation
@@ -204,8 +186,11 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
     
     NofXd1 = CNDF( d1 );
     NofXd2 = CNDF( d2 );
-
+#ifdef OPT
+    FutureValueX = strike * ( fast_exp( -(rate)*(time) ) );        
+#else
     FutureValueX = strike * ( exp( -(rate)*(time) ) );        
+#endif
     if (otype == 0) {            
         OptionPrice = (sptprice * NofXd1) - (FutureValueX * NofXd2);
     } else { 
@@ -217,100 +202,13 @@ fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
     return OptionPrice;
 }
 
-#ifdef ENABLE_TBB
-struct mainWork {
-  mainWork() {}
-  mainWork(mainWork &w, tbb::split) {}
-
-  void operator()(const tbb::blocked_range<int> &range) const {
-    fptype price;
-    int begin = range.begin();
-    int end = range.end();
-
-    for (int i=begin; i!=end; i++) {
-      /* Calling main function to calculate option value based on 
-       * Black & Scholes's equation.
-       */
-
-      price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
-                                   rate[i], volatility[i], otime[i], 
-                                   otype[i], 0);
-      prices[i] = price;
-
-#ifdef ERR_CHK 
-      fptype priceDelta = data[i].DGrefval - price;
-      if( fabs(priceDelta) >= 1e-5 ){
-        fprintf(stderr,"Error on %d. Computed=%.5f, Ref=%.5f, Delta=%.5f\n",
-               i, price, data[i].DGrefval, priceDelta);
-        numError ++;
-      }
-#endif
-    }
-  }
-};
-
-#endif // ENABLE_TBB
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
-#ifdef ENABLE_TBB
-int bs_thread(void *tid_ptr) {
-    int j;
-    tbb::affinity_partitioner a;
 
-    mainWork doall;
-    for (j=0; j<NUM_RUNS; j++) {
-      tbb::parallel_for(tbb::blocked_range<int>(0, numOptions), doall, a);
-    }
-
-    return 0;
-}
-#else // !ENABLE_TBB
-
-#ifdef WIN32
-DWORD WINAPI bs_thread(LPVOID tid_ptr){
-#else
-int bs_thread(void *tid_ptr) {
-#endif
-    int i, j;
-    fptype price;
-    fptype priceDelta;
-    int tid = *(int *)tid_ptr;
-    int start = tid * (numOptions / nThreads);
-    int end = start + (numOptions / nThreads);
-
-    for (j=0; j<NUM_RUNS; j++) {
-#ifdef ENABLE_OPENMP
-#pragma omp parallel for private(i, price, priceDelta)
-        for (i=0; i<numOptions; i++) {
-#else  //ENABLE_OPENMP
-        for (i=start; i<end; i++) {
-#endif //ENABLE_OPENMP
-            /* Calling main function to calculate option value based on 
-             * Black & Scholes's equation.
-             */
-            price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
-                                         rate[i], volatility[i], otime[i], 
-                                         otype[i], 0);
-            prices[i] = price;
-
-#ifdef ERR_CHK
-            priceDelta = data[i].DGrefval - price;
-            if( fabs(priceDelta) >= 1e-4 ){
-                printf("Error on %d. Computed=%.5f, Ref=%.5f, Delta=%.5f\n",
-                       i, price, data[i].DGrefval, priceDelta);
-                numError ++;
-            }
-#endif
-        }
-    }
-
-    return 0;
-}
-#endif //ENABLE_TBB
 
 int main (int argc, char **argv)
 {
@@ -321,21 +219,7 @@ int main (int argc, char **argv)
     int * buffer2;
     int rv;
 
-#ifdef PARSEC_VERSION
-#define __PARSEC_STRING(x) #x
-#define __PARSEC_XSTRING(x) __PARSEC_STRING(x)
-        printf("PARSEC Benchmark Suite Version "__PARSEC_XSTRING(PARSEC_VERSION)"\n");
-	fflush(NULL);
-#else
-        printf("PARSEC Benchmark Suite\n");
-	fflush(NULL);
-#endif //PARSEC_VERSION
-#ifdef ENABLE_PARSEC_HOOKS
-   __parsec_bench_begin(__parsec_blackscholes);
-#endif
-
-/*
-   if (argc != 4)
+    if (argc != 4)
         {
                 printf("Usage:\n\t%s <nthreads> <inputFile> <outputFile>\n", argv[0]);
                 exit(1);
@@ -343,50 +227,52 @@ int main (int argc, char **argv)
     nThreads = atoi(argv[1]);
     char *inputFile = argv[2];
     char *outputFile = argv[3];
-*/ 
-/*
+
     //Read input data from file
     file = fopen(inputFile, "r");
     if(file == NULL) {
       printf("ERROR: Unable to open file `%s'.\n", inputFile);
       exit(1);
     }
-    //rv = fscanf(file, "%i", &numOptions);
-    numOptions = 1; 
+    rv = fscanf(file, "%i", &numOptions);
+    printf("numOptions = %d\n", numOptions);
     if(rv != 1) {
       printf("ERROR: Unable to read from file `%s'.\n", inputFile);
       fclose(file);
       exit(1);
     }
-    if(nThreads > numOptions) {
-      printf("WARNING: Not enough work, reducing number of threads to match number of options.\n");
-      nThreads = numOptions;
-    }
 
-#if !defined(ENABLE_THREADS) && !defined(ENABLE_OPENMP) && !defined(ENABLE_TBB)
-    if(nThreads != 1) {
-        printf("Error: <nthreads> must be 1 (serial version)\n");
-        exit(1);
-    }
-#endif
-
-    // alloc spaces for the option data
-    
+    printf("numOptions before data and prices are declared: %d\n", numOptions);
     data = (OptionData*)malloc(numOptions*sizeof(OptionData));
     prices = (fptype*)malloc(numOptions*sizeof(fptype));
-  */   
-    /*
     for ( loopnum = 0; loopnum < numOptions; ++ loopnum )
     {
-        rv = fscanf(file, "%f %f %f %f %f %f %c %f %f", &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].divq, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType, &data[loopnum].divs, &data[loopnum].DGrefval);
-        if(rv != 9) {
-          printf("ERROR: Unable to read from file `%s'.\n", inputFile);
-          fclose(file);
-          exit(1);
-        }
-    }
-    */ 
+        char *status1;
+        char * line = NULL;
+        size_t len = 0;
+        ssize_t read;
 
+	while ((read = getline(&line, &len, file)) != -1) {
+            if (line != NULL){
+                rv = sscanf(line, STRFORMAT, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].divq, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType, &data[loopnum].divs, &data[loopnum].DGrefval);
+                
+		/*
+		else{
+                    printf("s = %f\n", data[loopnum].s);
+                    printf("strike = %f\n", data[loopnum].strike);
+                    printf("divq = %f\n", data[loopnum].divq);
+                    printf("r = %f\n", data[loopnum].r);
+		}
+		*/
+            }	       
+            if (line == NULL){
+	        printf("NULL");
+            }	       
+        }
+
+    }
+
+<<<<<<< HEAD
     /*  
     fptype BlkSchlsEqEuroNoDiv( fptype sptprice,
                             fptype strike, fptype rate, fptype volatility,
@@ -411,16 +297,16 @@ int main (int argc, char **argv)
     printf ("Price3 is  = %f \n", price3);                       
     
     /*
+=======
+
+
+>>>>>>> efcb60abd4371838d63e463c535dad4dfde7e7ef
     rv = fclose(file);
     if(rv != 0) {
       printf("ERROR: Unable to close file `%s'.\n", inputFile);
       exit(1);
-    }*/ 
-    
-/*
-#ifdef ENABLE_THREADS
-    MAIN_INITENV(,8000000,nThreads);
-#endif
+    }
+
     printf("Num of Options: %d\n", numOptions);
     printf("Num of Runs: %d\n", NUM_RUNS);
 
@@ -442,66 +328,42 @@ int main (int argc, char **argv)
         sptprice[i]   = data[i].s;
         strike[i]     = data[i].strike;
         rate[i]       = data[i].r;
-        volatility[i] = data[i].v;    
+        volatility[i] = data[i].v;
         otime[i]      = data[i].t;
+        printf("sptprice: %f, strike: %f, rate: %f, vol: %f, time: %f, optype: %d\n", sptprice[i], strike[i], rate[i], volatility[i], time[i], otype[i]);
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
 
-#ifdef ENABLE_PARSEC_HOOKS
-    __parsec_roi_begin();
-#endif
 
-#ifdef ENABLE_THREADS
-#ifdef WIN32
-    HANDLE *threads;
-    int *nums;
-    threads = (HANDLE *) malloc (nThreads * sizeof(HANDLE));
-    nums = (int *) malloc (nThreads * sizeof(int));
+    int trials;
+    clock_t start, end;
+    double time_used;
+    double time_per_bs;
 
-    for(i=0; i<nThreads; i++) {
-        nums[i] = i;
-        threads[i] = CreateThread(0, 0, bs_thread, &nums[i], 0, 0);
+    trials = NUM_RUNS;
+
+    for (int mult = 1; mult < 2; mult++){
+        trials = NUM_RUNS*numOptions;
+
+    	start = clock();
+
+        for (int j=0; j<NUM_RUNS; j++) {
+            for (i = 0; i <numOptions; i++){
+                prices[i] = BlkSchlsEqEuroNoDiv(sptprice[i], strike[i],
+                                rate[i], volatility[i], otime[i], otype[i]);
+            }
+        }
+
+    	end = clock();
+
+	time_used = (end - start);
+    	time_per_bs = time_used / trials;                               
+    	printf ("Trials: %d\n", trials);                                 
+    	printf ("Time used: %f\n", time_used);                                 
+    	printf ("Time per BS: %f\n", time_per_bs);                                 
     }
-    WaitForMultipleObjects(nThreads, threads, TRUE, INFINITE);
-    free(threads);
-    free(nums);
-#else
-    int *tids;
-    tids = (int *) malloc (nThreads * sizeof(int));
-
-    for(i=0; i<nThreads; i++) {
-        tids[i]=i;
-        CREATE_WITH_ARG(bs_thread, &tids[i]);
-    }
-    WAIT_FOR_END(nThreads);
-    free(tids);
-#endif //WIN32
-#else //ENABLE_THREADS
-#ifdef ENABLE_OPENMP
-    {
-        int tid=0;
-        omp_set_num_threads(nThreads);
-        bs_thread(&tid);
-    }
-#else //ENABLE_OPENMP
-#ifdef ENABLE_TBB
-    tbb::task_scheduler_init init(nThreads);
-
-    int tid=0;
-    bs_thread(&tid);
-#else //ENABLE_TBB
-    //serial version
-    int tid=0;
-    bs_thread(&tid);
-#endif //ENABLE_TBB
-#endif //ENABLE_OPENMP
-#endif //ENABLE_THREADS
-
-#ifdef ENABLE_PARSEC_HOOKS
-    __parsec_roi_end();
-#endif
-
+                            
     //Write prices to output file
     file = fopen(outputFile, "w");
     if(file == NULL) {
@@ -526,17 +388,10 @@ int main (int argc, char **argv)
     if(rv != 0) {
       printf("ERROR: Unable to close file `%s'.\n", outputFile);
       exit(1);
-    } */ 
-/*
-#ifdef ERR_CHK
-    printf("Num Errors: %d\n", numError);
-#endif
+    }
+
     free(data);
     free(prices);
-
-#ifdef ENABLE_PARSEC_HOOKS
-    __parsec_bench_end();
-#endif */   
 
     return 0;
 }

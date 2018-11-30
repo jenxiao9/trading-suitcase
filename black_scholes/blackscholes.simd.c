@@ -15,6 +15,8 @@
 #include <pmmintrin.h>
 #include <time.h>
 
+
+
 // Multi-threaded OpenMP header
 #ifdef ENABLE_OPENMP
 #include <omp.h>
@@ -52,7 +54,7 @@
 #define fptype float
 #define SIMD_WIDTH 4
 #define _MMR      __m128
-#define _MM_LOAD  _mm_load_ps
+#define _MM_LOAD  _mm_loadu_ps
 #define _MM_STORE _mm_store_ps
 #define _MM_MUL   _mm_mul_ps
 #define _MM_ADD   _mm_add_ps
@@ -63,21 +65,26 @@
 #define _MM_SETR  _mm_set_ps
 #endif
 
+//our optimizations
+#ifdef OPT
+#include "optimizations.h"
+#endif
+
 #define NUM_RUNS 100
 
-#define STRFORMAT "{%f,   %f,  %f,   %f,   %f,   %f,   \"%c\",   %f,   %f},"
-
 typedef struct OptionData_ {
-        fptype s;          // spot price
+        long option_id;  // identifier for option
+	fptype s;          // spot price
         fptype strike;     // strike price
         fptype r;          // risk-free interest rate
-        fptype divq;       // dividend rate
+//        fptype divq;       // dividend rate
         fptype v;          // volatility
         fptype t;          // time to maturity or option expiration in years 
                            //     (1yr = 1.0, 6mos = 0.5, 3mos = 0.25, ..., etc)  
         char OptionType;   // Option type.  "P"=PUT, "C"=CALL
-        fptype divs;       // dividend vals (not used in this test)
-        fptype DGrefval;   // DerivaGem Reference Value
+//        fptype divs;       // dividend vals (not used in this test)
+//        fptype DGrefval;   // DerivaGem Reference Value
+        
 } OptionData;
 
 _MM_ALIGN16 OptionData* data;
@@ -85,11 +92,14 @@ _MM_ALIGN16 fptype* prices;
 int numOptions;
 
 int    * otype;
+long   * option_id;
 fptype * sptprice;
 fptype * strike;
 fptype * rate;
 fptype * volatility;
+fptype * finish_time;
 fptype * otime;
+clock_t start_time;
 int numError = 0;
 int nThreads;
 
@@ -120,18 +130,17 @@ MUSTINLINE void CNDF ( fptype * OutputX, fptype * InputX )
         } else 
             sign[i] = 0;
     }
-    // printf("InputX[0]=%lf\n", InputX[0]);
-    // printf("InputX[1]=%lf\n", InputX[1]);
 
     xInput = _MM_LOAD(InputX);
     
-// local vars
- 
 // Compute NPrimeX term common to both four & six decimal accuracy calcs
 
     for (i=0; i<SIMD_WIDTH; i++) {
+#ifdef OPT
+        expValues[i] = fast_exp(-0.5f * InputX[i] * InputX[i]);
+#else
         expValues[i] = exp(-0.5f * InputX[i] * InputX[i]);
-        // printf("exp[%d]: %f\n", i, expValues[i]);
+#endif
     }
     
     xNPrimeofX = _MM_LOAD(expValues);
@@ -140,7 +149,6 @@ MUSTINLINE void CNDF ( fptype * OutputX, fptype * InputX )
     xK2 = _MM_MUL(_MM_SET(0.2316419), xInput);
     xK2 = _MM_ADD(xK2, _MM_SET(1.0));
     xK2 = _MM_DIV(_MM_SET(1.0), xK2);
-    // xK2 = _mm_rcp_pd(xK2);  // No rcp function for double-precision
     
     xK2_2 = _MM_MUL(xK2, xK2);
     xK2_3 = _MM_MUL(xK2_2, xK2);
@@ -161,8 +169,6 @@ MUSTINLINE void CNDF ( fptype * OutputX, fptype * InputX )
     xLocal   = _MM_SUB(_MM_SET(1.0), xLocal);
     
     _MM_STORE(OutputX, xLocal);
-    // _mm_storel_pd(&OutputX[0], xLocal);
-    // _mm_storeh_pd(&OutputX[1], xLocal);
     
     for (i=0; i<SIMD_WIDTH; i++) {
         if (sign[i]) {
@@ -190,9 +196,10 @@ void print_xmm(_MMR in, char* s) {
 //////////////////////////////////////////////////////////////////////////////////////
 void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptprice,
                           fptype * strike, fptype * rate, fptype * volatility,
-                          fptype * time, int * otype, float timet)
+                          fptype * time, int * otype)
 {
     int i;
+
 // local private working variables for the calculation
     _MMR xStockPrice;
     _MMR xStrikePrice;
@@ -246,14 +253,11 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
     CNDF( NofXd2, d2 );
 
     for (i=0; i<SIMD_WIDTH; i++) {
+#ifdef OPT
+        FutureValueX[i] = strike[i] * (fast_exp(-(rate[i])*(time[i])));
+#else	    
         FutureValueX[i] = strike[i] * (exp(-(rate[i])*(time[i])));
-        // printf("FV=%lf\n", FutureValueX[i]);
-
-        // NofXd1[i] = NofX(d1[i]);
-        // NofXd2[i] = NofX(d2[i]);
-        // printf("NofXd1=%lf\n", NofXd1[i]);
-        // printf("NofXd2=%lf\n", NofXd2[i]);
-
+#endif
         if (otype[i] == 0) {
             OptionPrice[i] = (sptprice[i] * NofXd1[i]) - (FutureValueX[i] * NofXd2[i]);
         }
@@ -262,7 +266,6 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
             NegNofXd2[i] = (1.0 - (NofXd2[i]));
             OptionPrice[i] = (FutureValueX[i] * NegNofXd2[i]) - (sptprice[i] * NegNofXd1[i]);
         }
-        // printf("OptionPrice[0] = %lf\n", OptionPrice[i]);
     }
 
 }
@@ -272,21 +275,29 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
-int bs_thread(int id) {
+int bs_thread(int id) 
+{
     int start = id * (numOptions / nThreads);
     int end = (id + 1) * (numOptions / nThreads);
-  
+    clock_t finished;
     for (int j=0; j<NUM_RUNS; j++) {
         for (int i=start; i<end; i += NCO) {
             fptype price[NCO];
+            clock_t i_finish_time[NCO];
             fptype priceDelta;
-
             // Calling main function to calculate option value based on Black & Scholes's
             // equation.
             BlkSchlsEqEuroNoDiv(price, NCO, &(sptprice[i]), &(strike[i]),
-			  &(rate[i]), &(volatility[i]), &(otime[i]), &(otype[i]), 0);
+			  &(rate[i]), &(volatility[i]), &(otime[i]), &(otype[i]));
+            finished = clock();
+	    i_finish_time[i] = finished - start_time;
+	    printf("hello1\n");
             for (int k=0; k<NCO; k++) {
+		printf("hello2\n");
 	        prices[i+k] = price[k];
+		printf("hello3\n");
+		finish_time[i+k] = i_finish_time[k];
+		printf("hello4\n");
             }
         }
     }
@@ -342,68 +353,73 @@ int main (int argc, char **argv)
 #endif
 
 
-    printf("numOptions before data and prices are declared: %d\n", numOptions);
     data = (OptionData*)malloc(numOptions*sizeof(OptionData));
     prices = (fptype*)malloc(numOptions*sizeof(fptype));
     for ( loopnum = 0; loopnum < numOptions; ++ loopnum )
     {
         char *status1;
-        char * line = NULL;
+        char* line=NULL;
         size_t len = 0;
         ssize_t read;
 
-	while ((read = getline(&line, &len, file)) != -1) {
-            if (line != NULL){
-                rv = sscanf(line, STRFORMAT, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].divq, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType, &data[loopnum].divs, &data[loopnum].DGrefval);
-                
+	if ((read = getline(&line, &len, file)) != -1) {
+            if (line != NULL) {
+                rv = sscanf(line, "{%ld,%f,%f,%f,%f,%f,%c},\n", &data[loopnum].option_id, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType);
+                printf("%s", line);
+                printf("%d\n", rv);	
+	        printf("%ld, %f, %f, %f, %f, %f, %c\n\n" , data[loopnum].option_id, data[loopnum].s, data[loopnum].strike, data[loopnum].r, data[loopnum].v, data[loopnum].t, data[loopnum].OptionType);	
+		int ll=0;
             }	       
             if (line == NULL){
 	        printf("NULL");
             }	       
         }
-
     }
+
     rv = fclose(file);
+    
     if(rv != 0) {
       printf("ERROR: Unable to close file `%s'.\n", inputFile);
       exit(1);
     }
 
-    printf("Num of Options: %d\n", numOptions);
-    printf("Num of Runs: %d\n", NUM_RUNS);
 
 #define PAD 256
 #define LINESIZE 64
 
-    buffer = (fptype *) malloc(5 * numOptions * sizeof(fptype) + PAD);
-    sptprice = (fptype *) (((unsigned long long)buffer + PAD) & ~(LINESIZE - 1));
+    buffer = (fptype *) malloc(7 * numOptions * sizeof(fptype) + PAD);
+    option_id = (long *) (((unsigned long)buffer + PAD) & ~(LINESIZE - 1));
+    sptprice = option_id + numOptions;
     strike = sptprice + numOptions;
     rate = strike + numOptions;
     volatility = rate + numOptions;
+    finish_time = volatility + numOptions;
     otime = volatility + numOptions;
 
     buffer2 = (int *) malloc(numOptions * sizeof(fptype) + PAD);
-    otype = (int *) (((unsigned long long)buffer2 + PAD) & ~(LINESIZE - 1));
+    otype = (int *) (((unsigned long)buffer2 + PAD) & ~(LINESIZE - 1));
 
     for (i=0; i<numOptions; i++) {
+	option_id[i]     = data[i].option_id;
         otype[i]      = (data[i].OptionType == 'P') ? 1 : 0;
         sptprice[i]   = data[i].s;
         strike[i]     = data[i].strike;
         rate[i]       = data[i].r;
         volatility[i] = data[i].v;
+	finish_time[i] = 0;
         otime[i]      = data[i].t;
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
 
-    clock_t start, end;
+    clock_t end;
     double time_used;
     double time_per_bs;
 
     printf("nThreads = %d\n", nThreads);
-    start = clock();
+    start_time = clock();
 
-#pragma omp paralle num_threads(nThreads)
+#pragma omp parallel num_threads(nThreads)
     {
         int id = omp_get_thread_num();
         bs_thread(id);
@@ -411,7 +427,7 @@ int main (int argc, char **argv)
 
     end = clock();
 
-    time_used = (double)(end - start);
+    time_used = (double)(end - start_time);
 
     int trials = NUM_RUNS * numOptions;
     time_per_bs = time_used / (trials);                               
@@ -432,7 +448,8 @@ int main (int argc, char **argv)
       exit(1);
     }
     for(i=0; i<numOptions; i++) {
-      rv = fprintf(file, "%.18f\n", prices[i]);
+      rv = fprintf(file, "%d: %.18f %.18f\n", option_id[i], prices[i], finish_time[i]);
+    //  printf("THIS IS WHAT SHOULD GET PRINTED: %f and this is i = %d \n", prices[i], i);
       if(rv < 0) {
         printf("ERROR: Unable to write to file `%s'.\n", outputFile);
         fclose(file);
@@ -444,10 +461,6 @@ int main (int argc, char **argv)
       printf("ERROR: Unable to close file `%s'.\n", outputFile);
       exit(1);
     }
-
-    free(data);
-    free(prices);
-
 
     return 0;
 }
