@@ -2,6 +2,9 @@ import sys
 import csv
 import order
 import datetime
+import sys
+import data
+
 
 def process_orders(file, output_file, total_rows = 1000):
 
@@ -23,14 +26,6 @@ def process_orders(file, output_file, total_rows = 1000):
                 size_ask, exchange_bid, exchange_ask, volume, iv, price_opt,delta, 
                 gamma, theta, vega, rho, pre_iv, implied_yield, dump_time, calc_date] = row
             
-                # we need: t_date, stock_symbol, expiration date, strike, call_put, 
-                # symbol (option symbol), price_bid, price_ask, date_bid, date_ask,
-                # size_bid, size_ask, volume, iv, price_opt, delta, gamma, theta, 
-                # vega, rho, pre_iv
-                '''current_order = order.Order(t_date, stock_symbol, expiry, strike, call_put, 
-                symbol, price_bid, price_ask, price_last, date_bid, date_ask, date_last, 
-                size_bid, size_ask, price_opt, iv,delta, gamma, theta, vega, rho, pre_iv)'''
-
                 # we should figure out what to do with stock / option id 
                 expiry = expiry + " 17:00:00" #to add the expiration time
                 expiration_dt = datetime.datetime.strptime(expiry, "%Y-%m-%d %H:%M:%S")
@@ -38,8 +33,19 @@ def process_orders(file, output_file, total_rows = 1000):
 
                 expiration_time = expiration_dt - calc_dt
                 expiration_yrs = expiration_time.seconds / (secondsPerYear)
+                option_id = hash(symbol)
 
-                s = "{%f,%f,%f,%f,%f,%c},\n" %(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put)
+                option_id = option_id & 0xffffffff #convert to 32 bit
+                s = "{%hu,%f,%f,%f,%f,%f,%c},\n" %(option_id, float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put)
+
+                x = order.Order(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put, option_id)
+                pkt = x.pkt()
+
+
+                pkt = pkt.encode()
+                print(pkt)
+                #data.send_uart_package(pkt)
+
                 output.write(s)
                 if rows == total_rows:
                     break
@@ -62,8 +68,6 @@ def test_orders(original_file, output_file, rows = [0, 1000]):
             break
             if line_num in rows:
                 break
-
-# SEND THINGS LSB FIRSTg
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
