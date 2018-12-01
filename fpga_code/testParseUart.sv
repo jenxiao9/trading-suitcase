@@ -16,8 +16,10 @@ module top(
 
     initial begin
 
-        $monitor("id: %b spt: %b strike: %b r: %b v: %b otime: %b otype: %b", option_id, sptprice, strike, rate, volatility,
+        $monitor("id: %x spt: %x strike: %x r: %x v: %x otime: %x otype: %x", option_id, sptprice, strike, rate, volatility,
             otime, otype);
+
+        // result should look like 
         rst = 1'b0;
         @posedge clk;
         rst = 1'b1;
