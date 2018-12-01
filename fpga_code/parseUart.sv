@@ -1,3 +1,5 @@
+`default_nettype none
+
 module parseUart(
     input logic clk, rst,
     input logic [7:0] data_in,
@@ -29,9 +31,9 @@ module parseUart(
 
     // ns logic
     always_comb begin
-        case (state) begin
+        case(state)
             IDLE: begin
-                if data_rdy begin
+                if (data_rdy) begin
                     ns = RECEIVING;
                 end
             end // IDLE:
@@ -49,14 +51,15 @@ module parseUart(
     // output logic
     always_comb begin
         data_out_rdy = 1'b0;
-        shift = 1'b0;
-        IDLE: begin
-        end // IDLE:
-        RECEIVING: begin
-        end // RECEIVING:
-        DONE: begin
-            data_out_rdy = 1'b1;
-        end
+        case(state)
+            IDLE: begin
+            end // IDLE:
+            RECEIVING: begin
+            end // RECEIVING:
+            DONE: begin
+                data_out_rdy = 1'b1;
+            end
+        endcase
     end // output logic
 
     // counter for UART data received
@@ -68,7 +71,7 @@ module parseUart(
         else if (data_rdy) begin
             received <= received + 5'b1;
             // data comes in LSB first
-            packet <= {data_in, packet[199:7]}
+            packet <= {data_in, packet[199:7]};
         end // else if data_rdy
     end
 
