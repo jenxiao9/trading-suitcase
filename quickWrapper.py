@@ -13,7 +13,7 @@ for line in file:
 		print ("Found")
 	if found:
 		restring=re.sub(r'(\[.*\])|(logic)',"",line)
-		replacement.append(restring)
+		replacement.append(re.sub(r'logic',"", line))
 		fwrapper.write(restring)
 		print(restring)
 	if line.find(");")!=-1:
@@ -22,6 +22,11 @@ for line in file:
 print ("done")
 for s in replacement:
         t=re.sub(r'(input)|(output)',"wire",re.sub(r'module.*\(',"",s))
+        if (len(t)> 3 and t.find(");")==-1):
+                if t[-2] ==',':
+                        t=t[0:-2] + ";\n"
+                else:
+                        t=t[0:-1]+";\n"
         fwrapper.write(t)
 file.close()
 fwrapper.close()
