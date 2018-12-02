@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11/29/2018 11:38:36 PM
+// Create Date: 12/02/2018 01:53:42 AM
 // Design Name: 
-// Module Name: ControlModuleWrapper
+// Module Name: UARTTOMEMWrapper
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,14 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ControlModuleWrapper(
-    input clock, reset, RX, CTS, GPIO_SW_S, GPIO_SW_E,
-    output TX,
-    output RTS,
-    output done,
-    output LED
+module UARTTOMEMWrapper(
+    input  clock, reset, UART_DONE,
+    input  UART_DATA,
+    output dataToA,
+    output addrA,
+    output enA,
+    output weA
     );
-    wire clock,reset, RX, TX, CTS, GPIO_SW_S, GPIO_SW_N,RTS,done;
-    wire [7:0] LED;
-    ControlModule(clock, reset, RX, CTS, GPIO_SW_S, GPIO_SW_E,TX,RTS,done, LED);
+    wire clock, reset, UART_DONE, enA;
+    wire [7:0] UART_DATA;
+    wire [31:0] dataToA, addrA;
+    wire [3:0] weA;
+    UARTTOMEM(clock, reset, UART_DONE,UART_DATA,dataToA,addrA,enA,weA);
 endmodule

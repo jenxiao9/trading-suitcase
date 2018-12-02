@@ -24,6 +24,7 @@ module ControlModule(
     input logic clock, reset, RX, CTS, GPIO_SW_S, GPIO_SW_E,
     output logic TX,
     output logic RTS,
+    output logic done,
     output logic [7:0] LED
     );
     logic [7:0] o_data;
@@ -40,7 +41,6 @@ module ControlModule(
 
     logic [7:0] data_buf;
     logic [7:0] sreg;
-    logic done;
     logic clear_sreg;
     assign TX=1;
     assign RTS=GPIO_SW_E;
@@ -67,6 +67,7 @@ module ControlModule(
              bit_clear = 1;
              data_buf=8'd0;
              clear_sreg=1'b0;
+             done=0;
              case (state)
                  IDLE: begin
                      done = 0;
