@@ -1,0 +1,51 @@
+
+*** Running vivado
+    with args -log design_1_clk_wiz_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_clk_wiz_0_0.tcl
+
+
+****** Vivado v2017.2 (64-bit)
+  **** SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+  **** IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source design_1_clk_wiz_0_0.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1367.020 ; gain = 70.996 ; free physical = 22002 ; free virtual = 34517
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-638] synthesizing module 'IBUFDS' [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:14485]
+INFO: [Synth 8-256] done synthesizing module 'IBUFDS' (1#1) [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:14485]
+INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:20759]
+INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (2#1) [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:20759]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (3#1) [/usr/local/xilinx/Vivado-2017.2/Vivado/2017.2/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' (4#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (5#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1407.527 ; gain = 111.504 ; free physical = 21983 ; free virtual = 34503
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1407.527 ; gain = 111.504 ; free physical = 21977 ; free virtual = 34497
+INFO: [Device 21-403] Loading part xc7vx485tffg1761-2
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1816.844 ; gain = 0.004 ; free physical = 21164 ; free virtual = 33716
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21237 ; free virtual = 33805
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21236 ; free virtual = 33804
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21238 ; free virtual = 33805
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21234 ; free virtual = 33802
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21231 ; free virtual = 33798
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21036 ; free virtual = 33643
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21036 ; free virtual = 33643
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21035 ; free virtual = 33642
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21032 ; free virtual = 33639
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21032 ; free virtual = 33638
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21031 ; free virtual = 33637
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21030 ; free virtual = 33637
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21030 ; free virtual = 33636
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21030 ; free virtual = 33636
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     2|
+|2     |MMCME2_ADV |     1|
+|3     |IBUFDS     |     1|
++------+-----------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 520.820 ; free physical = 21030 ; free virtual = 33636
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1829.840 ; gain = 610.609 ; free physical = 21031 ; free virtual = 33641

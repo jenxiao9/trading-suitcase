@@ -1,0 +1,1228 @@
+
+*** Running vivado
+    with args -log design_1_BlkSchlsEqEuroNoDiv_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_BlkSchlsEqEuroNoDiv_0_0.tcl
+
+
+****** Vivado v2017.2 (64-bit)
+  **** SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+  **** IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source design_1_BlkSchlsEqEuroNoDiv_0_0.tcl -notrace
+Command: synth_design -top design_1_BlkSchlsEqEuroNoDiv_0_0 -part xc7vx485tffg1761-2 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx485t-ffg1761'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx485t-ffg1761'
+INFO: [Common 17-1223] The version limit for your license is '2018.07' and will expire in -97 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 14589 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1375.020 ; gain = 78.996 ; free physical = 18945 ; free virtual = 34677
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_BlkSchlsEqEuroNoDiv_0_0' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_BlkSchlsEqEuroNoDiv_0_0/synth/design_1_BlkSchlsEqEuroNoDiv_0_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv.v:12]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_1' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:124]
+WARNING: [Synth 8-6014] Unused sequential element otype_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:204]
+WARNING: [Synth 8-6014] Unused sequential element rate_out3_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:220]
+WARNING: [Synth 8-6014] Unused sequential element rate_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:236]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_out1_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:260]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:276]
+WARNING: [Synth 8-6014] Unused sequential element strike_out2_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:300]
+WARNING: [Synth 8-6014] Unused sequential element strike_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:316]
+WARNING: [Synth 8-6014] Unused sequential element time_out4_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:332]
+WARNING: [Synth 8-6014] Unused sequential element time_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:348]
+WARNING: [Synth 8-6014] Unused sequential element volatility_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:364]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:392]
+WARNING: [Synth 8-6014] Unused sequential element otype_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:212]
+WARNING: [Synth 8-6014] Unused sequential element rate_out3_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:228]
+WARNING: [Synth 8-6014] Unused sequential element rate_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:244]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_out1_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:268]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:284]
+WARNING: [Synth 8-6014] Unused sequential element strike_out2_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:308]
+WARNING: [Synth 8-6014] Unused sequential element strike_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:324]
+WARNING: [Synth 8-6014] Unused sequential element time_out4_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:340]
+WARNING: [Synth 8-6014] Unused sequential element time_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:356]
+WARNING: [Synth 8-6014] Unused sequential element volatility_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:372]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_1' (1#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv_1.v:10]
+INFO: [Synth 8-638] synthesizing module 'Block_proc' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:104]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDbkb' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDbkb.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32.vhd:74]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32.vhd:202]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32' (19#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDbkb' (20#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDbkb.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDcud' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32.vhd:70]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32.vhd:194]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32' (28#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDcud' (29#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDdEe' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDdEe.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32.vhd:198]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32' (36#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDdEe' (37#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDdEe.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDeOg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDeOg.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32.vhd:70]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32.vhd:194]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32' (42#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDeOg' (43#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDeOg.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDfYi' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDfYi.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32.vhd:70]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32.vhd:194]
+WARNING: [Synth 8-5974] attribute "use_dsp48" has been deprecated, please use "use_dsp" instead 
+WARNING: [Synth 8-5974] attribute "use_dsp48" has been deprecated, please use "use_dsp" instead 
+WARNING: [Synth 8-5974] attribute "use_dsp48" has been deprecated, please use "use_dsp" instead 
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32' (78#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDfYi' (79#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDfYi.v:11]
+WARNING: [Synth 8-6014] Unused sequential element rate_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:406]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:422]
+WARNING: [Synth 8-6014] Unused sequential element strike_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:438]
+WARNING: [Synth 8-6014] Unused sequential element time_r_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:454]
+WARNING: [Synth 8-6014] Unused sequential element volatility_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:470]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:626]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:430]
+WARNING: [Synth 8-6014] Unused sequential element strike_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:446]
+WARNING: [Synth 8-6014] Unused sequential element time_r_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:462]
+WARNING: [Synth 8-6014] Unused sequential element volatility_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:478]
+INFO: [Synth 8-256] done synthesizing module 'Block_proc' (80#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc.v:10]
+INFO: [Synth 8-638] synthesizing module 'CNDF38' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:101]
+INFO: [Synth 8-638] synthesizing module 'CNDF38_mask_table1' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:43]
+INFO: [Synth 8-638] synthesizing module 'CNDF38_mask_table1_rom' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:9]
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "distributed" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:21]
+INFO: [Synth 8-3876] $readmem data file './CNDF38_mask_table1_rom.dat' is read successfully [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:24]
+INFO: [Synth 8-256] done synthesizing module 'CNDF38_mask_table1_rom' (81#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:9]
+INFO: [Synth 8-256] done synthesizing module 'CNDF38_mask_table1' (82#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38_mask_table1.v:43]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDg8j' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDg8j.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64.vhd:68]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64.vhd:190]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64' (86#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64.vhd:68]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDg8j' (87#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDg8j.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDhbi' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDhbi.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32.vhd:68]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32.vhd:190]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32' (88#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32.vhd:68]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDhbi' (89#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDhbi.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDibs' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDibs.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32.vhd:197]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32' (91#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDibs' (92#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDibs.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDjbC' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDjbC.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64.vhd:198]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64' (94#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDjbC' (95#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDjbC.v:11]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:949]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1047]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1089]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1101]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1107]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1117]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1139]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1177]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1179]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1181]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:741]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:1042]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:749]
+INFO: [Synth 8-256] done synthesizing module 'CNDF38' (96#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF38.v:10]
+INFO: [Synth 8-638] synthesizing module 'CNDF' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:101]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:949]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1047]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1089]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1101]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1107]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1117]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1161]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1177]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1179]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1181]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:741]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:1042]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:749]
+INFO: [Synth 8-256] done synthesizing module 'CNDF' (97#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/CNDF.v:10]
+INFO: [Synth 8-638] synthesizing module 'Block_proc33' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:69]
+WARNING: [Synth 8-6014] Unused sequential element rate_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:232]
+WARNING: [Synth 8-6014] Unused sequential element t_out_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:256]
+WARNING: [Synth 8-6014] Unused sequential element time_r_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:272]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:333]
+WARNING: [Synth 8-6014] Unused sequential element t_out_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:264]
+WARNING: [Synth 8-6014] Unused sequential element time_r_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:280]
+INFO: [Synth 8-256] done synthesizing module 'Block_proc33' (98#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc33.v:10]
+INFO: [Synth 8-638] synthesizing module 'floorf' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:73]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:394]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:404]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:410]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:434]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:436]
+WARNING: [Synth 8-6014] Unused sequential element ret_out1_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:263]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:279]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:295]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_out_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:303]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:357]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state3_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:361]
+WARNING: [Synth 8-6014] Unused sequential element ret_out1_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:271]
+WARNING: [Synth 8-6014] Unused sequential element ret_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:287]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_out_write_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:311]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:319]
+INFO: [Synth 8-256] done synthesizing module 'floorf' (99#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/floorf.v:10]
+INFO: [Synth 8-638] synthesizing module 'Block_proc34' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:54]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDkbM' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDkbM.v:11]
+INFO: [Synth 8-638] synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_4' declared at '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/4a02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_4' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32.vhd:198]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32' (100#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/ip/BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDkbM' (101#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDkbM.v:11]
+WARNING: [Synth 8-6014] Unused sequential element fi_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:131]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:155]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:198]
+WARNING: [Synth 8-6014] Unused sequential element t_loc_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:163]
+INFO: [Synth 8-256] done synthesizing module 'Block_proc34' (102#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc34.v:10]
+INFO: [Synth 8-638] synthesizing module 'p_hls_fptosi_float_i' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:48]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:197]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:199]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:203]
+WARNING: [Synth 8-6014] Unused sequential element x_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:158]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:186]
+WARNING: [Synth 8-6014] Unused sequential element return_r_ap_vld_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:150]
+WARNING: [Synth 8-6014] Unused sequential element x_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:166]
+INFO: [Synth 8-256] done synthesizing module 'p_hls_fptosi_float_i' (103#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_hls_fptosi_float_i.v:10]
+INFO: [Synth 8-638] synthesizing module 'Block_proc36' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:95]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:618]
+WARNING: [Synth 8-6014] Unused sequential element NofXd1_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:282]
+WARNING: [Synth 8-6014] Unused sequential element NofXd2_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:298]
+WARNING: [Synth 8-6014] Unused sequential element otype_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:448]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:464]
+WARNING: [Synth 8-6014] Unused sequential element strike_blk_n_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:480]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:611]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state10_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:615]
+WARNING: [Synth 8-6014] Unused sequential element NofXd2_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:306]
+WARNING: [Synth 8-6014] Unused sequential element otype_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:456]
+WARNING: [Synth 8-6014] Unused sequential element sptprice_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:472]
+WARNING: [Synth 8-6014] Unused sequential element strike_read_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:488]
+INFO: [Synth 8-256] done synthesizing module 'Block_proc36' (104#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/Block_proc36.v:10]
+INFO: [Synth 8-638] synthesizing module 'p_BlackScholesPt2_a' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_BlackScholesPt2_a.v:10]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_BlackScholesPt2_a.v:40]
+WARNING: [Synth 8-6014] Unused sequential element ap_block_state1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_BlackScholesPt2_a.v:129]
+INFO: [Synth 8-256] done synthesizing module 'p_BlackScholesPt2_a' (105#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/p_BlackScholesPt2_a.v:10]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d1_A' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d1_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d1_A_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d1_A.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d1_A.v:33]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d1_A_shiftReg' (106#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d1_A.v:11]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d1_A' (107#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d1_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d4_A' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d4_A_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:33]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d4_A_shiftReg' (108#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:11]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d4_A' (109#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d2_A' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'fifo_w32_d2_A_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:33]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d2_A_shiftReg' (110#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:11]
+INFO: [Synth 8-256] done synthesizing module 'fifo_w32_d2_A' (111#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_plbW' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_plbW.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_plbW_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_plbW.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_plbW.v:33]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_plbW_shiftReg' (112#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_plbW.v:11]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_plbW' (113#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_plbW.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_pmb6' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pmb6.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_pmb6_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pmb6.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pmb6.v:33]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_pmb6_shiftReg' (114#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pmb6.v:11]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_pmb6' (115#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pmb6.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_floorf_U0' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_floorf_U0.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_floorf_U0_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_floorf_U0.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_floorf_U0.v:33]
+INFO: [Synth 8-256] done synthesizing module 'start_for_floorf_U0_shiftReg' (116#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_floorf_U0.v:11]
+INFO: [Synth 8-256] done synthesizing module 'start_for_floorf_U0' (117#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_floorf_U0.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_pncg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pncg.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_Block_pncg_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pncg.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pncg.v:33]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_pncg_shiftReg' (118#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pncg.v:11]
+INFO: [Synth 8-256] done synthesizing module 'start_for_Block_pncg' (119#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_Block_pncg.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_p_hls_focq' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_p_hls_focq.v:45]
+INFO: [Synth 8-638] synthesizing module 'start_for_p_hls_focq_shiftReg' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_p_hls_focq.v:11]
+WARNING: [Synth 8-6014] Unused sequential element i was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_p_hls_focq.v:33]
+INFO: [Synth 8-256] done synthesizing module 'start_for_p_hls_focq_shiftReg' (120#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_p_hls_focq.v:11]
+INFO: [Synth 8-256] done synthesizing module 'start_for_p_hls_focq' (121#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/start_for_p_hls_focq.v:45]
+INFO: [Synth 8-256] done synthesizing module 'BlkSchlsEqEuroNoDiv' (122#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDiv.v:12]
+INFO: [Synth 8-256] done synthesizing module 'design_1_BlkSchlsEqEuroNoDiv_0_0' (123#1) [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_BlkSchlsEqEuroNoDiv_0_0/synth/design_1_BlkSchlsEqEuroNoDiv_0_0.v:57]
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port DEC_OP_STATE[11]
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port DEC_OP_STATE[10]
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port DEC_OP_STATE[9]
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port DEC_OP_STATE[8]
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port CLK
+WARNING: [Synth 8-3331] design flt_dec_op_lat has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized33 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized33 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized33 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized33 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized33 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized70 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized70 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized70 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized70 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized70 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized68 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized68 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized68 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized68 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized68 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized13 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized13 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized13 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized13 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized13 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized3 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized3 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized3 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized3 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized3 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized11 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized11 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized11 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized11 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized11 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized7 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized7 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized7 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized7 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized7 has unconnected port SINIT
+WARNING: [Synth 8-3331] design dsp48e1_wrapper__parameterized3 has unconnected port SCLR
+WARNING: [Synth 8-3331] design flt_round_dsp_opt_full has unconnected port SIGN
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized62 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized62 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized62 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized62 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized62 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized66 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized66 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized66 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized66 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized66 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized51 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized51 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized51 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized51 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized51 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized49 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized49 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized49 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized49 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized49 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized64 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized64 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized64 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized64 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized64 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized45 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized45 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized45 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized45 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized45 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized53 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized53 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized53 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized53 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized53 has unconnected port SINIT
+WARNING: [Synth 8-3331] design compare_eq_im__parameterized1 has unconnected port CARRYS_OUT[0]
+WARNING: [Synth 8-3331] design special_detect__parameterized0 has unconnected port A[31]
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized57 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized57 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized57 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized57 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized57 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized15 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized15 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized15 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized15 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized15 has unconnected port SINIT
+WARNING: [Synth 8-3331] design dsp48e1_wrapper__parameterized2 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized60 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized60 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized60 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized60 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized60 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized9 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized9 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized9 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized9 has unconnected port SSET
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1533.527 ; gain = 237.504 ; free physical = 18865 ; free virtual = 34601
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 1533.527 ; gain = 237.504 ; free physical = 18890 ; free virtual = 34626
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 6634 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7vx485tffg1761-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_BlkSchlsEqEuroNoDiv_0_0/constraints/BlkSchlsEqEuroNoDiv_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ip/design_1_BlkSchlsEqEuroNoDiv_0_0/constraints/BlkSchlsEqEuroNoDiv_ooc.xdc] for cell 'inst'
+Parsing XDC File [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.runs/design_1_BlkSchlsEqEuroNoDiv_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.runs/design_1_BlkSchlsEqEuroNoDiv_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 67 instances were transformed.
+  FDE => FDRE: 67 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.53 ; elapsed = 00:00:00.14 . Memory (MB): peak = 2101.840 ; gain = 5.000 ; free physical = 18262 ; free virtual = 34032
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2101.840 ; gain = 805.816 ; free physical = 18537 ; free virtual = 34309
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx485tffg1761-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2101.840 ; gain = 805.816 ; free physical = 18537 ; free virtual = 34309
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /afs/ece.cmu.edu/usr/dworpell/project_12/project_12.runs/design_1_BlkSchlsEqEuroNoDiv_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 2101.840 ; gain = 805.816 ; free physical = 18539 ; free virtual = 34311
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "det_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state_int_up" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state_det" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_det" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_int_up" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "ROM". This will be implemented in logic
+INFO: [Synth 8-5546] ROM "special_case_address" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "div_by_zero_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "ram". This will be implemented in logic
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "op_tdata" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state_int_up" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5546] ROM "notrhs_fu_263_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "notrhs_fu_263_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "grp_fu_137_opcode" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sel_tmp3_v_i_fu_444_p3" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5546] ROM "notrhs_fu_263_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "notrhs_fu_263_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "grp_fu_137_opcode" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sel_tmp3_v_i_fu_444_p3" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sel_tmp3_v_i_fu_247_p3" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5545] ROM "tmp_50_i_i_fu_126_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "tmp_50_i_i_fu_126_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "grp_fu_86_p1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "grp_fu_86_opcode" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[0] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[1] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[2] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[3] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[4] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:36]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:92]
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_full_n" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element mOutPtr_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:87]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[0] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[1] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:36]
+WARNING: [Synth 8-6014] Unused sequential element SRL_SIG_reg[2] was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d2_A.v:36]
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_full_n" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "internal_empty_n" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 2101.840 ; gain = 805.816 ; free physical = 18546 ; free virtual = 34318
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDbkb:/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDbkb:/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDbkb:/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDbkb:/BlkSchlsEqEuroNoDiv_ap_faddfsub_2_full_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'flt_add_dsp:/DSP48E1_BODY.ALIGN_ADD/SUB_DELAY' (delay__parameterized0) to 'flt_add_dsp:/DSP48E1_BODY.ALIGN_ADD/SUB_ADD_IP_DELAY'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDcud:/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDcud:/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDcud:/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDcud:/BlkSchlsEqEuroNoDiv_ap_fmul_0_max_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[1].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[2].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[3].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[4].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[7].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[8].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[9].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[10].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[13].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[14].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[15].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[16].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[19].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[20].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[21].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[22].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[24].ND_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[25].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[1].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[2].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[3].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[0].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[4].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[7].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[8].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[9].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[6].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[10].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[13].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[14].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[15].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[12].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[16].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[19].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[20].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[21].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[18].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[22].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[24].MANT_DEL' (delay__parameterized43) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[25].MANT_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXTRA_LSB_BIT_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXTRA_LSB_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_INC_DELAY' (delay__parameterized0) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_INC_RND1_DELAY'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/NORMALIZE_DEL' (delay__parameterized16) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/NORMALIZE_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_IN_DELAY.EXP_IN_DEL' (delay__parameterized28) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_RND2_DELAY.EXP_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_IN_DELAY.EXP_OFF_OP_DEL' (delay__parameterized28) to 'BlkSchlsEqEuroNoDdEe:/BlkSchlsEqEuroNoDiv_ap_fdiv_6_no_dsp_32_u/U0/i_synth/DIV_OP.SPD.OP/ROUND/EXP_RND2_DELAY.EXP_OFF_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_UNDERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].ND_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[24].ND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXTRA_LSB_BIT_DEL' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXTRA_LSB_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_INC_DELAY' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_INC_RND1_DELAY'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/NORMALIZE_DEL' (delay__parameterized16) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/NORMALIZE_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_IN_DELAY.EXP_IN_DEL' (delay__parameterized28) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_RND2_DELAY.EXP_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_IN_DELAY.EXP_OFF_OP_DEL' (delay__parameterized28) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDeOg_U20/BlkSchlsEqEuroNoDiv_ap_fsqrt_5_no_dsp_32_u/U0/i_synth/SQRT_OP.SPD.OP/i_mant_calc.ROUND/EXP_RND2_DELAY.EXP_OFF_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_OVERFLOW' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_UNDERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_OVERFLOW' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_OVERFLOW' (delay__parameterized0) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/input_processing/fb_shift_mux_del' (delay__parameterized37) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/input_processing/fb_2s_comp_del'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/input_processing/trailing_bits_lzc_delay' (delay__parameterized33) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/input_processing/trailing_bits_delay'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/taylor/use_hp_path_to_mux_3_delay' (delay__parameterized37) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/taylor/use_hp_path_to_combiner_delay'
+INFO: [Synth 8-223] decloning instance 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/taylor/use_hp_path_to_mux_3_delay' (delay__parameterized37) to 'inst/Block_proc_U0/BlkSchlsEqEuroNoDfYi_U21/BlkSchlsEqEuroNoDiv_ap_flog_4_full_dsp_32_u/U0/i_synth/LOG_OP.OP/taylor/use_hp_path_mux2_delay'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXTRA_LSB_BIT_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXTRA_LSB_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXP_INC_DELAY' (delay__parameterized0) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/EXP_INC_RND1_DELAY'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/NORMALIZE_DEL' (delay__parameterized16) to 'BlkSchlsEqEuroNoDg8j:/BlkSchlsEqEuroNoDiv_ap_fptrunc_0_no_dsp_64_u/U0/i_synth/FLT_TO_FLT_OP.SPD.OP/RND_REQ.ROUND/NORMALIZE_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_INVALID_OP' (delay__parameterized0) to 'BlkSchlsEqEuroNoDhbi:/BlkSchlsEqEuroNoDiv_ap_fpext_0_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_UNDERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDibs:/BlkSchlsEqEuroNoDiv_ap_fcmp_0_no_dsp_32_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/DELAY_ACCUM_INPUT_OVERFLOW'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXTRA_LSB_BIT_DEL' (delay__parameterized0) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXTRA_LSB_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_INC_DELAY' (delay__parameterized0) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_INC_RND1_DELAY'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/NORMALIZE_DEL' (delay__parameterized16) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/NORMALIZE_RND1_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_IN_DEL' (delay__parameterized71) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_RND2_DELAY.EXP_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL' (delay__parameterized71) to 'BlkSchlsEqEuroNoDjbC:/BlkSchlsEqEuroNoDiv_ap_dmul_3_max_dsp_64_u/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_RND2_DELAY.EXP_OFF_RND_DEL'
+INFO: [Synth 8-223] decloning instance 'BlkSchlsEqEuroNoDkbM:/BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32_u/U0/i_synth/DELAY_DIVIDE_BY_ZERO' (delay__parameterized0) to 'BlkSchlsEqEuroNoDkbM:/BlkSchlsEqEuroNoDiv_ap_fsub_2_full_dsp_32_u/U0/i_synth/DELAY_ACCUM_OVERFLOW'
+INFO: [Common 17-14] Message 'Synth 8-223' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+
+Report RTL Partitions: 
++------+-------------------------+------------+----------+
+|      |RTL Partition            |Replication |Instances |
++------+-------------------------+------------+----------+
+|1     |BlkSchlsEqEuroNoDiv__GB0 |           1|     22092|
+|2     |CNDF38                   |           1|     15994|
+|3     |BlkSchlsEqEuroNoDiv__GB2 |           1|     16355|
++------+-------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2800 (col length:140)
+BRAMs: 2060 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FLT_OP.SPD.OP/EXP/COND_DET/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-4471] merging register 'BlkSchlsEqEuroNoDcud_x_U29/din1_buf1_reg[31:0]' into 'BlkSchlsEqEuroNoDcud_x_U29/din0_buf1_reg[31:0]' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:48]
+WARNING: [Synth 8-6014] Unused sequential element BlkSchlsEqEuroNoDcud_x_U29/din1_buf1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:48]
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5546] ROM "notrhs_fu_263_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/input_processing/leading_zero_count/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/input_processing/leading_zero_count/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/input_processing/leading_zero_count/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/input_processing/leading_zero_count/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "LOG_OP.OP/normaliser/normalize_1/LZE/enc_chunk" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5545] ROM "tmp_50_i_i_fu_126_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element mOutPtr_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:87]
+WARNING: [Synth 8-6014] Unused sequential element mOutPtr_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:87]
+WARNING: [Synth 8-6014] Unused sequential element mOutPtr_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/fifo_w32_d4_A.v:87]
+INFO: [Synth 8-4471] merging register 'BlkSchlsEqEuroNoDcud_x_U43/din1_buf1_reg[31:0]' into 'BlkSchlsEqEuroNoDcud_x_U43/din0_buf1_reg[31:0]' [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:48]
+WARNING: [Synth 8-6014] Unused sequential element BlkSchlsEqEuroNoDcud_x_U43/din1_buf1_reg was removed.  [/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.srcs/sources_1/bd/design_1/ipshared/0e3c/hdl/verilog/BlkSchlsEqEuroNoDcud.v:48]
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[31] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[23] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[30] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[28] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[27] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[26] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[25] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[22] )
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[17]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[18]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[19]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[20]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[21]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[22]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[23]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[24]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[25]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[26]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[27]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[28]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[17]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[17]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[18]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[18]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[19]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[19]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[20]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[20]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[21]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[21]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[22]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[22]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[23]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[23]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[24]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[24]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[25]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[25]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[26]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[26]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[27]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[27]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[28]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[28]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[63] )
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[63]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[40]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[0]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[1]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[2]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[3]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[4]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[5]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[5]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[6]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[7]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[7]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[8]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[9]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[9]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[10]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[10]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[11]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[11]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[12]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[12]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[13]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[13]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[14]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[14]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[15]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[15]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[16]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\tmp_38_i_i_reg_766_reg[16] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[5] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[9] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[7] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[6] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[15] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[16] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[13] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[12] )
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[0]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[0]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[1]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[1]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[2]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[2]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[3]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[3]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[4]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[5]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[4]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[5]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[5]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[5]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[6]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[7]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[6]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[7]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[7]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[7]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[8]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[9]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[8]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[9]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[9]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[10]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[9]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[10]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[10]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[11]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[10]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[11]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[11]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[12]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[11]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[12]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[12]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[13]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[12]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[13]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[13]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[14]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[13]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[14]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[14]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[15]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[14]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[15]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[15]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[16]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[15]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[16]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\reg_235_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\reg_194_reg[16] )
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[3]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[37]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[5]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[15]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[9]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[24]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[7]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[14]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[6]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[13]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[11]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[35]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[15]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[16]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[42]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[14]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[17]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[13]' (FD) to 'inst/CNDF38_U0/BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[23]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[61]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[59]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[60]' (FDE) to 'inst/CNDF38_U0/tmp_38_i_i_reg_766_reg[59]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[17] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[18] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[19] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[21] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[24] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[31] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[32] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[33] )
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[61]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[59]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_194_reg[61]' (FDE) to 'inst/CNDF38_U0/reg_194_reg[59]'
+INFO: [Synth 8-3886] merging instance 'inst/CNDF38_U0/reg_235_reg[60]' (FDE) to 'inst/CNDF38_U0/reg_235_reg[59]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[62] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[61] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[60] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[59] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[55] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[56] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[57] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[58] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[54] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[52] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[53] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[34] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[35] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[36] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[37] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[38] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[40] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[41] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[42] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[43] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[44] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[45] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[46] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[48] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[49] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U37/din1_buf1_reg[50] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[62] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/CNDF38_U0/\BlkSchlsEqEuroNoDjbC_U36/din1_buf1_reg[61] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__3.
+INFO: [Synth 8-3332] Sequential element (ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.NORM_RND/FULL_USAGE_DSP.LOD/NORM_DELAY/i_pipe/opt_has_pipe.first_q_reg[0]) is unused and will be removed from module floating_point_v7_1_4_viv__3.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[6].pipe_reg[6][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/SIGN_RND_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/SIGN_RND_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/SIGN_RND_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/SIGN_RND_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/INV_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/INV_OP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/INV_OP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/INV_OP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/DIV_BY_ZERO_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/DIV_BY_ZERO_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/DIV_BY_ZERO_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/DIV_BY_ZERO_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][3]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][2]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][1]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][3]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][2]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][1]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][3]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][2]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][1]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][3]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][2]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][1]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/OP/DIV_BY_ZERO_REG.REG/i_pipe/opt_has_pipe.first_q_reg[0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/OP/FLAGS_REG.NOT_LATE_UPDATE_GEN.UNDERFLOW_reg) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/OP/FLAGS_REG.NOT_LATE_UPDATE_GEN.OVERFLOW_reg) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/OP/FLAGS_REG.NOT_LATE_UPDATE_GEN.INVALID_OP_reg) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized3__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized15__1.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized15__1.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized15__2.
+INFO: [Synth 8-3332] Sequential element (i_nd_to_rdy/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_4_viv__parameterized15__2.
+WARNING: [Synth 8-3332] Sequential element (xK2_2_reg_721_reg[31]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDcud_x_U29/din0_buf1_reg[31]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[31]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[30]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[29]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[28]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[27]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[26]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[25]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[24]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[23]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[22]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[21]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[20]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[19]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[18]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[17]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[16]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[15]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[14]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[13]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[12]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[11]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[10]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[9]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[8]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[7]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[6]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[5]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[4]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[3]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[2]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[1]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDdEe_x_U30/din0_buf1_reg[0]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (reg_194_reg[16]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (reg_235_reg[16]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[28]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[27]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[26]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[25]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[24]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[23]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[22]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[21]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[20]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[19]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[18]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[17]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[16]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[15]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[14]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[13]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[12]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[11]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[10]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[9]) is unused and will be removed from module CNDF38.
+WARNING: [Synth 8-3332] Sequential element (BlkSchlsEqEuroNoDjbC_U36/din0_buf1_reg[8]) is unused and will be removed from module CNDF38.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:57 ; elapsed = 00:01:06 . Memory (MB): peak = 2101.840 ; gain = 805.816 ; free physical = 18451 ; free virtual = 34228
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+-------------------------+------------+----------+
+|      |RTL Partition            |Replication |Instances |
++------+-------------------------+------------+----------+
+|1     |BlkSchlsEqEuroNoDiv__GB0 |           1|     17843|
+|2     |CNDF38                   |           1|      9628|
+|3     |BlkSchlsEqEuroNoDiv__GB2 |           1|      9956|
++------+-------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:03 ; elapsed = 00:01:12 . Memory (MB): peak = 2108.824 ; gain = 812.801 ; free physical = 18202 ; free virtual = 33993
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:15 . Memory (MB): peak = 2152.840 ; gain = 856.816 ; free physical = 18165 ; free virtual = 33957
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+-------------------------+------------+----------+
+|      |RTL Partition            |Replication |Instances |
++------+-------------------------+------------+----------+
+|1     |BlkSchlsEqEuroNoDiv__GB0 |           1|     17843|
+|2     |CNDF38                   |           1|      9628|
+|3     |BlkSchlsEqEuroNoDiv__GB2 |           1|      9956|
++------+-------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:14 ; elapsed = 00:01:23 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18183 ; free virtual = 33975
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:15 ; elapsed = 00:01:24 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18182 ; free virtual = 33974
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:15 ; elapsed = 00:01:24 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18182 ; free virtual = 33974
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:18 ; elapsed = 00:01:27 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18178 ; free virtual = 33969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:18 ; elapsed = 00:01:27 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18178 ; free virtual = 33969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:01:28 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18178 ; free virtual = 33969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:01:28 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18178 ; free virtual = 33969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |CARRY4     |    72|
+|2     |DSP48E1    |     6|
+|3     |DSP48E1_1  |     6|
+|4     |DSP48E1_10 |     4|
+|5     |DSP48E1_11 |     4|
+|6     |DSP48E1_12 |     4|
+|7     |DSP48E1_13 |     1|
+|8     |DSP48E1_14 |     1|
+|9     |DSP48E1_15 |     1|
+|10    |DSP48E1_16 |     1|
+|11    |DSP48E1_17 |     2|
+|12    |DSP48E1_2  |    16|
+|13    |DSP48E1_3  |     8|
+|14    |DSP48E1_4  |    19|
+|15    |DSP48E1_5  |     4|
+|16    |DSP48E1_6  |     4|
+|17    |DSP48E1_7  |     4|
+|18    |DSP48E1_8  |     4|
+|19    |DSP48E1_9  |     4|
+|20    |LUT1       |   257|
+|21    |LUT2       |  1034|
+|22    |LUT3       |  3307|
+|23    |LUT4       |  1296|
+|24    |LUT5       |  1364|
+|25    |LUT6       |  1935|
+|26    |MUXCY      |  3426|
+|27    |MUXF7      |    84|
+|28    |MUXF8      |     1|
+|29    |SRL16E     |   399|
+|30    |XORCY      |  2847|
+|31    |FDE        |    67|
+|32    |FDRE       |  6907|
+|33    |FDSE       |   127|
++------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:01:28 . Memory (MB): peak = 2180.426 ; gain = 884.402 ; free physical = 18178 ; free virtual = 33969
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 416 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:01:14 . Memory (MB): peak = 2180.426 ; gain = 316.090 ; free physical = 18252 ; free virtual = 34043
+Synthesis Optimization Complete : Time (s): cpu = 00:01:19 ; elapsed = 00:01:28 . Memory (MB): peak = 2180.434 ; gain = 884.402 ; free physical = 18254 ; free virtual = 34045
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 6505 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1097 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 1030 instances
+  FDE => FDRE: 67 instances
+
+678 Infos, 284 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:24 ; elapsed = 00:01:34 . Memory (MB): peak = 2212.445 ; gain = 993.211 ; free physical = 18329 ; free virtual = 34121
+INFO: [Common 17-1381] The checkpoint '/afs/ece.cmu.edu/usr/dworpell/project_12/project_12.runs/design_1_BlkSchlsEqEuroNoDiv_0_0_synth_1/design_1_BlkSchlsEqEuroNoDiv_0_0.dcp' has been generated.
