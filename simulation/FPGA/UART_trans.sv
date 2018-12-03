@@ -1,28 +1,32 @@
 `default_nettype none
 
-module transmiter 
+module ControlTransmiter 
 	#(parameter CLKS_PER_BIT = 13'd1736) 
-	(input logic clk, rst_n, rdy_in, 
+	(input logic clk, rst, rdy_in, 
 		input logic [7:0] data_in,
 		output logic active_o, 
 		output logic bit_o,
 		output logic done_o); 
-
+	
+    //dfdf
     logic [12:0] clk_counter; 
     logic counter_en, counter_clear; 
-    counter SAMPLE_CLK_COUNTER(clk, rst_n, counter_en, counter_clear, clk_counter);  
+    counter SAMPLE_CLK_COUNTER(clk, rst, counter_en, counter_clear, clk_counter);  
 
     logic [12:0] bit_counter; 
     logic bit_en, bit_clear; 
-    counter BIT_COUNTER(clk, rst_n, bit_en, bit_clear, bit_counter);  
+    counter BIT_COUNTER(clk, rst, bit_en, bit_clear, bit_counter);  
 
     logic [7:0] data_buf; 
     logic active_out, bit_out, done; 
 
+    logic reg_en, reg_clear; 
+    register #(8) STORE_DATA(clk, reg_en, rst, reg_clear, data_in, data_buf);
+
     enum logic [2:0] {IDLE, START_B, DATA, END_B, CLEANUP} state, nextState;
 
-		always_ff @(posedge clk or negedge rst_n) begin 
-		 	if(~rst_n) begin
+		always_ff @(posedge clk or posedge  rst) begin 
+		 	if(rst) begin
 		 		state <= IDLE;
 		 	end else begin
 		 		state <= nextState;
@@ -30,22 +34,22 @@ module transmiter
 		 end 
 
 		 always_comb begin
- 			counter_clear = 1; 
+ 			counter_clear = 0; 
  			counter_en = 0; 	
  			bit_en = 0; 
- 			bit_clear = 1; 
+ 			bit_clear = 0; 
+ 			active_out = 0;
 		 	case (state)
 		 		IDLE: begin
 		 			bit_out = 1; 
 		 			done = 0;
-		 			counter_clear = 1; 
 		 			counter_en = 0; 	
 		 			bit_en = 0; 
 		 			bit_clear = 1; 
 
 		 			if (rdy_in) begin
 		 				active_out = 1; 
-		 				data_buf = data_in;    
+		 				reg_en = 1;     
 		 				nextState = START_B; 
 		 			end 
 		 	        else 
@@ -53,10 +57,9 @@ module transmiter
 		 		end 
 		 		START_B: begin 
 		 			bit_out = 0; 
-		 			if (clk_counter < CLKS_PER_BIT - 1)
+		 			counter_en = 1; 
+		 			if (clk_counter < 14'd434)
 		 			begin
-		 				counter_en = 1; //(clk_counter can start counting up) 
-
 		 				nextState = START_B; //stays in this state   
 		 			end 
 		 			else 
@@ -64,45 +67,33 @@ module transmiter
 		 			//Clear the clk 
 		 				counter_en = 0; 
 		 				counter_clear = 1;
-
 		 				nextState = DATA;  
 		 			end 
 		 		end 
 		 		DATA: begin 
-		 			bit_out = data_buf[bit_counter]; 
-
-		 			if (clk_counter < CLKS_PER_BIT -1 ) 
-		 			begin
-		 				counter_en = 1; //counter begins counting up.  
-
-		 				nextState = DATA; 
-		 			end 
-		 			else 
-		 			begin
-		 				counter_en = 0;
+		 		    bit_out = data_buf[bit_counter];
+		 			counter_en = 1;
+		 			counter_clear = 0; 
+		 			bit_clear = 0; 
+		 			bit_en = 0;  
+					if (clk_counter == 14'd868)
+		 			begin			
+		 				bit_en = 1; 
 		 				counter_clear = 1; 
 						if (bit_counter < 7) 
-						begin
-							bit_clear = 0;
-							bit_en = 1; //enable counting
-
 							nextState = DATA;  
-						end
-						else 
-						begin
-							bit_clear = 1;
-							nextState = END_B;   
-						end  		 			 
+						else
+							nextState = END_B;    		 			 
 		 			end 
+		 			else 
+		 				nextState = DATA; 
 		 		end 
 		 		END_B: begin
 		 			bit_out = 1;
-
-		 			if (clk_counter < CLKS_PER_BIT - 1)
+		 			counter_en = 1; 
+		 			if (clk_counter < 14'd868)
 		 			begin
-		 				counter_en = 1;
-
-		 				nextState = END_B;   
+ 		 				nextState = END_B;   
 		 			end  
 		 			else 
 		 			begin
@@ -114,6 +105,7 @@ module transmiter
 		 			end 
 		 		end 
 		 		CLEANUP: begin 
+		 			bit_out = 1; 
 		 			done = 1; 
 		 			nextState = IDLE; 
 		 		end 
@@ -124,16 +116,37 @@ module transmiter
 		 assign done_o = done; 
 		 assign active_o = active_out; 
 
-endmodule: transmiter // transmiter
+endmodule: ControlTransmiter // transmiter
+
+
+module register
+   #(parameter                      WIDTH=0,
+     parameter logic [WIDTH-1:0]    RESET_VAL='b0)
+    (input  logic               clk, en, rst, clear,
+     input  logic [WIDTH-1:0]   D,
+     output logic [WIDTH-1:0]   Q);
+
+     always_ff @(posedge clk, posedge  rst) begin
+         if (rst)
+             Q <= RESET_VAL;
+         else if (clear)
+             Q <= RESET_VAL;
+         else if (en)
+             Q <= D;
+     end
+
+endmodule:register
+
+
 
 module counter(
    input  logic clock,
-   input  logic reset_n,
+   input  logic reset,
    input  logic clock_en, clear,
    output logic[12:0] count);
 
-   always_ff @(posedge clock or negedge reset_n) begin : proc_count
-      if(~reset_n) begin
+   always_ff @(posedge clock or negedge reset) begin : proc_count
+      if(reset) begin
          count <= 0;
       end 
       else begin
@@ -150,38 +163,41 @@ endmodule: counter
 
 /*
 module testTrx(); 
-	logic clk, rst_n; 
-    logic bit_in, rdy_in; 
+	logic clk, rst; 
+	logic rdy_in; 
     logic [7:0] data_in;
 
     logic bit_o; 
-    logic done_o; 
+    logic done_o;
+    logic active_o; 
 
 
-        @(posedge clk)
-		#(8600) bit_in <= 1;
-		@(posedge clk)
-		#(8600) bit_in <= 1;
-		@(posedge clk)
-		#(8600) bit_in <= 0;
-		@(posedge clk)
-		#(8600) bit_in <= 0;
-		@(posedge clk)
-    	#(8600) bit_in <= 1;
-		@(posedge clk)
-        #(8600) bit_in <= 1;
-		@(posedge clk)
-		#(8600) bit_in <= 0;
-		@(posedge clk)
-   		#(8600) bit_in <= 0;
-		@(posedge clk)
-		#(8600); 	
+    ControlTransmiter a1(.*); 
+
+    task sendIt(); 
+
+    	#4 rdy_in = 0; 
+    	@(posedge clk)
+    	#4 rdy_in = 1; 
+    	#4 data_in = 8'd10; 
+    	@(posedge clk)
+    	rdy_in = 0; 
+
+    endtask: sendIt
 
 
-    transmiter a1(clk, rst_n, rdy_in, data_in, active_o, bit_o, done_o); 
+    initial begin 
+    	clk = 0; 
+    	rst = 1;
+    	rst <= #1 0;     
+    	#4 forever #1 clk = ~clk; 
+    end 
+
+    initial begin 
+    	sendIt(); 
+    	#100000 $finish;
+    end 
+s
+endmodule // testTrx
 
 */ 
-
-
-
-
