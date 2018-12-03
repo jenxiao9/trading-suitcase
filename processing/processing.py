@@ -35,19 +35,21 @@ def process_orders(file, output_file, total_rows = 1000):
                 expiration_yrs = expiration_time.seconds / (secondsPerYear)
                 option_id = hash(symbol)
 
-                option_id = option_id & 0xffffffff #convert to 32 bit
+                option_id = option_id & 0xfffffffe #convert to 32 bit
                 s = "{%hu,%f,%f,%f,%f,%f,%c},\n" %(option_id, float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put)
+                print("call_put = %c" % call_put)
 
                 if call_put == 'C':
-                    call_put = 0;
+                    call_put = 0x00000000;
                 else:
-                    call_put = 1;
+                    call_put = 0x00000001;
+
+                option_id = option_id | call_put;
 
                 x = order.Order(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put, option_id)
                 pkt = x.pkt()
 
                 pkt = pkt.encode()
-                print(pkt)
                 #data.send_uart_package(pkt)
 
                 output.write(s)
