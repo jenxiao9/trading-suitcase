@@ -38,9 +38,13 @@ def process_orders(file, output_file, total_rows = 1000):
                 option_id = option_id & 0xffffffff #convert to 32 bit
                 s = "{%hu,%f,%f,%f,%f,%f,%c},\n" %(option_id, float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put)
 
+                if call_put == 'C':
+                    call_put = 0;
+                else:
+                    call_put = 1;
+
                 x = order.Order(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put, option_id)
                 pkt = x.pkt()
-
 
                 pkt = pkt.encode()
                 print(pkt)
