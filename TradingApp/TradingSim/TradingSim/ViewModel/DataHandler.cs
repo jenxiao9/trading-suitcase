@@ -16,23 +16,29 @@ namespace TradingSim.ViewModel
        
         public static Queue<Data> CpuResults;
         public static Queue<Data> FpgaResults;
+
+        public static List<Data> AllCPUResults;
+        public static List<Data> AllFPGAResults; 
+
         private static string cpuPath = Path.Combine(Directory.GetCurrentDirectory(),
                                      "results", "cpuresults.txt");
         private static string fpgaPath = Path.Combine(Directory.GetCurrentDirectory(),
                              "results", "fpgaresults.txt");
-        public static void LoadData()
+        public void LoadData()
         {
-            CpuResults = createQueueFromCSV(cpuPath);
-            FpgaResults = createQueueFromCSV(fpgaPath);
+            (CpuResults, AllCPUResults) = createQueueFromCSV(cpuPath);
+            (FpgaResults, AllFPGAResults) = createQueueFromCSV(fpgaPath);
 
-      
+
             //start(); 
 
         }
 
-        public static Queue<Data> createQueueFromCSV(string path)
+        public static (Queue<Data>, List<Data>) createQueueFromCSV(string path)
         {
             Queue<Data> results = new Queue<Data>();
+            List<Data> listResults = new List<Data>(); 
+
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
                 csvParser.CommentTokens = new string[] { "#" };
@@ -56,10 +62,11 @@ namespace TradingSim.ViewModel
                     };
 
                     results.Enqueue(data);
+                    listResults.Add(data); 
                 }
             }
 
-            return results; 
+            return (results, listResults); 
         }
         public Queue<Data> GetFpgaResults()
         {
@@ -70,6 +77,16 @@ namespace TradingSim.ViewModel
         {
             return CpuResults; 
         } 
+
+        public List<Data> GetAllCpuResults()
+        {
+            return AllCPUResults;
+        }
+
+        public List<Data> GetAllFpgaResults()
+        {
+            return AllFPGAResults; 
+        }
 
     }
 }

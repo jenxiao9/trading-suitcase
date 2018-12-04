@@ -51,15 +51,20 @@ namespace TradingSim
 
         private DateTime baseDateFpga = new DateTime(0);
         private DateTime baseDateCpu = new DateTime(0);
+
+        public bool started; 
         public MainWindow()
         {
 
             dataHandler = new DataHandler();
-            //data1.LoadData(); 
-            //this.DataContext = data1; 
+
+            dataHandler.LoadData();
+
+            //can_click = false;
+
             InitializeComponent();
 
-          
+
 
             var dayConfig = Mappers.Xy<DateModel>()
                .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
@@ -88,13 +93,17 @@ namespace TradingSim
                 DataLabels = true
             };
 
+
             SeriesCollection = new SeriesCollection(dayConfig){FpgalineSeries, CpulineSeries};
             Console.WriteLine(baseDateCpu.ToString());
 
 
             Formatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("mm:ss.fff");
 
+            started = false; 
             DataContext = this;
+            resumebutton.IsEnabled = false;
+            stopbutton.IsEnabled = false;
         }
 
         public ChartValues<DateModel> FpgaValues { get; set; }
@@ -106,19 +115,16 @@ namespace TradingSim
         {
             trans_fpga = 0;
             trans_cpu = 0;
-
-            /*
-            var dayConfig = Mappers.Xy<DateModel>()
-                .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
-                .Y(dateModel => dateModel.Value);
-            SeriesCollection = new SeriesCollection { FpgalineSeries, CpulineSeries }
-            */ 
-
+            resumebutton.IsEnabled = true;
+            stopbutton.IsEnabled = true;
+            started = true; 
 
             FpgaValues.Clear();
             CpuValues.Clear(); 
-            //Load data from file. 
-            DataHandler.LoadData();
+
+            //Load data from file when clicked on. 
+            //TODO: Add start button on home page?? 
+            //DataHandler.LoadData();
             cpuQueue = new Queue<Data>(dataHandler.GetCpuResults());
             fpgaQueue = new Queue<Data>(dataHandler.GetFpgaResults());
 
@@ -137,15 +143,19 @@ namespace TradingSim
            
         }
 
+
         void Stop_Button_Click(object sender, RoutedEventArgs e)
         {
-            timerCpu.Stop();
-            timerFPGA.Stop(); 
+     
+                timerCpu.Stop();
+                timerFPGA.Stop();
+
         }
         void Resume_Button_Click(object sender, RoutedEventArgs e)
         {
-            timerCpu.Start();
-            timerFPGA.Start();
+                timerCpu.Start();
+                timerFPGA.Start();
+
         }
 
         void timerCpu_Tick(object sender, EventArgs e)

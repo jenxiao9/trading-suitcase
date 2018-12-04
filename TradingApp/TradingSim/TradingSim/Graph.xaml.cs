@@ -1,9 +1,11 @@
 ﻿using LiveCharts;
+using LiveCharts.Configurations;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TradingSim.Model;
+using TradingSim.ViewModel;
 
 namespace TradingSim
 {
@@ -27,7 +31,35 @@ namespace TradingSim
         {
             InitializeComponent();
             var r = new Random();
-            SeriesCollection = new SeriesCollection
+
+
+            var dayConfig = Mappers.Xy<DateModel>()
+               .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
+                .Y(dateModel => dateModel.Value);
+
+
+            List<Data> _cpuResultValues = DataHandler.AllCPUResults;
+            List<Data> _fpgaResultValues = DataHandler.AllFPGAResults;
+
+            List<DateModel> CpuResultValues = GetTimeGraphValues(_cpuResultValues);
+            CpuValues = new ChartValues<DateModel> { };
+            CpuValues.AddRange(CpuResultValues);
+
+            var CpulineSeries = new LineSeries
+            {
+                Values = CpuValues,
+                StrokeThickness = 4,
+                Fill = Brushes.Transparent,
+                PointGeometrySize = 15,
+                DataLabels = true
+            };
+
+
+            SeriesCollection = new SeriesCollection(dayConfig) { CpulineSeries };
+
+            Formatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("mm:ss.fff");
+
+            DataContext = this;
             {
                 /*
                 new LineSeries
@@ -65,11 +97,30 @@ namespace TradingSim
             DataContext = this;*/
             };
         }
-        public Func<double, string> YFormatter { get; set; }
-        public string[] Labels { get; set; }
-        public ChartValues<double> CpuChartX { get; set; }
-        public ChartValues<double> CpuChartY { get; set; }
-        //public ChartValues<double> FpgaChart { get; set; }
+
+        private List<DateModel> GetTimeGraphValues(List<Data> input)
+        {
+            //var output = input.ToList<DateModel>(x => x.CpuValues)
+            //return new List<DateModel>(input) {
+            //    -> ; 
+            DateTime baseTime = new DateTime(0); 
+            List<DateModel> newDateModel = new List<DateModel>();
+            for (int i = 0; i < input.Count(); i ++)
+            {
+                Data currData = input[i];
+                baseTime = baseTime.Add(currData.Time); 
+                newDateModel.Add(new DateModel { DateTime = baseTime, Value = i }); 
+            }
+
+
+            return newDateModel; 
+            //input.ForEach(i => newDate.Add(new DateModel {DateTime = i.Time, Value = i. })); 
+        }
+
+
+
+        public Func<double, string> Formatter { get; set; }
+        public ChartValues<DateModel> CpuValues { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
 
 

@@ -8,10 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" d:DataContext="{d:DesignInstance local:Graph}">
     <Grid>
+        
         <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="time_graph" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
            
         </lvc:CartesianChart>
     </Grid>

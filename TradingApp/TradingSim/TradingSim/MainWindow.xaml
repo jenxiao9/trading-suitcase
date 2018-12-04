@@ -14,7 +14,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <DockPanel>
+        <DockPanel Name="testingdock">
             <StackPanel Width="300">
                 <Button Margin="10,10,10,0" Click="Start_Button_Click" Width="100" HorizontalAlignment="Left">New Round</Button>
                 <TextBlock Margin="10"> Time Remaining</TextBlock>
@@ -60,8 +60,10 @@
 
                     <TextBlock Name="testing"></TextBlock>
                 </StackPanel>
-                <Button Margin="10,0,10,0" Width="100" HorizontalAlignment="Left"  Click="Resume_Button_Click" >Continue Round</Button>
-                <Button Margin="10" Width="100" HorizontalAlignment="Left"  Click="Stop_Button_Click">Pause Round</Button>
+                <Button Name="resumebutton" Margin="10,0,10,0" Width="100" HorizontalAlignment="Left"  Click="Resume_Button_Click" >Continue Round</Button>
+                <Button Name="stopbutton"  Margin="10" Width="100" HorizontalAlignment="Left"  Click="Stop_Button_Click">Pause Round</Button>
+           
+            
             </StackPanel>
 
             <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}" Margin="0,0,0,10" Width="544" AnimationsSpeed="0:0:0.1">
@@ -69,6 +71,9 @@
                     <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
+
+            <local:Graph />
+
         </DockPanel>
 
     </Grid>
