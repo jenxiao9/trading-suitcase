@@ -1,0 +1,152 @@
+module Top();
+  //I want my "baud" rate to still match our counter so the delay between bits
+  //will be 868*2=1736 with clock switching every #1 unit.
+   
+  logic clock, reset, UART_DONE;
+  logic [7:0] UART_DATA;
+  logic [31:0] dataToA;
+  logic enA;
+  logic [3:0] weA; 
+  logic startSystem,OutOfData;
+  logic  [BSMODS-1:0] BS_READY;
+  logic  [BSMODS-1:0] BS_DONE;
+  logic  [BSMODS-1:0] BS_IDLE;
+  logic  [BSMODS-1:0] hasUnusedData;
+  logic  [BSMODS-1:0] REG_READY;
+  logic  [BSMODS-1:0] BS_START;
+  logic  [31:0] opt_id,sptprice,strike,rate, volatility,time_r,otype;
+  logic  [31:0] d0,d1,d2,d3;
+  logic  [1:0] sel;
+  logic  [31:0] Q;
+  logic  DONE_WRITING;
+  logic  [BSMODS-1:0] SERVE_REG;
+  logic  [31:0] dataA;
+  logic  [BSMODS-1:0] regEn;
+  logic  [DATASIZE-1:0] FullPackOut;
+  logic  [1:0] addrSelect;
+  logic  RX;
+  logic  [7:0] LED;
+/////////////////////////////////////////////
+  int i,j,k;
+  assign BS_READY = BS_START;
+  always_ff @(posedge clock, posedge reset) begin
+    if (reset) begin
+      BS_IDLE={BSMODS{1'b1}};
+    end
+    else begin
+      for (k=0; k<BSMODS; k++) begin
+        if (BS_START[k])
+          BS_IDLE[k]<=1'b0;
+      end
+    end
+  end
+  logic[100][31:0] fakeMem; 
+  logic [31:0] delayreg;
+  assign dataA=delayreg;
+  always_ff @(posedge clock) begin
+    if (weA!=4'd0) begin
+      if (weA==4'h1)
+        fakeMem[Q[31:2]][7:0]<=dataToA[7:0];
+      if (weA==4'h2)
+        fakeMem[Q[31:2]][15:8]<=dataToA[15:8];
+      if (weA==4'h4)
+        fakeMem[Q[31:2]][23:16]<=dataToA[23:16];
+      if (weA==4'h8)
+        fakeMem[Q[31:2]][31:24]<=dataToA[31:24];
+    end
+    delayreg<=fakeMem[Q[31:2]];
+  end
+  logic[5][191:0] fakePackets;
+  initial begin
+    clock=0;
+    forever #1 clock=~clock;
+  end
+  task sendPack();
+    for (i=0; i<5; i++) begin
+      for (j=7;j<=191;j=j+8) begin
+        #1736;
+        #1736 RX=0;
+        #1736 RX=fakePackets[i][j-7];
+        #1736 RX=fakePackets[i][j-6];
+        #1736 RX=fakePackets[i][j-5];
+        #1736 RX=fakePackets[i][j-4];
+        #1736 RX=fakePackets[i][j-3];
+        #1736 RX=fakePackets[i][j-2];
+        #1736 RX=fakePackets[i][j-1];
+        #1736 RX=fakePackets[i][j-0];
+        #1736 RX=1;
+      end
+    end
+  endtask
+  initial begin
+    reset=0;
+    RX=1;
+    fakePackets[0]=192'h12345679_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[1]=192'h21323123_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[2]=192'h44444444_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[3]=192'h55555555_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[4]=192'h66666666_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    #1 reset=1;
+    #1 reset=0;
+    #1 startSystem=1;
+    #5 sendPack();
+    #7500 $finish;
+
+  end
+///////////////////////////////////////
+  UARTTOMEM UM(
+  clock, reset, UART_DONE,
+  UART_DATA,
+  DONE_WRITING,
+  dataToA,
+  d1,
+  enA,
+  weA
+  );
+/////////////////////////////////////
+  ControlModule CM(
+    clock, reset, RX,
+    UART_DONE,
+    UART_DATA);
+
+/////////////////////////////////////
+   DataManager DM(
+  clock, reset, DONE_WRITING,
+  SERVE_REG,
+  dataA,
+   OutOfData,
+   regEn,
+   FullPackOut,
+   d0,
+   addrSelect
+  );
+/////////////////////////////////////
+  Mux2to1 #(32) MUX (
+  d0,d1,d2,d3,
+  addrSelect,
+   Q);
+/////////////////////////////////////
+  PacketRegister PR (
+  clock,
+  reset,
+  regEn,BS_READY,
+  FullPackOut,
+   hasUnusedData, REG_READY,
+   opt_id,sptprice,
+  strike    ,
+  rate      ,
+  volatility,
+  time_r    ,
+  otype);
+/////////////////////////////////////
+  BLSController BLS(
+  clock, reset, DONE_WRITING,OutOfData,
+   BS_READY,
+   BS_DONE,
+   BS_IDLE,
+   hasUnusedData,
+   REG_READY,
+   BS_START,
+   SERVE_REG,
+   LED);
+endmodule: Top
