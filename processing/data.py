@@ -21,12 +21,7 @@ def send_uart_package(package):
 def read_back():
     global ser
     while ser.inWaiting()>0:
-        print(bin((int.from_bytes(ser.read(), byteorder ='big'))))
-
-def read_back_results():
-    global ser
-    while ser.inWaiting()>0:
-        pass
+        print(hex((int.from_bytes(ser.read(), byteorder ='big'))))
 
 def main():
     global ser

@@ -3,7 +3,6 @@ import csv
 import order
 import datetime
 import sys
-
 import data
 import os
 import time 
@@ -13,13 +12,21 @@ TOTAL_ROWS = 5
 def raw_data(file, output_file, total_rows = TOTAL_ROWS):
     rows = 0
     with open(output_file, 'w') as output:
-
         with open(file, "r") as f:
             for row in f:
                 output.write(row)
                 rows +=1
                 if rows == total_rows:
                     break
+
+def read_packet(output_file):
+    bytes_read = 0
+    while (bytes_read < 12):
+        option_id = ""
+        result = ""
+        timing = ""
+    pass
+
 
 def save_file_place(file, output_file, start_over=False):
     """
@@ -92,17 +99,20 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             x = order.Order(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put, option_id)
             pkt = x.pkt()
+            '''
             print(pkt)
             print("pre-encoding, is len %d" %(len(pkt)))
+
+            '''
+            #this is the data sending code
+            pkt.reverse()
+            print("this is the packet LSB first: ")
             print(hex(int.from_bytes(pkt, byteorder='big')))
 
-            
-            #this is the data sending code
             data.send_uart_package(pkt)
             time.sleep(.5)
             data.read_back()
-            print("send")
-            
+            print("Finished receiving packet %d" %(rows))
             s = x.s
 
             output.write(s)
