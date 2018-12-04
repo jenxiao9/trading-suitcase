@@ -26,9 +26,18 @@ class Order:
         self.call_put = call_put
         self.option_id = option_id
         self.packet = ""
+        self.s = "{%hu,%f,%f,%f,%f,%f,%c},\n" %(option_id, float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put)
+
+    def __repr__(self):
+        return self.s
+
+    def __str__(self):
+        return self.s
+
+    def __eq__(self, other):
+        return (self.s == other.s)
 
     def pkt(self):
-
         option_id = chr_rep(self.option_id)
 
         price_opt = chr_rep(self.price_opt)
