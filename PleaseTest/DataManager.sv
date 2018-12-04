@@ -20,6 +20,63 @@
 //////////////////////////////////////////////////////////////////////////////////
 parameter BSMODS=1;
 parameter DATASIZE=192;
+module Top();
+
+  logic clock, reset, DONE_WRITING;
+  logic [BSMODS-1:0] SERVE_REG;
+  logic [31:0] dataA;
+  logic OutOfData;
+  logic [BSMODS-1:0] regEn;
+  logic [DATASIZE-1:0] FullPackOut;
+  logic [31:0] addrA;
+  logic [1:0] addrSelect;
+  initial begin
+    clock=0;
+    forever #1 clock=~clock;
+  end
+  initial begin
+    reset=0;
+    DONE_WRITING=0;
+    SERVE_REG={BSMODS{1'b0}};
+    dataA=32'd0;
+    #1 reset=1;
+    #1 reset=0;
+    @(posedge clock);
+    DONE_WRITING=1;
+    @(posedge clock);
+    DONE_WRITING=0;
+    @(posedge clock);
+    dataA=32'd1;
+    SERVE_REG=1;
+    @(posedge clock);
+    dataA=32'd2;
+    @(posedge clock);
+    dataA=32'd3;
+    @(posedge clock);
+    dataA=32'd4;
+    @(posedge clock);
+    dataA=32'd5;
+    @(posedge clock);
+    dataA=32'd6;
+    @(posedge clock);
+    SERVE_REG=0;
+    dataA=32'd7;
+    @(posedge clock);
+    dataA=32'd8;
+    @(posedge clock);
+    dataA=32'd9;
+  end
+  DataManager DM(
+    clock, reset, DONE_WRITING,
+    SERVE_REG,
+    dataA,
+    OutOfData,
+    regEn,
+    FullPackOut,
+    addrA,
+    addrSelect
+    );
+endmodule: Top
 module DataManager(
     input logic clock, reset, DONE_WRITING,
     input logic [BSMODS-1:0] SERVE_REG,
