@@ -4,11 +4,11 @@ import order
 import datetime
 import sys
 
-#import data
+import data
 import os
 import time 
 
-TOTAL_ROWS = 10000
+TOTAL_ROWS = 5
 
 def raw_data(file, output_file, total_rows = TOTAL_ROWS):
     rows = 0
@@ -29,19 +29,19 @@ def save_file_place(file, output_file, start_over=False):
     """
 
     # take last part of a file for the savefile
-    s = file.split("/")[-1]
+    s = file.split("\\")[-1]
 
     save_file = ".fileinfo" + s
 
     if not os.path.exists(save_file) or start_over:
          seek_from = 0
     else:
-         of = open(savefile, 'r')
+         of = open(save_file, 'r')
          seek_from = int(of.readline().strip())
 
     end = process_orders(file, output_file, start_from=seek_from)
 
-    of = open(savefile, 'w')
+    of = open(save_file, 'w')
     of.write(str(end))
     of.close()
 
@@ -92,26 +92,26 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             x = order.Order(float(price_opt), float(strike), r, float(iv), expiration_yrs, call_put, option_id)
             pkt = x.pkt()
+            print(pkt)
+            print("pre-encoding, is len %d" %(len(pkt)))
+            print(hex(int.from_bytes(pkt, byteorder='big')))
 
-            pkt = pkt.encode()
-
-            ''' #this is the data sending code
+            
+            #this is the data sending code
             data.send_uart_package(pkt)
             time.sleep(.5)
             data.read_back()
-            '''
-
-            break
+            print("send")
+            
             s = x.s
 
             output.write(s)
             if rows == total_rows:
                 break
         
-    end = f.tell()  
     f.close()  
 
-    return end
+    return 0
 
 
 if __name__ == "__main__":

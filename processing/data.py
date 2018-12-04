@@ -23,6 +23,11 @@ def read_back():
     while ser.inWaiting()>0:
         print(bin((int.from_bytes(ser.read(), byteorder ='big'))))
 
+def read_back_results():
+    global ser
+    while ser.inWaiting()>0:
+        pass
+
 def main():
     global ser
     while ser.inWaiting()>0:
@@ -31,8 +36,6 @@ def main():
         ser.write(str.encode("he"))
         print (ser.read())
         time.sleep(.5) 
-        #pack = create_package(1); 
-        #send_uart_package(pack) 
 
 if __name__ == "__main__":
     main()
