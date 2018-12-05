@@ -16,7 +16,9 @@ def create_package(option_id):
 
 def send_uart_package(package):
     global ser 
-    ser.write(package)
+    for b in package:
+        ser.write(b)
+        time.sleep(.01)
 
 def read_back():
     global ser

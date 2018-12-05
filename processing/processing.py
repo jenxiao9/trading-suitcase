@@ -18,7 +18,8 @@ def raw_data(file, output_file, total_rows = TOTAL_ROWS):
             for row in f:
                 output.write(row)
                 rows +=1
-                if rows == total_rows:
+                print(rows)
+                if rows >= total_rows:
                     break
 
 def bytes_to_float(b):
@@ -185,7 +186,14 @@ if __name__ == "__main__":
         result_file = sys.argv[3]
 
         if sys.argv[1] in "process":
-            save_file_place(orig_file, result_file)
+            if len(sys.argv) == 5:
+                total_rows = int(sys.argv[4])
+                process_orders(orig_file, result_file, total_rows = total_rows)
+            else:
+                process_orders(orig_file, result_file)
         elif sys.argv[1] in "raw":
-            total_rows = sys.argv[4]
-            raw_data(orig_file, result_file, total_rows)
+            if len(sys.argv) == 5:
+                total_rows = int(sys.argv[4])
+                raw_data(orig_file, result_file, total_rows)
+            else:
+                raw_data(orig_file, result_file)
