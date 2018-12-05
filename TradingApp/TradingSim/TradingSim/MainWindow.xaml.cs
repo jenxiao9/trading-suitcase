@@ -67,7 +67,7 @@ namespace TradingSim
 
 
             var dayConfig = Mappers.Xy<DateModel>()
-               .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
+               .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromMilliseconds(1).Ticks)
                 .Y(dateModel => dateModel.Value);
 
 
@@ -98,7 +98,7 @@ namespace TradingSim
             Console.WriteLine(baseDateCpu.ToString());
 
 
-            Formatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("mm:ss.fff");
+            Formatter = value => new DateTime((long)(value * TimeSpan.FromMilliseconds(1).Ticks)).ToString("mm:ss.fff");
 
             started = false; 
             DataContext = this;
@@ -115,6 +115,8 @@ namespace TradingSim
         {
             trans_fpga = 0;
             trans_cpu = 0;
+            baseDateCpu = new DateTime(0);
+            baseDateFpga = new DateTime(0);
             resumebutton.IsEnabled = true;
             stopbutton.IsEnabled = true;
             started = true; 
@@ -129,9 +131,9 @@ namespace TradingSim
             fpgaQueue = new Queue<Data>(dataHandler.GetFpgaResults());
 
             timerCpu = new DispatcherTimer();
-            timerCpu.Interval = TimeSpan.FromSeconds(1);
+            timerCpu.Interval = TimeSpan.FromMilliseconds(1);
             timerFPGA = new DispatcherTimer();
-            timerFPGA.Interval = TimeSpan.FromSeconds(1);
+            timerFPGA.Interval = TimeSpan.FromMilliseconds(1);
 
             timerCpu.Tick += timerCpu_Tick;
             timerCpu.Start();
@@ -166,18 +168,18 @@ namespace TradingSim
                 trans_cpu++; 
                 Data dataPoint = cpuQueue.Dequeue();
                 fairprice_cpu.Text = dataPoint.FairPrice.ToString();
-                stock_cpu.Text = dataPoint.StockName.ToString();
+                stock_cpu.Text = dataPoint.OptionId.ToString();
                 time_cpu.Text = dataPoint.Time.ToString();
                 transaction_cpu.Text = trans_cpu.ToString();
 
                 //Plot point 
                 timerCpu.Interval = dataPoint.Time;
 
-                baseDateCpu = baseDateCpu.Add(dataPoint.Time);
+                DateTime newTime = baseDateCpu.Add(dataPoint.Time);
 
                 Console.WriteLine(dataPoint.Time.ToString()); 
                 //Console.WriteLine(dt.ToString()); 
-                DateModel dtpoint = new DateModel { DateTime = baseDateCpu, Value = trans_cpu }; 
+                DateModel dtpoint = new DateModel { DateTime = newTime, Value = trans_cpu }; 
                 CpuValues.Add(dtpoint);
 
                 timerCpu.Start();
@@ -197,18 +199,21 @@ namespace TradingSim
             try
             {
                 trans_fpga++; 
+                
                 Data dataPoint = fpgaQueue.Dequeue();
-                fairprice_fpga.Text = dataPoint.FairPrice.ToString();
-                stock_fpga.Text = dataPoint.StockName.ToString();
+                //fairprice_fpga.Text = dataPoint.FairPrice.ToString();
+                stock_fpga.Text = dataPoint.OptionId.ToString();
                 time_fpga.Text = dataPoint.Time.ToString();
                 transaction_fpga.Text = trans_fpga.ToString();
 
                 //Plot point 
                 timerFPGA.Interval = dataPoint.Time;
 
+                DateTime newTime = baseDateCpu.Add(dataPoint.Time);
+
                 //FpgaValues.Add(new ObservablePoint(trans_fpga,trans_fpga-1));
                 baseDateFpga = baseDateFpga.Add(dataPoint.Time);
-                DateModel dtpoint = new DateModel { DateTime = baseDateFpga, Value = trans_fpga };
+                DateModel dtpoint = new DateModel { DateTime = newTime, Value = trans_fpga };
                 FpgaValues.Add(dtpoint);
 
                 timerFPGA.Start();

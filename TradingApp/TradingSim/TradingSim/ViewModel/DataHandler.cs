@@ -21,9 +21,9 @@ namespace TradingSim.ViewModel
         public static List<Data> AllFPGAResults; 
 
         private static string cpuPath = Path.Combine(Directory.GetCurrentDirectory(),
-                                     "results", "cpuresults.txt");
+                                     "results", "cpuresults1.txt");
         private static string fpgaPath = Path.Combine(Directory.GetCurrentDirectory(),
-                             "results", "fpgaresults.txt");
+                             "results", "fpgaresults1.txt");
         public void LoadData()
         {
             (CpuResults, AllCPUResults) = createQueueFromCSV(cpuPath);
@@ -36,7 +36,7 @@ namespace TradingSim.ViewModel
 
         public static (Queue<Data>, List<Data>) createQueueFromCSV(string path)
         {
-            Queue<Data> results = new Queue<Data>();
+
             List<Data> listResults = new List<Data>(); 
 
             using (TextFieldParser csvParser = new TextFieldParser(path))
@@ -51,20 +51,31 @@ namespace TradingSim.ViewModel
                 {
                     // Read current line fields, pointer moves to the next line.
                     string[] fields = csvParser.ReadFields();
-                    TimeSpan length = TimeSpan.FromSeconds(Int32.Parse(fields[3]));
+                    TimeSpan length = TimeSpan.FromMilliseconds((int)float.Parse(fields[2]));
                     Data data = new Data
                     {
-                        StockName = fields[0],
-                        OptionId = Int32.Parse(fields[1]),
-                        FairPrice = float.Parse(fields[2]),
+                        //StockName = "bleh",
+                        OptionId = Convert.ToUInt32(fields[0], 10),
+                        FairPrice = float.Parse(fields[1]),
                         Time = length,
 
                     };
 
-                    results.Enqueue(data);
+                    //results.Enqueue(data);
                     listResults.Add(data); 
                 }
+
+              
             }
+
+            listResults = listResults.OrderBy(o => o.Time).ToList();
+
+            for (int i = 0; i < listResults.Count(); i++)
+            {
+                ; 
+            }
+
+            Queue<Data> results = new Queue<Data>(listResults);
 
             return (results, listResults); 
         }

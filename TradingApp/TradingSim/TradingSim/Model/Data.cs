@@ -10,7 +10,7 @@ namespace TradingSim.Model
     public class Data : INotifyPropertyChanged
     {
         private string _stockName;
-        private int _optionId; 
+        private uint _optionId; 
         private float _fairPrice;
         //which transaction is this 
         //how is time represented 
@@ -27,13 +27,13 @@ namespace TradingSim.Model
 
         }
 
-        public int OptionId
+        public uint OptionId
         {
             get { return _optionId; }
             set
             {
                 _optionId = value;
-                RaisePropertyChanged("StockName");
+                RaisePropertyChanged("OptionId");
             }
 
         }

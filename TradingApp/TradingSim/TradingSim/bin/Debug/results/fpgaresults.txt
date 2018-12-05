@@ -1,6 +1,6 @@
 #stock,optionid,fairprice,time
-cars1,234,2,2 
-cars2,124,2,3
-cars3,234,1,1
-cars4,234,1,1
-cars4,234,1,4  
+234,2,2 
+124,2,3
+234,1,1
+234,1,1
+234,1,4  

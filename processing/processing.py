@@ -185,6 +185,7 @@ if __name__ == "__main__":
         result_file = sys.argv[3]
 
         if sys.argv[1] in "process":
+            print("hello")
             save_file_place(orig_file, result_file)
         elif sys.argv[1] in "raw":
             total_rows = sys.argv[4]

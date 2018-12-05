@@ -30,11 +30,10 @@ namespace TradingSim
         public Graph()
         {
             InitializeComponent();
-            var r = new Random();
 
 
             var dayConfig = Mappers.Xy<DateModel>()
-               .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
+               .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromMilliseconds(1).Ticks)
                 .Y(dateModel => dateModel.Value);
 
 
@@ -48,59 +47,24 @@ namespace TradingSim
             var CpulineSeries = new LineSeries
             {
                 Values = CpuValues,
-                StrokeThickness = 4,
+                StrokeThickness = 1,
                 Fill = Brushes.Transparent,
-                PointGeometrySize = 15,
-                DataLabels = true
+                PointGeometrySize = 4,
             };
 
 
             SeriesCollection = new SeriesCollection(dayConfig) { CpulineSeries };
 
-            Formatter = value => new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks)).ToString("mm:ss.fff");
+            Formatter = value => new DateTime((long)(value * TimeSpan.FromMilliseconds(1).Ticks)).ToString("ss.ffff");
 
             DataContext = this;
-            {
-                /*
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> { 4, 6, 5, 2 ,4 }
-                }*/
-                /*
-                new LineSeries
-                {
-                    Values = new ChartValues<ObservablePoint>
-                    {
-                        new ObservablePoint(1, 5),
-                        new ObservablePoint(10, 6),
-                        new ObservablePoint(15, 4),
-                        new ObservablePoint(23, 2),
-                        new ObservablePoint(26, 8),
-                        new ObservablePoint(28, 2),
-                        new ObservablePoint(30, 9),
-                        new ObservablePoint(3, 8)
-                    }
-                }
-
-            };
-
-
-            YFormatter = value => value.ToString("C");
-
-            SeriesCollection.Values.Add(new ; 
-            Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
-            // CpuChartX = new ChartValues<double> { 1, 2, 3, 4 };
-            // CpuChartY = new ChartValues<double> { 1, 3, 6, 9 };
-
-            // Labels.Add()
-            DataContext = this;*/
-            };
+     
+           
         }
 
         private List<DateModel> GetTimeGraphValues(List<Data> input)
         {
-            //var output = input.ToList<DateModel>(x => x.CpuValues)
+            //var output = input.ToList<sDateModel>(x => x.CpuValues)
             //return new List<DateModel>(input) {
             //    -> ; 
             DateTime baseTime = new DateTime(0); 
@@ -124,18 +88,7 @@ namespace TradingSim
         public SeriesCollection SeriesCollection { get; set; }
 
 
-        /*
-        private void RandomizeOnClick(object sender, RoutedEventArgs e)
-        {
-            var r = new Random();
-            for (var i = 0; i < 20; i++)
-            {
-                CpuChart[i].X = r.NextDouble() * 10;
-                CpuChart[i].Y = r.NextDouble() * 10;
-                FpgaChart[i].X = r.NextDouble() * 10;
-                FpgaChart[i].Y = r.NextDouble() * 10;
-            }
-        }*/
+     
     }
 }
 
