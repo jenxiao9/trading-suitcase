@@ -96,7 +96,7 @@ module UARTTOMEM(
         endcase
     end
 endmodule
-module VarCount #(parameter WIDTH=10, parameter DEFAULT_VAL=1, parameter INC_AMT=1)(
+module VarCount #(parameter WIDTH=10, parameter DEFAULT_VAL=0, parameter INC_AMT=1)(
    input  logic clock,
    input  logic reset,
    input  logic clock_en, clear,

@@ -3,7 +3,7 @@ import binascii
 import time
 ser = serial.Serial(
     port="COM4",
-    baudrate=115200,
+    baudrate=64000,
     bytesize=serial.EIGHTBITS)
 
 package = "" 
@@ -21,7 +21,11 @@ def send_uart_package(package):
 def read_back():
     global ser
     while ser.inWaiting()>0:
-        print(hex((int.from_bytes(ser.read(), byteorder ='big'))))
+        return ser.read()
+    return None
+
+    # return None
+    #(hex((int.from_bytes(ser.read(), byteorder ='big'))))
 
 def main():
     global ser
