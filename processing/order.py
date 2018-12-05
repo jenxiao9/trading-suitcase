@@ -41,27 +41,21 @@ class Order:
 
         self.packet = bytearray([])
         option_id = chr_rep(self.option_id)
-        print(option_id)
         self.packet.extend(option_id)
 
         price_opt = chr_rep(self.price_opt)
-        print("id is, len is %d" %( len(price_opt)))
         self.packet.extend(price_opt)
 
         strike = chr_rep(self.strike)
-        print("id is, len is %d" %( len(strike)))
         self.packet.extend(strike)
 
         r = chr_rep(self.r)
-        print("id is, len is %d" %( len(r)))
         self.packet.extend(r)
 
         iv = chr_rep(self.iv)
-        print("id is, len is %d" %( len(iv)))
         self.packet.extend(iv)
 
         expiration_yrs = chr_rep(self.expiration_yrs)
-        print("id is, len is %d" %( len(expiration_yrs)))
         self.packet.extend(expiration_yrs)
 
         call_put = int_chr_rep(self.call_put)

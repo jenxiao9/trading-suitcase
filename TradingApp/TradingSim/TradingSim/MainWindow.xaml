@@ -1,0 +1,75 @@
+﻿<Window x:Class="TradingSim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradingSim"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="BlackScholesSimulator" Height="Auto" Width="900">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FontFamily" Value="Arial"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <StackPanel Width="300">
+                <Button Margin="10,10,10,0" Click="Start_Button_Click" Width="100" HorizontalAlignment="Left">New Round</Button>
+                <TextBlock Margin="10"> Time Remaining</TextBlock>
+
+
+                <TextBlock Margin="10,10,10,0"> FPGA</TextBlock>
+                <StackPanel Margin ="10,0,10,0" Name="FPGA">
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,0">Stock:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="stock_fpga" ></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,0">Fair Price:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="fairprice_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,0">Transaction:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="transaction_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,0">Calculation Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="time_fpga"></TextBlock>
+                    </DockPanel>
+                </StackPanel>
+                <TextBlock Margin ="10,10,10,0">CPU</TextBlock>
+                <StackPanel Margin ="10,0,10,0" Name="CPU">
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,0">Stock:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="stock_cpu" ></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Name="fairprice" Margin="10,0,10,0">Fair Price:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="fairprice_cpu" ></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Name="transaction" Margin="10,0,10,0">Transaction:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="transaction_cpu" ></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Name="calculation" Margin="10,0,10,0">Calculation Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,0" Name="time_cpu" ></TextBlock>
+                    </DockPanel>
+
+                    <TextBlock Name="testing"></TextBlock>
+                </StackPanel>
+                <Button Margin="10,0,10,0" Width="100" HorizontalAlignment="Left"  Click="Resume_Button_Click" >Continue Round</Button>
+                <Button Margin="10" Width="100" HorizontalAlignment="Left"  Click="Stop_Button_Click">Pause Round</Button>
+            </StackPanel>
+
+            <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}" Margin="0,0,0,10" Width="544" AnimationsSpeed="0:0:0.1">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+        </DockPanel>
+
+    </Grid>
+</Window>
