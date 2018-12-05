@@ -26,6 +26,7 @@ module Top();
   logic  [1:0] addrSelect;
   logic  RX;
   logic  [7:0] LED;
+  logic testSpot;
 /////////////////////////////////////////////
   int i,j,k;
   assign BS_READY = BS_START;
@@ -80,17 +81,30 @@ module Top();
   endtask
   initial begin
     reset=0;
+    testSpot=0;
     RX=1;
-    fakePackets[0]=192'h12345679_3F800000_3F8CCCCD_40000000_40400000_40000000;
-    fakePackets[1]=192'h21323123_3F800000_3F8CCCCD_40000000_40400000_40000000;
-    fakePackets[2]=192'h44444444_3F800000_3F8CCCCD_40000000_40400000_40000000;
-    fakePackets[3]=192'h55555555_3F800000_3F8CCCCD_40000000_40400000_40000000;
-    fakePackets[4]=192'h66666666_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[0]=192'h4f0cc60a_4297cccd_428c0000_3cdb37ca_3fbbedfa_3a607038;
+//12345679_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[1]=192'h4e2e334e4297cccd428c00003cdb37ca3f771de73a607038;
+    //21323123_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[2]=192'h4f4007034297cccd428f00003cdb37ca3f55119d3a607038;
+    //44444444_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[3]=192'h4efb25164297cccd428f00003cdb37ca3f55119d3a607038;
+    //55555555_3F800000_3F8CCCCD_40000000_40400000_40000000;
+    fakePackets[4]=192'h4f721b044297cccd429000003cdb37ca3f5b98c83a607038;
+    //66666666_3F800000_3F8CCCCD_40000000_40400000_40000000;
     #1 reset=1;
     #1 reset=0;
     #1 startSystem=1;
     #5 sendPack();
-    #7500 $finish;
+    testSpot=1;
+    #100;
+    #5 sendPack();
+    #1 reset=1;
+    #1 reset=0;
+    #5 sendPack();
+    //#5 sendPack();
+    #1500 $finish;
 
   end
 ///////////////////////////////////////
