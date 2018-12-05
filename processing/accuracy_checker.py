@@ -30,7 +30,6 @@ def accuracy_check(file1, file2, outputfile):
     
     c_file.close()
 
-
     fpga_file = open(file2, 'r')
     fpga_reader = csv.reader(fpga_file, delimiter=",")
     for row in fpga_reader:
