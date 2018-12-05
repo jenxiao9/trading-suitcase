@@ -1,0 +1,6 @@
+#stock,optionid,fairprice,time
+apple1,234,5,5 
+apple2,124,4,4
+apple3,234,3,3
+apple4,234,2,2
+apple5,234,1,1
