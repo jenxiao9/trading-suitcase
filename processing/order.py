@@ -40,8 +40,9 @@ class Order:
     def pkt(self):
 
         self.packet = bytearray([])
-        option_id = chr_rep(self.option_id)
+        option_id = int_chr_rep(self.option_id)
         self.packet.extend(option_id)
+        #print("My option id is: %x" %(int.from_bytes(option_id, byteorder="big")))
 
         price_opt = chr_rep(self.price_opt)
         self.packet.extend(price_opt)
@@ -57,8 +58,6 @@ class Order:
 
         expiration_yrs = chr_rep(self.expiration_yrs)
         self.packet.extend(expiration_yrs)
-
-        call_put = int_chr_rep(self.call_put)
 
         '''
         pkt is: [191:161] id
