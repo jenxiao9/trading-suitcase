@@ -1,18 +1,19 @@
 import serial
 import binascii
 import time
-
-try:
-    ser = serial.Serial(
-    port="COM4",
-    baudrate=64000,
+ser = serial.Serial(
+    port="/dev/ttyUSB0",
+    baudrate=115200,
     bytesize=serial.EIGHTBITS)
-except:
-    ser = None
 
 package = "" 
 
 #creates the package to send to fpga
+def closer():
+  while ser.inWaiting()>0:
+    ser.read()
+  ser.flush()
+  ser.close()
 def create_package(option_id):
     global package 
     package = 15
@@ -20,14 +21,16 @@ def create_package(option_id):
 
 def send_uart_package(package):
     global ser 
-    x = ser.write(b)
+    for b in package:
+        b=bytes([b])
+        ser.write(b)
+        #ser.flush()
+        time.sleep(.005)
     ser.flush()
-    return x
-
 def read_back():
     global ser
     while ser.inWaiting()>0:
-        return ser.read()
+      return ser.read()
     return None
 
     # return None
