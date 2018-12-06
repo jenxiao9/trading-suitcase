@@ -1,4 +1,5 @@
 import sys
+
 import csv
 import order
 import datetime
@@ -9,7 +10,7 @@ import time
 import blackscholes
 import struct
 
-TOTAL_ROWS = 5
+TOTAL_ROWS = 3
 
 def raw_data(file, output_file, total_rows = TOTAL_ROWS):
     rows = 0
@@ -153,10 +154,8 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             data.send_uart_package(pkt)
             time.sleep(1)
-            '''
             fpga_out = read_packet()
             fpga_out_str = parse_fpga_data(fpga_out)
-            '''
             s = x.s
             print(s,end='')
             print("The answer is: %f\n" %(answer))
@@ -168,7 +167,7 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             if rows == total_rows:
                 break
-        
+    data.closer()
     f.close()
     rf.close()  
 
