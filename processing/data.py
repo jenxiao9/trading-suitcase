@@ -1,10 +1,14 @@
 import serial
 import binascii
 import time
-ser = serial.Serial(
+
+try:
+    ser = serial.Serial(
     port="COM4",
     baudrate=64000,
     bytesize=serial.EIGHTBITS)
+except:
+    ser = None
 
 package = "" 
 
@@ -16,9 +20,9 @@ def create_package(option_id):
 
 def send_uart_package(package):
     global ser 
-    for b in package:
-        ser.write(b)
-        time.sleep(.01)
+    x = ser.write(b)
+    ser.flush()
+    return x
 
 def read_back():
     global ser
