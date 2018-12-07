@@ -33,9 +33,7 @@ def accuracy_check(file1, file2, outputfile):
     fpga_reader = csv.reader(fpga_file, delimiter=",")
     for row in fpga_reader:
         if len(row) != 3:
-            raise Exception('''Row in CSV does not have expected length. 
-                Should have 3 items but only has %d''' %len(row))
-
+            continue
         [option_id, price, timing] = row
 
         if option_id not in results:
