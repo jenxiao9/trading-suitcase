@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TradingSim"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="AnimatedGUI" Height="600" Width="1000">
+        Title="AnimatedGUI" Height="700" Width="Auto">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="12"></Setter>
@@ -47,7 +47,7 @@
                         <TextBlock Margin="10,0,10,10" Name="transaction_fpga"></TextBlock>
                     </DockPanel>
                     <DockPanel>
-                        <TextBlock Margin="10,0,10,10">Calculation Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,10">Time Elapsed:</TextBlock>
                         <TextBlock Margin="10,0,10,10" Name="time_fpga"></TextBlock>
                     </DockPanel>
                     <DockPanel>
@@ -75,7 +75,7 @@
                         <TextBlock Margin="10,0,10,10" x:Name="transaction_cpu" />
                     </DockPanel>
                     <DockPanel>
-                        <TextBlock x:Name="calculation" Margin="10,0,10,10"><Run Text="Calculation Time:"/></TextBlock>
+                        <TextBlock x:Name="calculation" Margin="10,0,10,10"><Run Text="Time Elapsed:"/></TextBlock>
                         <TextBlock Margin="10,0,10,10" x:Name="time_cpu" />
                     </DockPanel>
                     <DockPanel>
@@ -86,7 +86,8 @@
                         <TextBlock Margin="10,0,10,10">Call or Put:</TextBlock>
                         <TextBlock Margin="10,0,10,10" Name="callput_cpu"></TextBlock>
                     </DockPanel>
-                    <TextBlock>Is it accurate within ___ ? </TextBlock>
+                    
+                    <TextBlock>Is it accurate within 0.001 error margin? </TextBlock>
                     <TextBlock x:Name="accuracy"/>
                 </StackPanel>
 
@@ -97,7 +98,7 @@
             </StackPanel>
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Margin="10">Calculations Over Time</TextBlock>
-                <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}"  Margin="0,0,0,10" Width="600" Height="473" AnimationsSpeed="0:0:0.005">
+                <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="0,0,0,10" Width="Auto" Height="500" AnimationsSpeed="0:0:0.005">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="time(ms)" LabelFormatter="{Binding Formatter}"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>

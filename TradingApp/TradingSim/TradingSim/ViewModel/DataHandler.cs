@@ -26,12 +26,11 @@ namespace TradingSim.ViewModel
         //Directory of our project
         public static string rootDirectory = "C:/Users/Xinna/trading-suitcase";
         //Maybe change code to Directory.GetParent(); 
-        //Directory with all the src files 
-        public static string srcDirectory = "C:/Users/Xinna/c_data_files/";
         //Directory with c_results 
-        public static string resultsDirectory_FPGA = "C:/Users/Xinna/fpga_results/";
+        public static string resultsDirectory_FPGA = "../../fpga_results/";
         //Directory with fpga_results 
-        public static string resultsDirectory_CPU = "C:/Users/Xinna/c_results/";
+        //public static string resultsDirectory_CPU = "C:/Users/Xinna/c_results/";
+        public static string resultsDirectory_CPU = "../../c_results/";
         //Directory with hash 
         public static string hashDirectory = "C:/Users/Xinna/oil/";
         //Directory with python comparison 
@@ -203,16 +202,17 @@ namespace TradingSim.ViewModel
         }
 
         //Runs python script which prints out accuracy
-        public static void GetAccuracy() 
+        public static string GetAccuracy() 
         {
             //MainWindow.Run_
             string script = "C:/Users/Xinna/trading-suitcase/processing/accuracy_checker.py";
-            //string args = script + " " + fpgaPath + " " + accuracyPath + " " + "results.txt";
+            //string args = script + " " + fpgaPath + " " + cpuPath + " " + "results.txt";
             string args = script + " " + fpgaPath + " " + cpuPath + " " + "results.txt";
             string results = Run_CMD(script, args);
-             
-        
-}
+            return results; 
+                    
+        }
+
         public string GetToday()
         {
             return Today; 

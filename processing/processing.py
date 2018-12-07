@@ -247,7 +247,7 @@ if __name__ == "__main__":
                 raw_data(orig_file, result_file)
         elif sys.argv[1] == "send":
             i = int(sys.argv[2])
-            file = os.path.join("../../c_data_files", "%05d_c_data.txt" %(i))
+            file = os.path.join("C:/Users/Xinna", "c_data_files" , "%05d_c_data.txt" %(i))
 
             if len(sys.argv) >3:
                 port = sys.argv[3]

@@ -83,6 +83,7 @@ namespace TradingSim
 
             var CpulineSeries = new LineSeries
             {
+                Title = "CPU",
                 Values = CpuValues,
                 StrokeThickness = 1,
                 Fill = Brushes.Transparent,
@@ -91,6 +92,7 @@ namespace TradingSim
 
             var FpgalineSeries = new LineSeries
             {
+                Title = "FPGA",
                 Values = FpgaValues,
                 StrokeThickness = 1,
                 Fill = Brushes.Transparent,
@@ -155,7 +157,9 @@ namespace TradingSim
             Console.WriteLine("Today is");
 
 
-
+            string accur = DataHandler.GetAccuracy();
+            Console.WriteLine(accur); 
+            accuracy.Text = "bery accurate"; 
             timerFPGA.Start();
 
         }
@@ -177,6 +181,10 @@ namespace TradingSim
 
         void timerCpu_Tick(object sender, EventArgs e)
         {
+            if (cpuQueue.Count == 0)
+            {
+                timerCpu.Stop();
+            }
             timerCpu.Stop();
             try
             {
@@ -212,6 +220,10 @@ namespace TradingSim
 
         void timerFPGA_Tick(object sender, EventArgs e)
         {
+            if (fpgaQueue.Count == 0)
+            {
+                timerFPGA.Stop();
+            }
             timerFPGA.Stop();
             try
             {

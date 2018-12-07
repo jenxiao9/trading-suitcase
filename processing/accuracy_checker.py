@@ -16,6 +16,8 @@ def accuracy_check(file1, file2, outputfile):
 
     results = dict()
 
+    print(file1)
+    print(file2)
     c_file = open(file1, "r")
     # should have: option_id, price, timing - "%u, %.18f, %.18f\n"
     # parse out option_id and store prices

@@ -21,6 +21,7 @@ using LiveCharts.Wpf;
 using LiveCharts.Configurations;
 using System.Runtime.Serialization;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace TradingSim
 {
@@ -29,19 +30,22 @@ namespace TradingSim
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         //Subject to change 
-        //String pythonScript = "C:/Users/Xinna/trading-suitcase/processing/processing.py";
+        string pythonScript = "C:/Users/Xinna/trading-suitcase/processing/processing.py";
+        string socketScript = "C:/Users/Xinna/trading-suitcase/processing/client.py";
         //String python 
         //String pythonScript = "C:/Users/Xinna/trading-suitcase/processing.txt"; 
-        public string pythonScript = "C:/Users/Xinna/trading-suitcase/processing/testing.py";
-        public int file_counter; 
+        //public string pythonScript = "C:/Users/Xinna/trading-suitcase/processing/testing.py";
+        //Directory with all the src files 
+        public static string srcDirectory = "C:/Users/Xinna/c_data_files/";
+        public int file_counter;
         public MainWindow()
         {
 
             InitializeComponent();
-            DataContext = this; 
+            DataContext = this;
 
         }
 
@@ -49,23 +53,49 @@ namespace TradingSim
         //
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            file_counter = 0; 
-            AnimatedGUI subWindow = new AnimatedGUI(this);
-            subWindow.Show();
+            File_Counter ++;
+
         }
 
         private void BeginSending(object sender, RoutedEventArgs e)
         {
 
-            string argv2 = DataHandler.generate_start(file_counter); 
+            string argv2 = DataHandler.generate_start(file_counter);
 
-            string args = pythonScript + " processing C:/Users/Xinna/trading-suitcase/processing/rawShortData.txt C:/Users/Xinna/trading-suitcase/processing/outputlol";
-            Begin_Button.IsEnabled = false;
-            Console.WriteLine(DataHandler.Run_CMD(pythonScript,args));
+            string filepath = argv2 + "_c_data.txt";
+            string args1 = socketScript + " " + file_counter.ToString();
+            string args2 = pythonScript + " send " + file_counter.ToString() + " COM4";
+
+
+            DataHandler.Run_CMD(socketScript, args1);
+            DataHandler.Run_CMD(pythonScript, args2);
             Begin_Button.IsEnabled = true;
-            file_counter++;
+            AnimatedGUI subWindow = new AnimatedGUI(this);
+            subWindow.Show();
+           
         }
 
+        public int File_Counter
+        {
+            get { return file_counter; }
+            set
+            {
+                file_counter = value;
+                RaisePropertyChanged("File_Counter");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
     }
+
 }
