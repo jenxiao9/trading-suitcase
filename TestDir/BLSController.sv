@@ -23,7 +23,7 @@
 
 //SERVE_REG is a signal which goes out to the data controller to fetch the next values for that register.
 //parameter BSMODS=1;
-parameter BSMODS=1;
+parameter BSMODS=2;
 parameter DATASIZE=192;
 module BLSController(
     input logic clock, reset, startSystem,OutOfData,
@@ -36,7 +36,7 @@ module BLSController(
     output logic [BSMODS-1:0] SERVE_REG,
     output logic [7:0] LED
     );
-    logic[$clog2(BSMODS)-1:0] i;
+    logic[4:0] i;
     logic [7:0] Clocks;
     logic clear, ClockCntEn;
     logic clearActive, ActiveCntInc, ActiveCntDec;
@@ -92,7 +92,7 @@ module BLSController(
                 nextState=RUN;
                 ClockCntEn=1;
             //END DEFAULT ASSIGNMENTS
-                for (i=0; i<BSMODS; i++) begin: runloop
+                for (i=0; i<BSMODS; i=i+1) begin: runloop
                     if (hasUnusedData[i]) begin
                         if (REG_READY[i]) begin
                             ActivateLine[i]=1'b1;

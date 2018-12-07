@@ -19,8 +19,8 @@
 // Additional Comments:
 // /w
 //////////////////////////////////////////////////////////////////////////////////
-//parameter BSMODS=1;
-//parameter DATASIZE=192;
+parameter BSMODS=2;
+parameter DATASIZE=192;
 /*
 module Top();
 
@@ -100,7 +100,7 @@ module DataManager(
     );
     enum logic [1:0] {NODATA, HASDATA, WAITDATA} currentState,nextState;
     logic [29:0] addrACount;
-    logic[$clog2(BSMODS)-1:0] i;
+    logic[4:0] i;
     logic [3:0] ReadNum;
     logic [DATASIZE-1:0] fullPackReg;
     logic shiftFullPack;
@@ -157,14 +157,14 @@ module DataManager(
                 if (ReadNum>=4'd5) begin
                     clearReadNum=1'b1;
                     incAddrACount=1'b0;
-                    if(addrACount<30'd30) begin
+                    if(addrACount<30'd96) begin
                         nextState=HASDATA;
                     end
                     else begin
                         nextState=NODATA;
                         clearAddrACount=1'b1;
                     end
-                    for (i=0; i<BSMODS; i++) begin: runloop
+                    for (i=0; i<BSMODS; i=i+1) begin: runloop
                         if (SERVE_REG[i]) begin
                             regEn[i]=1'b1;
                             break;

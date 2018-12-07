@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 module ControlModule(
-    input logic clock, reset, RX,
+    input logic clock, reset, RX_i,
     output logic done,
     output logic [7:0] UART_DATA
     );
@@ -37,8 +37,20 @@ module ControlModule(
     logic [7:0] data_buf;
     logic [7:0] sreg;
     logic clear_sreg;
+    logic RX_1,RX;
+    always_ff @(posedge clock, posedge reset) begin
+        if (reset) begin
+            RX<=0;
+            RX_1<=0;
+        end
+        else begin
+            RX<=RX_1;
+            RX_1<=RX_i;
+        end
+    end
     assign bit_in=RX;
     assign UART_DATA=sreg;
+    
     //start bit is 0, look for drop from 1 to 0 
     enum logic [2:0] {IDLE, START_B, DATA, END_B, CLEANUP} state, nextState;
 
@@ -85,7 +97,7 @@ module ControlModule(
                      counter_en = 1; //begin sampling
                      counter_clear = 0; 
                      //past half  
-                     if (clk_counter == 14'd434)
+                     if (clk_counter == 14'd1302)
                      begin
                          //encounters start bit
                          if (bit_in == 0) begin  
@@ -110,11 +122,11 @@ module ControlModule(
                      bit_clear = 0; 
                      bit_en = 0;
                      //nextState=DATA;
-                    if (clk_counter == 14'd434) begin
+                    if (clk_counter == 14'd1302) begin
                          bit_en=1;
                          data_buf[bit_counter] = bit_in;
                      end
-                     else if (clk_counter == 14'd868) 
+                     else if (clk_counter == 14'd2604) 
                      begin
                          //counter_en = 0;
                          counter_clear = 1;
@@ -131,7 +143,7 @@ module ControlModule(
                      counter_en = 1; 
                      counter_clear = 0; 
 
-                     if (clk_counter < 14'd868)
+                     if (clk_counter < 14'd2604)
                      begin
                          counter_en = 1;
 
