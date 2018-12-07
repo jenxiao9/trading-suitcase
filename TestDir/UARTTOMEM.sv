@@ -82,7 +82,7 @@ module UARTTOMEM(
                         end
                     endcase
                 end
-                if (addrACount>=30'd30) begin
+                if (addrACount>=30'd96) begin
                     nextState=DONE;
                     clearAddrACount=1'b1;
                     clearWritePos=1'b1;

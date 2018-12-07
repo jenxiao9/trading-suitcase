@@ -11,7 +11,7 @@ import msvcrt as m
 
 
 
-TOTAL_ROWS = 10
+TOTAL_ROWS = 3
 
 def wait():
     m.getch()
