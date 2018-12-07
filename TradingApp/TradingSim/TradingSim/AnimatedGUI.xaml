@@ -1,0 +1,113 @@
+﻿<Window x:Class="TradingSim.AnimatedGUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradingSim"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="AnimatedGUI" Height="600" Width="1000">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+            <Setter Property="Background" Value="#FFB3F5FF"></Setter>
+            <Setter Property="BorderBrush" Value="#FFB3F5FF"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel Name="testingdock">
+            <StackPanel Width="300">
+                <Button Margin="10,10,10,0" Click="Start_Button_Click" Width="100" HorizontalAlignment="Left">New Round</Button>
+                <Button Margin="10,10,10,10" Click="Show_Instant" Width="100" HorizontalAlignment="Left">Show Graph</Button>
+
+             
+                <DockPanel>
+                    <TextBlock Margin="10,10,10,10" FontSize="17">Today is:</TextBlock>
+                    <TextBlock Margin="10,10,10,10" FontSize="17" Name="today"></TextBlock>
+                </DockPanel>
+
+                <TextBlock Margin="10,10,10,10"> FPGA</TextBlock>
+                <StackPanel Margin ="10,0,10,10" Name="FPGA">
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Stock:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="stock_fpga" ></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Fair Price:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="fairprice_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Transaction:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="transaction_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Calculation Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="time_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Expiration Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="expiry_fpga"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Call or Put:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="callput_fpga"></TextBlock>
+                    </DockPanel>
+
+                </StackPanel>
+                <TextBlock Margin ="10,10,10,10"><Run Text="CPU"/></TextBlock>
+                <StackPanel Margin ="10,0,10,10" x:Name="CPU">
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10"><Run Text="Stock:"/></TextBlock>
+                        <TextBlock Margin="10,0,10,10" x:Name="stock_cpu" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock x:Name="fairprice" Margin="10,0,10,10"><Run Text="Fair Price:"/></TextBlock>
+                        <TextBlock Margin="10,0,10,10" x:Name="fairprice_cpu" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock x:Name="transaction" Margin="10,0,10,10"><Run Text="Transaction:"/></TextBlock>
+                        <TextBlock Margin="10,0,10,10" x:Name="transaction_cpu" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock x:Name="calculation" Margin="10,0,10,10"><Run Text="Calculation Time:"/></TextBlock>
+                        <TextBlock Margin="10,0,10,10" x:Name="time_cpu" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Expiration Time:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="expiry_cpu"></TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Margin="10,0,10,10">Call or Put:</TextBlock>
+                        <TextBlock Margin="10,0,10,10" Name="callput_cpu"></TextBlock>
+                    </DockPanel>
+                    <TextBlock>Is it accurate within ___ ? </TextBlock>
+                    <TextBlock x:Name="accuracy"/>
+                </StackPanel>
+
+                <Button Name="resumebutton" Margin="10,0,10,0" Width="100" HorizontalAlignment="Left"  Click="Resume_Button_Click" >Continue Round</Button>
+                <Button Name="stopbutton"  Margin="10" Width="100" HorizontalAlignment="Left"  Click="Stop_Button_Click">Pause Round</Button>
+
+                
+            </StackPanel>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Margin="10">Calculations Over Time</TextBlock>
+                <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}"  Margin="0,0,0,10" Width="600" Height="473" AnimationsSpeed="0:0:0.005">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="time(ms)" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="calculations"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </StackPanel>
+          
+        </DockPanel>
+
+    </Grid>
+</Window>
