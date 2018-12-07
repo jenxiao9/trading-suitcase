@@ -25,6 +25,9 @@ def run_benchmark_num(s, i):
         cmd = "benchmark %s" %i
 
     s.send(bytes(cmd.encode('utf-8')))
+
+    c_dir = 
+
     if not os.path.isdir('../../c_results'):
         os.mkdir('../../c_results')
 
@@ -38,12 +41,12 @@ def run_benchmark_num(s, i):
         f.write(data.decode("utf-8"))
         data = s.recv(1024)
         while data:
-            f.write(data.decode("utf-8"))
-            data = s.recv(1024)
             if not data:
                 break
             if data.decode('utf-8') == "done_file":
                 break
+            f.write(data.decode("utf-8"))
+            data = s.recv(1024)
 
     print("closing")
     s.close()
