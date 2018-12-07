@@ -15,6 +15,7 @@
 #include <pmmintrin.h>
 #include <time.h>
 #include <pthread.h>
+#include "rdtsc.h"
 
 pthread_mutex_t lock;
 
@@ -71,20 +72,18 @@ pthread_mutex_t lock;
 #include "optimizations.h"
 #endif
 
-#define NUM_RUNS 100
+
+#define NUM_RUNS 1000
 
 typedef struct OptionData_ {
         unsigned option_id;  // identifier for option
 	fptype s;          // spot price
         fptype strike;     // strike price
         fptype r;          // risk-free interest rate
-//        fptype divq;       // dividend rate
         fptype v;          // volatility
         fptype t;          // time to maturity or option expiration in years 
                            //     (1yr = 1.0, 6mos = 0.5, 3mos = 0.25, ..., etc)  
         char OptionType;   // Option type.  "P"=PUT, "C"=CALL
-//        fptype divs;       // dividend vals (not used in this test)
-//        fptype DGrefval;   // DerivaGem Reference Value
         
 } OptionData;
 
@@ -140,7 +139,7 @@ MUSTINLINE void CNDF ( fptype * OutputX, fptype * InputX )
 #ifdef OPT
         expValues[i] = fast_exp(-0.5f * InputX[i] * InputX[i]);
 #else
-        expValues[i] = exp(-0.5f * InputX[i] * InputX[i]);
+        expValues[i] = expf(-0.5f * InputX[i] * InputX[i]);
 #endif
     }
     
@@ -232,7 +231,7 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
     xSqrtTime = _MM_SQRT(xTime);
 
     for(i=0; i<SIMD_WIDTH;i ++) {
-        logValues[i] = log(sptprice[i] / strike[i]);
+        logValues[i] = logf(sptprice[i] / strike[i]);
     }
 
     xLogTerm = _MM_LOAD(logValues);
@@ -258,7 +257,7 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
 #ifdef OPT
         FutureValueX[i] = strike[i] * (fast_exp(-(rate[i])*(time[i])));
 #else	    
-        FutureValueX[i] = strike[i] * (exp(-(rate[i])*(time[i])));
+        FutureValueX[i] = strike[i] * (expf(-(rate[i])*(time[i])));
 #endif
         if (otype[i] == 0) {
             OptionPrice[i] = (sptprice[i] * NofXd1[i]) - (FutureValueX[i] * NofXd2[i]);
@@ -269,14 +268,10 @@ void BlkSchlsEqEuroNoDiv (fptype * OptionPrice, int numOptions, fptype * sptpric
             OptionPrice[i] = (FutureValueX[i] * NegNofXd2[i]) - (sptprice[i] * NegNofXd1[i]);
         }
 
-/*        pthread_mutex_lock(&lock);
-	printf("option price result is: %f\n", OptionPrice[i]);
-        printf("start_time is: %f\n", start_time);
-        printf("finished at: %d\n", (double) finished);
-	pthread_mutex_unlock(&lock);
-*/
+#ifdef TIMING
         finished = clock();
 	i_finish_time[i] = (double)(finished - start_time);
+#endif
     }
 
 }
@@ -298,14 +293,15 @@ int bs_thread(int id)
             // Calling main function to calculate option value based on Black & Scholes's
             // equation.
 	    //
-	    printf("spt: %f strike %f rate %f vol %f otime %f otype %hhu \n", sptprice[i], strike[i], rate[i], volatility[i], otime[i], otype[i]);
 
             BlkSchlsEqEuroNoDiv(price, NCO, &(sptprice[i]), &(strike[i]),
 			  &(rate[i]), &(volatility[i]), &(otime[i]), &(otype[i]), i_finish_time);
             for (int k=0; k<NCO; k++) {
 	        prices[i+k] = price[k];
+#ifdef TIMING
 		finish_time[i+k] = i_finish_time[k];
-            }
+#endif
+	    }
         }
     }
     return 0;
@@ -373,10 +369,11 @@ int main (int argc, char **argv)
             if (line != NULL) {
                 rv = sscanf(line, "{%u,%f,%f,%f,%f,%f,%c},\n", &data[loopnum].option_id, &data[loopnum].s, &data[loopnum].strike, &data[loopnum].r, &data[loopnum].v, &data[loopnum].t, &data[loopnum].OptionType);
 		int ll=0;
-		printf("%d\n", sizeof(unsigned));
+		/*
 		printf("%s",line);
 		printf("rv = %d, option ID: %u, spt: %f, strike: %f \n", rv, data[loopnum].option_id, data[loopnum].s, data[loopnum].strike);
-            }	       
+                */
+	    }	       
             if (line == NULL){
 	        printf("NULL");
             }	       
@@ -451,14 +448,17 @@ int main (int argc, char **argv)
       printf("ERROR: Unable to open file `%s'.\n", outputFile);
       exit(1);
     }
+    /*
     rv = fprintf(file, "%i\n", numOptions);
     if(rv < 0) {
       printf("ERROR: Unable to write to file `%s'.\n", outputFile);
       fclose(file);
       exit(1);
     }
-    for(i=0; i<numOptions; i++) {
-      rv = fprintf(file, "%u, %.18f, %.18f\n", option_id[i], prices[i], finish_time[i]);
+    */
+    
+    for(i=1; i<numOptions; i++) {
+      rv = fprintf(file, "%u, %.18f, %f\r\n", option_id[i], prices[i], finish_time[i]);
     //  printf("THIS IS WHAT SHOULD GET PRINTED: %f and this is i = %d \n", prices[i], i);
       if(rv < 0) {
         printf("ERROR: Unable to write to file `%s'.\n", outputFile);
