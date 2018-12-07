@@ -41,6 +41,7 @@ namespace TradingSim
         //Directory with all the src files 
         public static string srcDirectory = "C:/Users/Xinna/c_data_files/";
         public int file_counter;
+
         public MainWindow()
         {
 

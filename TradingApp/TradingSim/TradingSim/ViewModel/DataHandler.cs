@@ -105,7 +105,7 @@ namespace TradingSim.ViewModel
                 while (!csvParser.EndOfData)
                 {
                     string[] fields = csvParser.ReadFields();
-                    string option_id = fields[0];
+                    string option_id = fields[0].Substring(0, fields[0].Length-4);
                     string stock_id = fields[1];
                     string expiry = fields[2];
                     string strike = fields[3];
@@ -155,7 +155,7 @@ namespace TradingSim.ViewModel
                         OptionId = fields[0],
                         FairPrice = float.Parse(fields[1]),
                         Time = length,
-                        ExpandedData = ExpandedData[fields[0]]  
+                        ExpandedData = ExpandedData[fields[0].Substring(0, fields[0].Length - 4)]  
 
                     };
 
@@ -207,7 +207,7 @@ namespace TradingSim.ViewModel
             //MainWindow.Run_
             string script = "C:/Users/Xinna/trading-suitcase/processing/accuracy_checker.py";
             //string args = script + " " + fpgaPath + " " + cpuPath + " " + "results.txt";
-            string args = script + " " + fpgaPath + " " + cpuPath + " " + "results.txt";
+            string args = script + " " + cpuPath + " " + fpgaPath + " " + "results.txt";
             string results = Run_CMD(script, args);
             return results; 
                     
@@ -234,12 +234,12 @@ namespace TradingSim.ViewModel
             };
 
             p.Start();
-            Console.WriteLine(p.HasExited);
+            //Console.WriteLine(p.HasExited);
             string output = p.StandardOutput.ReadToEnd();
-            Console.WriteLine(output); 
+            //Console.WriteLine(output); 
             p.WaitForExit();
             
-            Console.WriteLine(p.HasExited);
+            //Console.WriteLine(p.HasExited);
 
             //Console.ReadLine();
 

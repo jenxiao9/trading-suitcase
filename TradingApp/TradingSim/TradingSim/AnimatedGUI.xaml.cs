@@ -63,8 +63,10 @@ namespace TradingSim
 
             dataHandler = new DataHandler();
             int i = mainWindow.file_counter;
-            Console.Write("i = ");
-            Console.WriteLine(i);
+            Random k = new Random();
+            int file_num = k.Next(0, 16724); 
+            //Console.Write("file_num = ");
+            //Console.WriteLine(file_num);
             
             dataHandler.LoadData(i);
 
@@ -154,12 +156,14 @@ namespace TradingSim
             timerCpu.Tick += timerCpu_Tick;
             timerCpu.Start();
             timerFPGA.Tick += timerFPGA_Tick;
-            Console.WriteLine("Today is");
+            //Console.WriteLine("Today is");
 
 
             string accur = DataHandler.GetAccuracy();
-            Console.WriteLine(accur); 
-            accuracy.Text = "bery accurate"; 
+            //Console.WriteLine("got here");
+            //Console.WriteLine(accur); 
+            string[] result = accur.Split('\\'); 
+            accuracy.Text = result[0]; 
             timerFPGA.Start();
 
         }
