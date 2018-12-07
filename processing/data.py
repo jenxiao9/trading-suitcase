@@ -28,7 +28,7 @@ def send_uart_package(ser, package):
     for b in package:
         b=bytes([b])
         ser.write(b)
-        time.sleep(.005)
+        time.sleep(.001)
     ser.flush()
 
 def read_back(ser):

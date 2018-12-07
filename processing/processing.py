@@ -42,11 +42,13 @@ def parse_fpga_data(fpga_packet):
     str_rep = "%d, %f, %f" %(option_id, price, time_taken)
     return str_rep
 
-def read_packet():
+def read_packet(ser):
     bytes_read = 0
     read = []
-    while (bytes_read < 12):
-        x = data.read_back()
+    print(ser.inWaiting())
+    while (bytes_read < 24):
+        x = data.read_back(ser)
+        print(x)
         if x is not None:
             read.append(x)
             bytes_read += 1
@@ -93,22 +95,26 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0, f
 
     eof = False
 
-    if not os.path.isdir("../../python_ref"):
-        os.mkdir("../../python_ref")
-    if not os.path.isdir("../../oil"):
-        os.mkdir("../../oil")
-    if not os.path.isdir("../../c_data_files"):
-        os.mkdir("../../c_data_files")
+    py_dir = os.path.join("..", "..", "python_ref")
+    oil_dir = os.path.join("..", "..", "oil")
+    cd_dir = os.path.join("..", "..", "c_data_files")
+
+    if not os.path.isdir(py_dir):
+        os.mkdir(py_dir)
+    if not os.path.isdir(oil_dir):
+        os.mkdir(oil_dir)
+    if not os.path.isdir(cd_dir):
+        os.mkdir(cd_dir)
 
     while not eof:
         print("working on file %d" %files)
         file_num = str(files).zfill(5)
 
-        ref_file = os.path.join("../../python_ref","%s_python_ref.txt" %(file_num))
+        ref_file = os.path.join(py_dir,"%s_python_ref.txt" %(file_num))
         rf = open(ref_file, "w");
-        option_id_list = os.path.join("../../oil", "%s_id_list.txt" %(file_num))
+        option_id_list = os.path.join(oil_dir, "%s_id_list.txt" %(file_num))
         oil = open(option_id_list, "w")
-        output_file = os.path.join("../../c_data_files", "%s_c_data.txt" %(file_num))
+        output_file = os.path.join(cd_dir, "%s_c_data.txt" %(file_num))
         output = open(output_file, 'w')
 
         #necessary for the benchmark files
@@ -179,20 +185,21 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0, f
     f.close()
     return 0
 
-def uart_data_send(file, port = "COM6"):
+def uart_data_send(file, port = "COM6", total_packets = 60):
     f = open(file, "r")
     
     ser = data.open_port(port)
     i = 0
+
     for line in f.readlines():
+
+
         line = line.strip()
         #skip first line
         if(line == "1000"):
             continue
         #hacky hardcoded removing the unnecessary punctuation
         line = line[1:-2]
-        print(i)
-        i+=1
         [option_id, price_opt, strike, r, iv, expiration_yrs, call_put] = line.split(",")
         option_id = int(option_id)
         price_opt = float(price_opt)
@@ -201,20 +208,43 @@ def uart_data_send(file, port = "COM6"):
         iv = float(iv)
         expiration_yrs = float(expiration_yrs)
         x = order.Order((price_opt), (strike), r, (iv), expiration_yrs, call_put, option_id)
+
+
+        try:
+            if call_put == 'C':
+                answer = blackscholes.callPrice(float(price_opt), float(strike), r, float(iv), expiration_yrs)
+            else:
+                call_price = blackscholes.callPrice(float(price_opt), float(strike), r, float(iv), expiration_yrs)
+                answer = blackscholes.put_price(float(price_opt), call_price, float(strike), r, expiration_yrs)
+        except:
+            answer = 0
+
+        print(blackscholes.float_to_hex(answer))
+
         pkt = x.pkt()
-        '''
-        print("this is the packet MSB first: ")
-        print(hex(int.from_bytes(pkt, byteorder='big')))
-        '''
         pkt.reverse()
-        '''
-        print("this is the packet LSB first: ")
-        print(hex(int.from_bytes(pkt, byteorder='big')))
-        '''
 
         data.send_uart_package(ser,pkt)
+        i+=1
+        if i >= total_packets:
+            break
+
+    packets = []
+    packets_read = 0
+    print("done sending")
+    while (packets_read < total_packets):
+        time.sleep(.05)
+        print(ser.inWaiting())
+        x = read_packet(ser)
+        packets.append(x)
+        print(parse_fpga_data(x))
+        packets_read += 1
+
 
     f.close()
+
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
