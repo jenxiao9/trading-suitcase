@@ -1,4 +1,5 @@
 import sys
+
 import csv
 import order
 import datetime
@@ -9,7 +10,7 @@ import time
 import blackscholes
 import struct
 
-TOTAL_ROWS = 5
+TOTAL_ROWS = 3
 
 def raw_data(file, output_file, total_rows = TOTAL_ROWS):
     rows = 0
@@ -18,7 +19,8 @@ def raw_data(file, output_file, total_rows = TOTAL_ROWS):
             for row in f:
                 output.write(row)
                 rows +=1
-                if rows == total_rows:
+                print(rows)
+                if rows >= total_rows:
                     break
 
 def bytes_to_float(b):
@@ -152,10 +154,8 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             data.send_uart_package(pkt)
             time.sleep(1)
-            '''
             fpga_out = read_packet()
             fpga_out_str = parse_fpga_data(fpga_out)
-            '''
             s = x.s
             print(s,end='')
             print("The answer is: %f\n" %(answer))
@@ -167,7 +167,7 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0):
 
             if rows == total_rows:
                 break
-        
+    data.closer()
     f.close()
     rf.close()  
 
@@ -185,8 +185,14 @@ if __name__ == "__main__":
         result_file = sys.argv[3]
 
         if sys.argv[1] in "process":
-            print("hello")
-            save_file_place(orig_file, result_file)
+            if len(sys.argv) == 5:
+                total_rows = int(sys.argv[4])
+                process_orders(orig_file, result_file, total_rows = total_rows)
+            else:
+                process_orders(orig_file, result_file)
         elif sys.argv[1] in "raw":
-            total_rows = sys.argv[4]
-            raw_data(orig_file, result_file, total_rows)
+            if len(sys.argv) == 5:
+                total_rows = int(sys.argv[4])
+                raw_data(orig_file, result_file, total_rows)
+            else:
+                raw_data(orig_file, result_file)
