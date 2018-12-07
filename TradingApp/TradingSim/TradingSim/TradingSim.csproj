@@ -67,11 +67,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AnimatedGUI.xaml.cs">
+      <DependentUpon>AnimatedGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Graph.xaml.cs">
       <DependentUpon>Graph.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InstantGraph.xaml.cs">
+      <DependentUpon>InstantGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExpandedData.cs" />
     <Compile Include="ViewModel\DataHandler.cs" />
+    <Page Include="AnimatedGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Graph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InstantGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

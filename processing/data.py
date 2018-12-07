@@ -2,8 +2,8 @@ import serial
 import binascii
 import time
 ser = serial.Serial(
-    port="COM3",
-    baudrate=64000,
+    port="COM4",
+    baudrate=9600,
     bytesize=serial.EIGHTBITS)
 
 package = "" 

@@ -6,76 +6,21 @@
         xmlns:local="clr-namespace:TradingSim"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="BlackScholesSimulator" Height="Auto" Width="900">
+        Title="BlackScholesSimulator" Height="Auto" Width="900" Background="#FF3F184D">
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
             <Setter Property="FontFamily" Value="Arial"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
-        <DockPanel Name="testingdock">
-            <StackPanel Width="300">
-                <Button Margin="10,10,10,0" Click="Start_Button_Click" Width="100" HorizontalAlignment="Left">New Round</Button>
-                <Button Margin="10,10,10,0" Width="100" HorizontalAlignment="Left">Show Graph</Button>
-                <TextBlock Margin="10"> Time Remaining</TextBlock>
-
-
-                <TextBlock Margin="10,10,10,0"> FPGA</TextBlock>
-                <StackPanel Margin ="10,0,10,0" Name="FPGA">
-                    <DockPanel>
-                        <TextBlock Margin="10,0,10,0">Stock:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="stock_fpga" ></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Margin="10,0,10,0">Fair Price:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="fairprice_fpga"></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Margin="10,0,10,0">Transaction:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="transaction_fpga"></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Margin="10,0,10,0">Calculation Time:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="time_fpga"></TextBlock>
-                    </DockPanel>
-                </StackPanel>
-                <TextBlock Margin ="10,10,10,0">CPU</TextBlock>
-                <StackPanel Margin ="10,0,10,0" Name="CPU">
-                    <DockPanel>
-                        <TextBlock Margin="10,0,10,0">Stock:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="stock_cpu" ></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Name="fairprice" Margin="10,0,10,0">Fair Price:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="fairprice_cpu" ></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Name="transaction" Margin="10,0,10,0">Transaction:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="transaction_cpu" ></TextBlock>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Name="calculation" Margin="10,0,10,0">Calculation Time:</TextBlock>
-                        <TextBlock Margin="10,0,10,0" Name="time_cpu" ></TextBlock>
-                    </DockPanel>
-
-                    <TextBlock Name="testing"></TextBlock>
-                </StackPanel>
-                <Button Name="resumebutton" Margin="10,0,10,0" Width="100" HorizontalAlignment="Left"  Click="Resume_Button_Click" >Continue Round</Button>
-                <Button Name="stopbutton"  Margin="10" Width="100" HorizontalAlignment="Left"  Click="Stop_Button_Click">Pause Round</Button>
+        <StackPanel Margin="100">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" Foreground="White" ><Run Text="Welcome to Our Suitcase Full of Dreams"/></TextBlock>
+            <Button Content="Start" Click="ButtonClicked" Height="40" Margin="30" x:Name="button1" VerticalAlignment="Top" Width="200" FontSize="20" />
            
-            
-            </StackPanel>
-
-            <lvc:CartesianChart Name ="chart1" Series="{Binding SeriesCollection}" Margin="0,0,0,10" Width="544" AnimationsSpeed="0:0:0.001">
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-            </lvc:CartesianChart>
-
-            <local:Graph />
-
-        </DockPanel>
-
+            <Button Name="Begin_Button" Content="Begin Sending" Click="BeginSending" Height="40" Margin="30"  VerticalAlignment="Top" Width="200" FontSize="20" Background="#FFF9A0A0" FontFamily="Century Gothic" Foreground="Black" BorderBrush="White" />
+        </StackPanel>
+        
+        
     </Grid>
 </Window>

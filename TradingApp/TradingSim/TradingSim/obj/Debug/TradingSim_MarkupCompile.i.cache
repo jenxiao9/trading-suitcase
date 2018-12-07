@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\App.xaml
-2-997033902
+4-366393761
 
-12-1110812219
+15-2095924820
 19-325343512
-Graph.xaml;MainWindow.xaml;
+AnimatedGUI.xaml;Graph.xaml;InstantGraph.xaml;MainWindow.xaml;
 
 True
 

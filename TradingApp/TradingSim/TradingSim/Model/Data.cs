@@ -10,11 +10,12 @@ namespace TradingSim.Model
     public class Data : INotifyPropertyChanged
     {
         private string _stockName;
-        private uint _optionId; 
+        private string _optionId; 
         private float _fairPrice;
         //which transaction is this 
         //how is time represented 
         private TimeSpan _time;
+        private ExpandedData _expandedData; 
 
         public string StockName 
         {
@@ -27,7 +28,18 @@ namespace TradingSim.Model
 
         }
 
-        public uint OptionId
+        public ExpandedData ExpandedData
+        {
+            get { return _expandedData; }
+            set
+            {
+                _expandedData = value;
+                RaisePropertyChanged("ExpandedData");
+            }
+
+        }
+
+        public string OptionId
         {
             get { return _optionId; }
             set
@@ -59,7 +71,8 @@ namespace TradingSim.Model
             }
         }
 
- 
+        public TimeSpan TimeDiff { get; internal set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged(string propertyName)
         {

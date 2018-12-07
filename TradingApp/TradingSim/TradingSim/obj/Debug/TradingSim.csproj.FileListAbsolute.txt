@@ -111,3 +111,7 @@ C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\Tradi
 C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\bin\Debug\System.ValueTuple.dll
 C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\bin\Debug\System.ValueTuple.xml
 C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\AnimatedGUI.g.cs
+C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\AnimatedGUI.baml
+C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\InstantGraph.g.cs
+C:\Users\Xinna\trading-suitcase\TradingApp\TradingSim\TradingSim\obj\Debug\InstantGraph.baml
