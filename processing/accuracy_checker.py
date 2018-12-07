@@ -22,8 +22,7 @@ def accuracy_check(file1, file2, outputfile):
     c_reader = csv.reader(c_file, delimiter=",")
     for row in c_reader:
         if len(row) != 3:
-            raise Exception('''Row in CSV does not have expected length. 
-                Should have 3 items but only has %d''' %len(row))
+            continue
 
         [option_id, price, timing] = row
         results[option_id] = [price]
