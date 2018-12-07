@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env python
 
 # edited from https://introcs.cs.princeton.edu/python/21function/blackscholes.py
@@ -123,7 +122,6 @@ if __name__ == "__main__":
 #              time until expiration     0.25 years
 #
 # Reference:  http://www.hoadley.net/options/develtoolsvolcalc.htm
-=======
 #!/usr/bin/env python
 
 # edited from https://introcs.cs.princeton.edu/python/21function/blackscholes.py
@@ -182,6 +180,8 @@ def cdf(z, mu=0.0, sigma=1.0):
 # Black-Scholes formula.
 
 def callPrice(s, x, r, sigma, t):
+
+#    print("s %f x %f r %f sigma %f t %f" %(s, x, r, sigma, t))
     a = (math.log(s/x) + (r + sigma * sigma/2.0) * t) / \
         (sigma * math.sqrt(t))
     b = a - sigma * math.sqrt(t)
@@ -248,4 +248,3 @@ if __name__ == "__main__":
 #              time until expiration     0.25 years
 #
 # Reference:  http://www.hoadley.net/options/develtoolsvolcalc.htm
->>>>>>> 95b1c7742cc05c632d83dfce7bf6f0631723833f
