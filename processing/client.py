@@ -26,10 +26,10 @@ def run_benchmark_num(s, i):
 
     s.send(bytes(cmd.encode('utf-8')))
 
-    c_dir = 
+    c_dir = os.path.join("..", "..", "c_results")
 
-    if not os.path.isdir('../../c_results'):
-        os.mkdir('../../c_results')
+    if not os.path.isdir(c_dir):
+        os.mkdir(c_dir)
 
     file_name = "../../c_results/%05d_c_output.txt" %int(i)
 
