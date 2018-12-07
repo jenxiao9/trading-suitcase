@@ -1,34 +1,45 @@
 import serial
 import binascii
 import time
-ser = serial.Serial(
-    port="COM4",
-    baudrate=9600,
+
+def open_port(port = "COM6"):
+    ser = serial.Serial(
+    port=port,
+    baudrate=115200,
     bytesize=serial.EIGHTBITS)
+
+    return ser
 
 package = "" 
 
 #creates the package to send to fpga
-def create_package(option_id):
+def closer(ser):
+  while ser.inWaiting()>0:
+    ser.read()
+  ser.flush()
+  ser.close()
+
+def create_package(ser, option_id):
     global package 
     package = 15
     return hex(package)
 
-def send_uart_package(package):
-    global ser 
-    ser.write(package)
+def send_uart_package(ser, package):
+    for b in package:
+        b=bytes([b])
+        ser.write(b)
+        time.sleep(.005)
+    ser.flush()
 
-def read_back():
-    global ser
+def read_back(ser):
     while ser.inWaiting()>0:
-        return ser.read()
+      return ser.read()
     return None
 
     # return None
     #(hex((int.from_bytes(ser.read(), byteorder ='big'))))
 
-def main():
-    global ser
+def main(ser):
     while ser.inWaiting()>0:
         print(int.from_bytes(ser.read(), byteorder = "big"))
     while True:

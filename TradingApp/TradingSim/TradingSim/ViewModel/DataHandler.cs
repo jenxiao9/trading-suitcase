@@ -211,8 +211,8 @@ namespace TradingSim.ViewModel
             string args = script + " " + fpgaPath + " " + cpuPath + " " + "results.txt";
             string results = Run_CMD(script, args);
              
-        }
-
+        
+}
         public string GetToday()
         {
             return Today; 

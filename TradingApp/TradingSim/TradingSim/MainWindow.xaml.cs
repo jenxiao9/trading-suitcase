@@ -56,7 +56,6 @@ namespace TradingSim
 
         private void BeginSending(object sender, RoutedEventArgs e)
         {
-            file_counter++;
 
             string argv2 = DataHandler.generate_start(file_counter); 
 
@@ -64,6 +63,7 @@ namespace TradingSim
             Begin_Button.IsEnabled = false;
             Console.WriteLine(DataHandler.Run_CMD(pythonScript,args));
             Begin_Button.IsEnabled = true;
+            file_counter++;
         }
 
 

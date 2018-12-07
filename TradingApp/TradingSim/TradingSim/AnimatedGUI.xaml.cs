@@ -194,10 +194,7 @@ namespace TradingSim
                 timerCpu.Interval = dataPoint.TimeDiff;
 
                 DateTime newTime = baseDateCpu.Add(dataPoint.Time);
-                /*
-                Console.WriteLine("timePoint is " + dataPoint.Time.ToString());
-                Console.WriteLine("timeDiff is " + dataPoint.TimeDiff.ToString());
-                */ 
+
 
                 DateModel dtpoint = new DateModel { DateTime = newTime, Value = trans_cpu };
                 CpuValues.Add(dtpoint);
