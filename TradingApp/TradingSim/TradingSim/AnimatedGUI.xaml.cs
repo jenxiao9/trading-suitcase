@@ -197,12 +197,13 @@ namespace TradingSim
                 fairprice_cpu.Text = dataPoint.FairPrice.ToString();
                 stock_cpu.Text = dataPoint.ExpandedData.Stock_Id.ToString();
                 time_cpu.Text = dataPoint.Time.ToString();
-                Console.WriteLine(dataPoint.Time); 
+                //Console.WriteLine(dataPoint.Time); 
                 transaction_cpu.Text = trans_cpu.ToString();
                 expiry_cpu.Text = dataPoint.ExpandedData.Expiry.ToString();
                 callput_cpu.Text = dataPoint.ExpandedData.Call_Put.ToString();
 
                 //Plot point 
+                //Console.WriteLine(dataPoint.TimeDiff); 
                 timerCpu.Interval = dataPoint.TimeDiff;
 
                 DateTime newTime = baseDateCpu.Add(dataPoint.Time);

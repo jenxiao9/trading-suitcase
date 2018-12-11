@@ -147,7 +147,8 @@ namespace TradingSim.ViewModel
                 {
                     //Read current line fields, pointer moves to the next line.
                     string[] fields = csvParser.ReadFields();
-                    int currTime = (int)float.Parse(fields[2]);
+                    int currTime = (int)float.Parse(fields[2]) * 100;
+                    //Console.WriteLine(float.Parse(fields[2]));
 
                     TimeSpan length = TimeSpan.FromMilliseconds(currTime);
                     Data data = new Data
@@ -236,7 +237,7 @@ namespace TradingSim.ViewModel
             p.Start();
             //Console.WriteLine(p.HasExited);
             string output = p.StandardOutput.ReadToEnd();
-            //Console.WriteLine(output); 
+            Console.WriteLine(output); 
             p.WaitForExit();
             
             //Console.WriteLine(p.HasExited);

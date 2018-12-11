@@ -11,6 +11,7 @@ import blackscholes
 import struct
 
 TOTAL_ROWS = 1000
+FPGA_FREQ = 100000000 #hertz
 
 def raw_data(file, output_file, total_rows = TOTAL_ROWS):
     rows = 0
@@ -19,7 +20,6 @@ def raw_data(file, output_file, total_rows = TOTAL_ROWS):
             for row in f:
                 output.write(row)
                 rows +=1
-                print(rows)
                 if rows >= total_rows:
                     break
 
@@ -28,6 +28,7 @@ def bytes_to_float(b):
     return f[0]
 
 def parse_fpga_data(fpga_packet):
+    print(fpga_packet)
     ''' Parses an fpga packet (should be of length 12 bytes) and returns a 
     string formatted like this: option_id, price, time
     where the first four bytes are assumed to be an unsigned int option_id
@@ -35,23 +36,26 @@ def parse_fpga_data(fpga_packet):
     the last four bytes are assumed to be a float of the time taken to calculate
     '''
     # should be 12 bytes: option_id, price, time_data
-    option_id = int.from_bytes(fpga_packet[0:4], byteorder="big", signed=False)
+    option_id = int.from_bytes(fpga_packet[8:12], byteorder="big", signed=False)
+    #print("option_id_is")
     price = bytes_to_float(fpga_packet[4:8])
-    time_taken = bytes_to_float(fpga_packet[8:12])
+    #print("price is")
+    time_taken = int.from_bytes(fpga_packet[0:4], byteorder="big")
+    time_taken = float(time_taken / FPGA_FREQ) * 1000 # to make it in ms
+    #print("time_taken")
 
-    str_rep = "%d, %f, %f" %(option_id, price, time_taken)
+    str_rep = "%d, %f, %f\r\n" %(option_id, price, time_taken)
     return str_rep
 
 def read_packet(ser):
     bytes_read = 0
     read = []
-    print(ser.inWaiting())
     while (bytes_read < 24):
         x = data.read_back(ser)
-        print(x)
         if x is not None:
             read.append(x)
             bytes_read += 1
+    read = read[0:12]
     read.reverse()
     return b''.join(read)
 
@@ -97,7 +101,7 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0, f
 
     py_dir = os.path.join("..", "..", "python_ref")
     oil_dir = os.path.join("..", "..", "oil")
-    cd_dir = os.path.join("..", "..", "c_data_files")
+    cd_dir = "C:/Users/Xinna/c_data_files" 
 
     if not os.path.isdir(py_dir):
         os.mkdir(py_dir)
@@ -176,6 +180,7 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0, f
             s = x.s
             output.write(s)
             rows += 1
+
         files += 1
         oil.close()
         rf.close()  
@@ -185,15 +190,27 @@ def process_orders(file, output_file, total_rows = TOTAL_ROWS, start_from = 0, f
     f.close()
     return 0
 
-def uart_data_send(file, port = "COM6", total_packets = 60):
+def uart_data_send(filenum, port = "COM6", total_packets = 1000):
+    #print("got here") 
+    file = os.path.join("C:/Users/Xinna", 'c_data_files', "%05d_c_data.txt" %(filenum))
+    
+    #print(file)
+    #fr_dir = os.path.join('..', '..', 'fpga_results')
+    fr_dir = ("fpga_results")
+    if not os.path.isdir(fr_dir):
+        os.mkdir(fr_dir)
+
+    fr_file = os.path.join(fr_dir, "%05d_fpga_results.txt" %(filenum))
+
+    fr = open(fr_file, "w")
+
     f = open(file, "r")
     
     ser = data.open_port(port)
     i = 0
 
     for line in f.readlines():
-
-
+        #print(i)
         line = line.strip()
         #skip first line
         if(line == "1000"):
@@ -209,7 +226,6 @@ def uart_data_send(file, port = "COM6", total_packets = 60):
         expiration_yrs = float(expiration_yrs)
         x = order.Order((price_opt), (strike), r, (iv), expiration_yrs, call_put, option_id)
 
-
         try:
             if call_put == 'C':
                 answer = blackscholes.callPrice(float(price_opt), float(strike), r, float(iv), expiration_yrs)
@@ -219,7 +235,7 @@ def uart_data_send(file, port = "COM6", total_packets = 60):
         except:
             answer = 0
 
-        print(blackscholes.float_to_hex(answer))
+        #print(blackscholes.float_to_hex(answer))
 
         pkt = x.pkt()
         pkt.reverse()
@@ -229,25 +245,24 @@ def uart_data_send(file, port = "COM6", total_packets = 60):
         if i >= total_packets:
             break
 
-    packets = []
     packets_read = 0
     print("done sending")
     while (packets_read < total_packets):
+        #print(packets_read)
         time.sleep(.05)
-        print(ser.inWaiting())
         x = read_packet(ser)
-        packets.append(x)
-        print(parse_fpga_data(x))
+        result_string = parse_fpga_data(x)
         packets_read += 1
-
-
+        fr.write(result_string)
+    #print("received all data")
+    fr.close()
     f.close()
-
-
+    data.closer(ser)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
+    print("HELLO")
+    if len(sys.argv) < 2:
         raise Exception("""
             Use case: For making a new, shorter raw file: processing.py raw input_file output_file total_rows
             For processing code: processing.py processing input_file output_file
@@ -263,6 +278,9 @@ if __name__ == "__main__":
                 total_rows = int(sys.argv[4])
                 process_orders(orig_file, result_file, total_rows = total_rows)
             else:
+                orig_file = sys.argv[2]
+                result_file = sys.argv[3]
+
                 process_orders(orig_file, result_file)
         elif sys.argv[1] == "raw":
 
@@ -277,11 +295,13 @@ if __name__ == "__main__":
                 raw_data(orig_file, result_file)
         elif sys.argv[1] == "send":
             i = int(sys.argv[2])
-            file = os.path.join("C:/Users/Xinna", "c_data_files" , "%05d_c_data.txt" %(i))
+            print("sending")
+            #file = os.path.join("../../c_data_files", "%05d_c_data.txt" %(i))
+            #file = os.path.join("C:/Users/Xinna", "c_data_files" , "%05d_c_data.txt" %(i))
 
             if len(sys.argv) >3:
                 port = sys.argv[3]
-                uart_data_send(file, port)
+                uart_data_send(i, port)
             else:
-                uart_data_send(file)
+                uart_data_send(i)
 

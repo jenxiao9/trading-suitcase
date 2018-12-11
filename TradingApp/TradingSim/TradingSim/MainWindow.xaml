@@ -16,7 +16,7 @@
     <Grid>
         <StackPanel Margin="100">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" Foreground="White" ><Run Text="Welcome to Our Suitcase Full of Dreams"/></TextBlock>
-            <Button Content="Next Round" Click="ButtonClicked" Height="40" Margin="30,40,30,10" x:Name="button1" VerticalAlignment="Top" Width="200" FontSize="20" />
+            <Button Content="Next Round"  FontFamily="Century Gothic" Click="ButtonClicked" Height="40" Margin="30,40,30,10" x:Name="button1" VerticalAlignment="Top" Width="200" FontSize="20" />
            
             <Button Name="Begin_Button" Content="Begin Sending" Click="BeginSending" Height="40" Margin="30"  VerticalAlignment="Top" Width="200" FontSize="20" Background="#FFF9A0A0" FontFamily="Century Gothic" Foreground="Black" BorderBrush="White" />
             <TextBlock FontFamily="Century Gothic" HorizontalAlignment="Center" Foreground="White">Round: </TextBlock>

@@ -65,11 +65,11 @@ namespace TradingSim
 
             string filepath = argv2 + "_c_data.txt";
             string args1 = socketScript + " " + file_counter.ToString();
-            string args2 = pythonScript + " send " + file_counter.ToString() + " COM4";
+            string args2 = pythonScript + " send " + file_counter.ToString() + " COM3";
+            //Console.WriteLine(args2);
 
-
-            DataHandler.Run_CMD(socketScript, args1);
-            DataHandler.Run_CMD(pythonScript, args2);
+            //DataHandler.Run_CMD(socketScript, args1);
+            //DataHandler.Run_CMD(pythonScript, args2);
             Begin_Button.IsEnabled = true;
             AnimatedGUI subWindow = new AnimatedGUI(this);
             subWindow.Show();
