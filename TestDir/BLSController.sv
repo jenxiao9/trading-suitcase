@@ -23,7 +23,7 @@
 
 //SERVE_REG is a signal which goes out to the data controller to fetch the next values for that register.
 //parameter BSMODS=1;
-parameter BSMODS=2;
+parameter BSMODS=20;
 parameter DATASIZE=192;
 module BLSController(
     input logic clock, reset, startSystem,OutOfData,
@@ -34,10 +34,10 @@ module BLSController(
     input logic  [BSMODS-1:0] REG_READY,
     output logic [BSMODS-1:0] BS_START,
     output logic [BSMODS-1:0] SERVE_REG,
-    output logic [7:0] LED
+    output logic [31:0] Clocks,
+    output logic ROUND_DONE
     );
     logic[4:0] i;
-    logic [7:0] Clocks;
     logic clear, ClockCntEn;
     logic clearActive, ActiveCntInc, ActiveCntDec;
     logic [3:0] ActiveCount;
@@ -47,10 +47,9 @@ module BLSController(
     logic [BSMODS-1:0] SecRunningCount;
     logic [BSMODS-1:0] SecActivateLine;
     logic [BSMODS-1:0] SecDeactivateLine;
-    assign LED=Clocks;
     enum logic [1:0] {IDLE, RUN, DONE} currentState, nextState;
     logic [BSMODS-1:0] prevReady;
-    Counter #(8) Clock_Count (clock, reset, clear, ClockCntEn,1'b0, Clocks);
+    Counter #(32) Clock_Count (clock, reset, clear, ClockCntEn,1'b0, Clocks);
     Counter #(4) Active_Runs (clock, reset, clearActive, ActiveCntInc, ActiveCntDec, ActiveCount);
     always_ff @(posedge clock, posedge reset) begin
         if (reset) begin
@@ -80,11 +79,14 @@ module BLSController(
         DeactivateLine   ={BSMODS{1'b0}};
         SecActivateLine  ={BSMODS{1'b0}};
         SecDeactivateLine={BSMODS{1'b0}};
+        ROUND_DONE = 1'b0;
         unique case (currentState)
             IDLE: begin
                 nextState=IDLE;
-                if (startSystem)
+                if (startSystem) begin
                     nextState=RUN;
+                    clear=1;
+                end
             end
             
             RUN: begin
@@ -117,13 +119,14 @@ module BLSController(
                 //Technically this next line should only need BS_IDLE==... and OutOfData. The others are just safety checks.
                 if (BS_IDLE == {BSMODS{1'b1}}&&OutOfData&&hasUnusedData=={BSMODS{1'b0}}&&RunningCount=={BSMODS{1'b0}}) begin
                     nextState=DONE;
+                    ROUND_DONE=1'b1;
                     ClockCntEn=0;
                 end
             end
             
             DONE: begin
                 //BS_START={BSMODS{1'b1}};
-                nextState=DONE;
+                nextState=IDLE;
             end
         endcase
     end

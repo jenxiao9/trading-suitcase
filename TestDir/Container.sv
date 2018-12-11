@@ -1,11 +1,11 @@
-parameter BSMODS=2;
+parameter BSMODS=20;
 parameter DATASIZE=192;
 module BSContainer(
   input logic clock, reset,
   input logic [BSMODS-1:0] regEn, BS_START,
   input logic [DATASIZE-1:0] FullPacket,
   output logic [BSMODS-1:0] hasUnusedData, REG_READY,BS_DONE, BS_READY, BS_IDLE,
-  output logic [BSMODS-1:0][31:0] ap_return 
+  output logic [BSMODS-1:0][63:0] ap_return 
 );
   logic [BSMODS-1:0][31:0] opt_id, sptprice, strike, rate, volatility, time_r, otype;
   genvar i;
@@ -34,6 +34,7 @@ module BSContainer(
            ap_return[i],
            reset,
            BS_START[i],
+           opt_id[i],
            otype[i],
            rate[i],
            sptprice[i],

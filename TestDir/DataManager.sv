@@ -19,7 +19,7 @@
 // Additional Comments:
 // /w
 //////////////////////////////////////////////////////////////////////////////////
-parameter BSMODS=2;
+parameter BSMODS=20;
 parameter DATASIZE=192;
 /*
 module Top();
@@ -91,59 +91,52 @@ endmodule: Top
 module DataManager(
     input logic clock, reset, DONE_WRITING,
     input logic [BSMODS-1:0] SERVE_REG,
-    input logic [31:0] dataA,
+    input logic [DATASIZE-1:0] dataA,
     output logic OutOfData,
     output logic [BSMODS-1:0] regEn,
     output logic [DATASIZE-1:0] FullPackOut,
-    output logic [31:0] addrA,
-    output logic [1:0] addrSelect
+    output logic [10:0] addrA,
+    output logic addrSelect
     );
-    enum logic [1:0] {NODATA, HASDATA, WAITDATA} currentState,nextState;
-    logic [29:0] addrACount;
+    enum logic [1:0] {NODATA, HASDATA, WAITDATA, STALL} currentState,nextState;
     logic[4:0] i;
     logic [3:0] ReadNum;
-    logic [DATASIZE-1:0] fullPackReg;
-    logic shiftFullPack;
-    logic clearReadNum, incReadNum, clearAddrACount, incAddrACount;
-    assign FullPackOut={dataA, fullPackReg[DATASIZE-1:32]};
-    assign addrA = {addrACount, 2'd0};
-    VarCount #(.WIDTH(4) , .DEFAULT_VAL(0), .INC_AMT(1)) readCounter  (clock ,reset, incReadNum, clearReadNum, ReadNum);
-    VarCount #(.WIDTH(30), .DEFAULT_VAL(0), .INC_AMT(1)) addrACounter (clock, reset, incAddrACount, clearAddrACount, addrACount);
+    logic clearAddrACount, incAddrACount;
+    assign FullPackOut=dataA;
+    VarCount #(.WIDTH(11), .DEFAULT_VAL(0), .INC_AMT(1)) addrACounter (clock, reset, incAddrACount, clearAddrACount, addrA);
     always_ff @(posedge clock, posedge reset) begin
         if (reset) begin
             currentState<=NODATA;
-            fullPackReg <= {DATASIZE {1'b0}};
         end
         else begin
             currentState<=nextState;
-            if (shiftFullPack)
-                fullPackReg <= FullPackOut;
         end
     end
     always_comb begin
         OutOfData      =1'b1;
         regEn          ={BSMODS{1'b0}};
-        incReadNum     =1'b0;
         incAddrACount  =1'b0;
-        clearReadNum   =1'b0;
         clearAddrACount=1'b0;
-        shiftFullPack  =1'b0;
-        addrSelect     =2'd0;
+        addrSelect     =1'd0;
         unique case(currentState)
             NODATA: begin
                 OutOfData=1'b1;
                 nextState=NODATA;
-                if (DONE_WRITING)
-                    nextState=HASDATA;
-                addrSelect=2'd1;
+                addrSelect=1'd1;
+                if (DONE_WRITING) begin
+                    nextState=STALL;
+                end
+                
             end
-            
+            STALL: begin
+                nextState=HASDATA;
+                OutOfData=1'b0;
+            end
             HASDATA: begin
                 OutOfData=1'b0;
                 nextState=HASDATA;
                 if (SERVE_REG!={BSMODS{1'b0}}) begin
                     nextState     =WAITDATA;
-                    shiftFullPack =1'b1;
                     incAddrACount =1'b1;
                 end
             end
@@ -151,24 +144,18 @@ module DataManager(
             WAITDATA: begin
                 nextState=WAITDATA;
                 OutOfData=1'b0;
-                incAddrACount=1'b1;
-                incReadNum=1'b1;
-                shiftFullPack=1'b1;
-                if (ReadNum>=4'd5) begin
-                    clearReadNum=1'b1;
-                    incAddrACount=1'b0;
-                    if(addrACount<30'd96) begin
-                        nextState=HASDATA;
-                    end
-                    else begin
-                        nextState=NODATA;
-                        clearAddrACount=1'b1;
-                    end
-                    for (i=0; i<BSMODS; i=i+1) begin: runloop
-                        if (SERVE_REG[i]) begin
-                            regEn[i]=1'b1;
-                            break;
-                        end
+                if(addrA>=11'd1000) begin
+                    nextState=NODATA;
+                    clearAddrACount=1'b1;
+
+                end
+                else begin
+                    nextState=HASDATA;
+                end
+                for (i=0; i<BSMODS; i=i+1) begin: runloop
+                    if (SERVE_REG[i]) begin
+                        regEn[i]=1'b1;
+                        break;
                     end
                 end
             end

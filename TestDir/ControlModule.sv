@@ -40,8 +40,8 @@ module ControlModule(
     logic RX_1,RX;
     always_ff @(posedge clock, posedge reset) begin
         if (reset) begin
-            RX<=0;
-            RX_1<=0;
+            RX<=1;
+            RX_1<=1;
         end
         else begin
             RX<=RX_1;
@@ -83,7 +83,6 @@ module ControlModule(
                      bit_en = 0; 
                      bit_clear = 1; 
                      clear_sreg=1'b1;
-
                      if (bit_in == 0) begin
                          nextState = START_B;
                          counter_clear=1;
@@ -97,7 +96,7 @@ module ControlModule(
                      counter_en = 1; //begin sampling
                      counter_clear = 0; 
                      //past half  
-                     if (clk_counter == 14'd1302)
+                     if (clk_counter == 14'd434)
                      begin
                          //encounters start bit
                          if (bit_in == 0) begin  
@@ -122,11 +121,11 @@ module ControlModule(
                      bit_clear = 0; 
                      bit_en = 0;
                      //nextState=DATA;
-                    if (clk_counter == 14'd1302) begin
+                    if (clk_counter == 14'd434) begin
                          bit_en=1;
                          data_buf[bit_counter] = bit_in;
                      end
-                     else if (clk_counter == 14'd2604) 
+                     else if (clk_counter == 14'd868) 
                      begin
                          //counter_en = 0;
                          counter_clear = 1;
@@ -143,7 +142,7 @@ module ControlModule(
                      counter_en = 1; 
                      counter_clear = 0; 
 
-                     if (clk_counter < 14'd2604)
+                     if (clk_counter < 14'd868)
                      begin
                          counter_en = 1;
 

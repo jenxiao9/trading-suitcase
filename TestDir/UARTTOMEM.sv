@@ -18,29 +18,33 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+
+
 module UARTTOMEM(
-    input logic clock, reset, UART_DONE,
+    input logic clock, reset, UART_DONE, DONE_TRANSMITTING,
     input logic [7:0] UART_DATA,
     output logic DONE_WRITING,
-    output logic [31:0] dataToA,
-    output logic [31:0] addrA,
-    output logic enA,
-    output logic [3:0] weA
+    output logic [191:0] dataToA,
+    output logic [10:0] addrA,
+    output logic weA
     );
-    logic [29:0] addrACount;
-    logic [1:0] writePos;
+    logic [5:0] writePos;
     logic clearWritePos, incWritePos, clearAddrACount, incAddrACount;
-    VarCount #(.WIDTH(2)) posCounter (clock ,reset, incWritePos, clearWritePos, writePos);
-    VarCount #(.WIDTH(30)) addrCounter (clock, reset, incAddrACount, clearAddrACount, addrACount);
+    VarCount #(.WIDTH(6), .INC_AMT(1)) posCounter (clock ,reset, incWritePos, clearWritePos, writePos);
+    VarCount #(.WIDTH(11), .INC_AMT(1)) addrCounter (clock, reset, incAddrACount, clearAddrACount, addrA);
     enum logic [1:0] {INIT,WRITING, DONE} currentState, nextState;
-    assign enA=1'b1;
-    assign addrA={addrACount, 2'd0};
+    logic [191:0] fullPackReg;
+    logic shiftFullPack;
+    assign dataToA={UART_DATA,fullPackReg[191:8]};
     always_ff @(posedge clock, posedge reset) begin
         if (reset) begin
             currentState <= INIT;
+            fullPackReg  <= 192'd0;
         end
         else begin
             currentState <= nextState;
+            if (shiftFullPack)
+                fullPackReg<=dataToA;
         end
     end
     always_comb begin
@@ -48,9 +52,9 @@ module UARTTOMEM(
         incAddrACount=1'b0;
         clearWritePos=1'b0;
         clearAddrACount=1'b0;
-        dataToA= 32'd0;
-        weA=4'd0;
+        weA=1'd0;
         DONE_WRITING=1'b0;
+        shiftFullPack=1'b0;
         unique case(currentState)
             INIT: begin
                 clearWritePos=1'b1;
@@ -61,28 +65,14 @@ module UARTTOMEM(
                 nextState=WRITING;
                 if (UART_DONE) begin
                     incWritePos=1'b1;
-                    case(writePos)
-                        2'd0: begin
-                            dataToA[7:0] =UART_DATA;
-                            weA=4'h1;
-                        end
-                        2'd1: begin
-                            dataToA[15:8]=UART_DATA;
-                            weA=4'h2;
-                        end
-                        2'd2: begin
-                            dataToA[23:16]=UART_DATA;
-                            weA=4'h4;
-                        end
-                        2'd3: begin
-                            dataToA[31:24]=UART_DATA;
-                            weA=4'h8;
-                            clearWritePos=1'b1;
-                            incAddrACount=1'b1;
-                        end
-                    endcase
+                    shiftFullPack=1'b1;
+                    if (writePos==6'd23) begin
+                        clearWritePos=1'b1;
+                        incAddrACount=1'b1;
+                        weA=1'b1;
+                    end
                 end
-                if (addrACount>=30'd96) begin
+                if (addrA>=11'd1000) begin
                     nextState=DONE;
                     clearAddrACount=1'b1;
                     clearWritePos=1'b1;
@@ -92,6 +82,8 @@ module UARTTOMEM(
             
             DONE: begin
                 nextState=DONE;
+                if (DONE_TRANSMITTING)
+                    nextState=INIT;
             end
         endcase
     end
