@@ -85,7 +85,7 @@ module PacketRegister (
     input logic clock,
     input logic reset,
     input logic en,BS_READY,
-    input logic [1911:0] FullPacket,
+    input logic [191:0] FullPacket,
     output logic hasUnusedData, REG_READY,
     output logic [31:0] opt_id,sptprice,
     strike    ,
